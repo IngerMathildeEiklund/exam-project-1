@@ -10,7 +10,6 @@ h1, h2, h3, h4, p, a {
   font-family: var(--headings-paragraphs);
   color: var(--text);
   font-weight: 600;
-
 }
 p {
   font-weight: 400;
@@ -24,12 +23,32 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 5rem;
+}
+.drop-shadow {
+  filter: drop-shadow(2px 2px 5px var(--dark-gray));
 }
 .hamburger-button {
  color: inherit;
  background-color: var(--light-gray);
 }
-
+#products-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.sale {
+  color: var(--sale-price);
+}
+.strike {
+  text-decoration: line-through;
+}
+.price-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 /* CARDS */
 .card {
   background-color: white;
@@ -51,6 +70,13 @@ main {
   object-fit:cover;
   object-position: center;
 }
+.card-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: space-around;
+}
+/* MAKE THE CARDS LOOK BETTER WITH PADDING /*
 /*CARDS*/ 
 
 .grid {
@@ -64,13 +90,24 @@ main {
 button {
   font-family: var(--buttons);
   color: var(--button-text);
+  font-weight: 500;
   padding-inline: 1rem;
   padding-block: 0.5rem;
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
 }
-
+.icon-button-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  
+}
+#icon-on-button {
+  color: var(--button-text);
+}
 input{
  border: solid 1px;
  border-color: var(--dark-gray);
@@ -117,6 +154,12 @@ background-color: var(--blue);
 .purple {
   background-color: var(--purple);
 }
+.blue:hover {
+  background-color: var(--blue-hover);
+}
+.purple:hover {
+  background-color: var(--purple-hover);
+}
 
 h1 {
   font-size: 1.25rem;
@@ -151,6 +194,96 @@ p {
   gap: 1rem;
 }
 
+/* HEADER */ 
+
+#logo {
+  width: clamp(80px, 70vw, 150px);
+}
+
+.user-shoppingcart-wrapper {
+  display: none;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--dark-gray);
+  background-color: var(--light-gray);
+  position: relative;
+  z-index: 99;
+}
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+}
+.mobile-navigation {
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+  background-color: var(--gray);
+  width: 100vw;
+  height: fit-content;
+  position: fixed;
+  right: -100%;
+  top: 4rem;
+  transition: 0.3s ease-in-out;
+  border-bottom: 2px solid var(--dark-gray);
+  gap: 2rem;
+  padding-block: 1.5rem;
+  z-index: 98;
+}
+.mobile-navigation a {
+  color: var(--text);
+}
+.mobile-navigation.active{
+ right: 0;
+}
+.user-shoppingcart-wrapper-mobile {
+  display: flex;
+  flex-direction: column;
+  margin-block: 2rem;
+  gap: 2rem;
+  margin-block: 1rem;
+}
+.icon-link-wrapper a{
+  display: flex;
+  flex-direction: row;
+  justify-content:end;
+  gap: 3rem;
+  margin-right: 1rem;
+}
+/* HEADER */ 
+
+
+/*FOOTER */
+#footer {
+  background-color: var(--light-gray);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+  justify-content: left;
+    flex-direction: column;
+}
+
+#footer a {
+  color: var(--text);
+  font-weight: 400;
+}
+.footer-headings {
+  font-family: var(--logo-font);
+  font-style:italic;
+  font-weight: 800;
+}
+
+#copyright {
+  font-family: var(--logo-font);
+  font-size: 0.875rem;
+  font-weight: 800;
+  font-style: italic;
+}
+
  @media (min-width: 768px) {
 h1 {
   font-size: 2rem;
@@ -168,13 +301,60 @@ p {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 3rem;
 }
+
+/* HEADER */ 
+#logo {
+  width: clamp(90px, 70vw, 160px);
+}
+#user, #shoppingcart {
+  width: 25px;
+  height: 25px;
+}
+
+.user-shoppingcart-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8rem;
+  
+}
+.hamburger-menu {
+  display: none;
+}
+
+/*FOOTER*/ 
+
+.footer-navigation-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap:5rem;
+}
+#footer {
+  flex-direction: row;
+  justify-content: center;
+  gap:10rem;
+}
+#products-wrapper {
+  grid-template-columns: 1fr 1fr;
+}
+main {
+  margin-inline: 10rem;
+}
+
  }
 
  @media (min-width: 1440px) {
-  .grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+#products-wrapper {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+  main {
+  margin-inline: 15rem;
+}
  }
 @media (min-width: 1920px) {
-
+  #products-wrapper {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem;
+}
 }
