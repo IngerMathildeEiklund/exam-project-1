@@ -11,7 +11,8 @@ h2,
 h3,
 h4,
 p,
-a {
+a,
+label {
   font-family: var(--headings-paragraphs);
   color: var(--text);
   font-weight: 600;
@@ -32,6 +33,9 @@ main {
 }
 .padding {
   padding-bottom: 0.5rem;
+}
+.margin {
+  margin-bottom: 0.5rem;
 }
 .drop-shadow {
   filter: drop-shadow(2px 2px 5px var(--dark-gray));
@@ -121,7 +125,6 @@ input {
   border-radius: 0.3rem;
   padding-inline: 1rem;
   padding-block: 0.3rem;
-  margin: 1rem;
 }
 .icon {
   color: var(--text);
@@ -348,6 +351,9 @@ p {
   }
   .padding {
     padding-bottom: 1rem;
+  }
+  .margin {
+    margin-bottom: 1rem;
   }
 }
 
