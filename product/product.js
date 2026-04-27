@@ -43,12 +43,10 @@ function displayOneProduct() {
   if (!oneProductWrapper || !oneProductImgWrapper || !oneProductInfoWrapper) {
     return;
   }
-
-  // add something about rating here, remember to target the correct one//
-
   const productImage = document.createElement("img");
   const productName = document.createElement("h2");
   const productDesc = document.createElement("p");
+  const productRating = document.createElement("p");
   const productPrice = document.createElement("p");
   const productTags = document.createElement("p");
   const priceWrapper = document.createElement("div");
@@ -59,10 +57,15 @@ function displayOneProduct() {
   productDesc.textContent = oneProduct.description;
   productTags.textContent = oneProduct.tags;
   productPrice.textContent = `${oneProduct.price} kr`;
+  productRating.textContent = `Average rating: ${oneProduct.rating} / 5`;
+  if (oneProduct.rating === 0) {
+    productRating.textContent = "No rating for this item yet";
+  }
 
   oneProductImgWrapper.appendChild(productImage);
   oneProductInfoWrapper.appendChild(productName);
   oneProductInfoWrapper.appendChild(productDesc);
+  oneProductInfoWrapper.appendChild(productRating);
 
   if (oneProduct.price > oneProduct.discountedPrice) {
     productPrice.classList.add("strike");
