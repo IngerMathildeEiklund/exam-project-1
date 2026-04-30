@@ -43,12 +43,10 @@ function displayOneProduct() {
   if (!oneProductWrapper || !oneProductImgWrapper || !oneProductInfoWrapper) {
     return;
   }
-
-  // add something about rating here, remember to target the correct one//
-
   const productImage = document.createElement("img");
   const productName = document.createElement("h2");
   const productDesc = document.createElement("p");
+  const productRating = document.createElement("p");
   const productPrice = document.createElement("p");
   const productTags = document.createElement("p");
   const priceWrapper = document.createElement("div");
@@ -58,11 +56,16 @@ function displayOneProduct() {
   productName.textContent = oneProduct.title;
   productDesc.textContent = oneProduct.description;
   productTags.textContent = oneProduct.tags;
-  productPrice.textContent = oneProduct.price;
+  productPrice.textContent = `${oneProduct.price} kr`;
+  productRating.textContent = `Average rating: ${oneProduct.rating} / 5`;
+  if (oneProduct.rating === 0) {
+    productRating.textContent = "No rating for this item yet";
+  }
 
   oneProductImgWrapper.appendChild(productImage);
   oneProductInfoWrapper.appendChild(productName);
   oneProductInfoWrapper.appendChild(productDesc);
+  oneProductInfoWrapper.appendChild(productRating);
 
   if (oneProduct.price > oneProduct.discountedPrice) {
     productPrice.classList.add("strike");
@@ -83,7 +86,6 @@ function displayOneProduct() {
   if (buttonsWrapper) {
     oneProductInfoWrapper.appendChild(buttonsWrapper);
   }
-  // add display reviews here //
   displayReviews();
 }
 if (id) {
@@ -93,33 +95,69 @@ if (id) {
 }
 
 const reviewsWrapper = document.getElementById("reviews-wrapper");
+reviewsWrapper.classList.add("drop-shadow");
+
+
 
 function displayReviews() {
   if (!reviewsWrapper) {
     return;
   }
+   try {
+    const reviewsTitle = document.createElement("h3");
+    reviewsTitle.classList.add("padding");
+    
+    reviewsWrapper.appendChild(reviewsTitle);
+    reviewsTitle.textContent = `Reviews of ${oneProduct.title}`;
+    reviewsWrapper.appendChild(reviewsTitle);
 
-  console.log(oneProduct.reviews);
-  console.log(oneProduct.reviews[0].rating);
-  console.log(oneProduct.reviews[0].username);
-  console.log(oneProduct.reviews[0].description);
+      if (oneProduct.reviews.length === 0) {
+      const errorMsg = document.createElement("p");
+      errorMsg.textContent = "No reviews for this product yet.";
+      errorMsg.classList.add("padding");
+      reviewsWrapper.appendChild(errorMsg);
+    }
 
-  if (oneProduct.reviews === []) {
-    reviewsWrapper.innerHTML = `<p> No reviews found for this product. </p>`;
-  }
-
-  const reviewsTitle = document.createElement("h3");
-  reviewsTitle.textContent = `Reviews of ${oneProduct.title}`;
-
-  reviewsWrapper.appendChild(reviewsTitle);
-
-  for (const review of reviews) {
+  for (const review of oneProduct.reviews) {
+    const userImageWrapper = document.createElement("div");
     const userImage = document.createElement("img");
     const reviewUsername = document.createElement("h4");
     const reviewDescription = document.createElement("p");
     const reviewRating = document.createElement("p");
 
-    reviewUsername = review.reviews.username;
-    reviewDescription = review.reviews.description;
+    reviewUsername.textContent = review.username;
+    reviewDescription.textContent = review.description;
+    reviewRating.textContent = `Rating: ${review.rating} / 5`;
+    userImage.src = getRandomAvatar();
+    userImage.alt = "User avatar";
+
+    userImage.classList.add("avatar");
+    reviewUsername.classList.add("padding");
+    reviewDescription.classList.add("padding");
+    reviewRating.classList.add("padding");
+
+    userImageWrapper.appendChild(userImage);
+    reviewsWrapper.appendChild(userImage);
+    reviewsWrapper.appendChild(reviewUsername);
+    reviewsWrapper.appendChild(reviewDescription);
+    reviewsWrapper.appendChild(reviewRating);
   }
+   } catch (error) {
+    console.log("something went wrong");
+   }
+ 
+  
+}
+
+const avatars = [ 
+  "/svgs/avatar1.svg",
+  "/svgs/avatar2.svg",
+  "/svgs/avatar3.svg",
+  "/svgs/avatar4.svg",
+  "/svgs/avatar5.svg",
+]
+
+function getRandomAvatar() {
+  const randomIndex = Math.floor(Math.random() * avatars.length);
+  return avatars[randomIndex];
 }
