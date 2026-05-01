@@ -68,6 +68,23 @@ main {
   border-radius: 0.5rem;
   filter: drop-shadow(2px 2px 5px var(--dark-gray));
 }
+.card-carousel {
+  background-color: white;
+  border-radius: 0.5rem;
+  filter: drop-shadow(2px 2px 5px var(--dark-gray));
+  animation: slideIn 0.2s ease-in;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 .card-img-wrapper {
   width: 100%;
@@ -93,6 +110,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  transition: opacity 0.3s ease-in-out;
 }
 .pagination {
 display: grid;

@@ -4,17 +4,27 @@ export const URL = "https://v2.api.noroff.dev";
 export const ALL_PRODUCTS_ENDPOINT = "/online-shop";
 
 let allProducts = [];
-const prevBtn = document.getElementById("prev-button");
-const nextBtn = document.getElementById("next-button");
 
-let currentPage = 1;
+let currentStartIndex = 0;
 let items_per_page = 2;
 let highestRated = [];
 
 const productWrapper = document.getElementById("products-wrapper");
 const carouselWrapper = document.getElementById("carousel-wrapper");
+const prevBtn = document.getElementById("prev-button");
+const nextBtn = document.getElementById("next-button");
+
+function accessibilityButtons() {
+  if (!carouselWrapper) {
+    return;
+  } else {
+    prevBtn.setAttribute("aria-label", `View previous product`);
+    nextBtn.setAttribute("aria-label", `View next product`);
+  }
+}
 
 async function fetchProducts(url, endpoint) {
+  productWrapper.setAttribute("aria-busy", "true");
   if (!productWrapper) {
     return;
   }
@@ -33,13 +43,16 @@ async function fetchProducts(url, endpoint) {
     renderProducts(allProducts);
 
     highestRated = sort();
-    currentPage = 1;
 
     renderCarouselCards(highestRated);
     rerenderCards();
+    productWrapper.setAttribute("aria-busy", "false");
   } catch (error) {
-    productWrapper.innerHTML =
-      "<p> Could not load products, please try again later. </p>";
+    const errorMsg = document.createElement("div");
+    errorMsg.role = "alert";
+    errorMsg.setAttribute("aria-live", "assertive");
+    errorMsg.textContent = `Could not fetch products. Please try again later`;
+    productWrapper.appendChild(errorMsg);
   }
 }
 function sort() {
@@ -59,90 +72,117 @@ function rerenderCards() {
   const mediaQuery = window.matchMedia("(min-width: 768px)");
   mediaQuery.addEventListener("change", (e) => {
     checkScreenSize();
-    currentPage = 1;
+    currentStartIndex = 0;
     clearCarousel();
     renderCarouselCards(highestRated);
   });
 }
 
-function showCards(products, currentPage, items_per_page) {
+function showCards(products, currentStartIndex, itemsToShow) {
   checkScreenSize();
-  const startIndex = (currentPage - 1) * items_per_page;
-  const endIndex = startIndex + items_per_page;
-  return products.slice(startIndex, endIndex);
+  const visibleProducts = [];
+  for (let i = 0; i < itemsToShow; i++) {
+    const index = (currentStartIndex + i) % products.length;
+    visibleProducts.push(products[index]);
+  }
+  return visibleProducts;
 }
 
 function navigateCarousel(direction, products) {
-  const totalPages = Math.ceil(products.length / items_per_page);
-
   if (direction === "next") {
-    currentPage = currentPage >= totalPages ? 1 : currentPage + 1;
+    currentStartIndex = (currentStartIndex + 1) % products.length;
   } else if (direction === "prev") {
-    currentPage = currentPage <= 1 ? totalPages : currentPage - 1;
+    currentStartIndex =
+      (currentStartIndex - 1 + products.length) % products.length;
   }
 
   clearCarousel();
   renderCarouselCards(products);
 }
-// When reaching the end of the list, i want the carousel to return to the beginning of the list //
-//when clicking the prev on the first items it will go to the end of the list//
 
 function clearCarousel() {
-  carouselWrapper.innerHTML = "";
+  if (!carouselWrapper) {
+    return;
+  } else {
+    carouselWrapper.innerHTML = "";
+  }
 }
 
 function renderCarouselCards(products) {
-  const visibleProducts = showCards(products, currentPage, items_per_page);
-  for (const product of visibleProducts) {
-    const card = document.createElement("div");
-    const imageWrapper = document.createElement("div");
-    const cardImage = document.createElement("img");
-    const productInfoWrapper = document.createElement("div");
-    const productName = document.createElement("h3");
-    // const productDesc = document.createElement("p");
-    const productPrice = document.createElement("p");
-    const priceWrapper = document.createElement("div");
+  if (!carouselWrapper) {
+    return;
+  } else {
+    carouselWrapper.setAttribute("aria-label", "Highest reviewed products");
+    carouselWrapper.setAttribute("aria-live", "polite");
+    carouselWrapper.setAttribute("aria-atomic", "true");
+  }
+  const visibleProducts = showCards(
+    products,
+    currentStartIndex,
+    items_per_page,
+  );
+  try {
+    for (const product of visibleProducts) {
+      const card = document.createElement("div");
+      const imageWrapper = document.createElement("div");
+      const cardImage = document.createElement("img");
+      const productInfoWrapper = document.createElement("div");
+      const productName = document.createElement("h3");
+      const productPrice = document.createElement("p");
+      const priceWrapper = document.createElement("div");
 
-    card.classList.add("card");
-    imageWrapper.classList.add("card-img-wrapper");
-    productInfoWrapper.classList.add("card-info-wrapper");
-    priceWrapper.classList.add("price-wrapper");
+      card.classList.add("card-carousel");
+      imageWrapper.classList.add("card-img-wrapper");
+      productInfoWrapper.classList.add("card-info-wrapper");
+      priceWrapper.classList.add("price-wrapper");
 
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", 0);
-    card.setAttribute("aria-label", `View ${product.title}`);
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", 0);
+      card.setAttribute("aria-label", `View ${product.title}`);
 
-    card.addEventListener("click", () => {
-      window.location.href = `product/index.html?id=${product.id}`;
-    });
+      card.addEventListener("click", () => {
+        window.location.href = `product/index.html?id=${product.id}`;
+      });
 
-    cardImage.src = product.image.url;
-    cardImage.alt = product.title;
-    // productDesc.textContent = product.description;
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          window.location.href = `product/index.html?id=${product.id}`;
+        }
+      });
 
-    productName.textContent = product.title;
-    productPrice.textContent = `${product.price} kr`;
+      cardImage.src = product.image.url;
+      cardImage.alt = product.title;
 
-    imageWrapper.appendChild(cardImage);
-    card.appendChild(imageWrapper);
-    card.appendChild(productInfoWrapper);
-    card.appendChild(productName);
-    // card.appendChild(productDesc);
-    carouselWrapper.appendChild(card);
+      productName.textContent = product.title;
+      productPrice.textContent = `${product.price} kr`;
 
-    if (product.price > product.discountedPrice) {
-      productPrice.classList.add("strike");
-      const salePrice = document.createElement("p");
-      salePrice.textContent = `${product.discountedPrice} kr`;
-      salePrice.classList.add("sale");
+      imageWrapper.appendChild(cardImage);
+      card.appendChild(imageWrapper);
+      card.appendChild(productInfoWrapper);
+      card.appendChild(productName);
+      carouselWrapper.appendChild(card);
 
-      priceWrapper.appendChild(productPrice);
-      priceWrapper.appendChild(salePrice);
-      card.appendChild(priceWrapper);
-    } else {
-      priceWrapper.appendChild(productPrice);
-      card.appendChild(priceWrapper);
+      if (product.price > product.discountedPrice) {
+        productPrice.classList.add("strike");
+        const salePrice = document.createElement("p");
+        salePrice.textContent = `${product.discountedPrice} kr`;
+        salePrice.classList.add("sale");
+
+        priceWrapper.appendChild(productPrice);
+        priceWrapper.appendChild(salePrice);
+        card.appendChild(priceWrapper);
+      } else {
+        priceWrapper.appendChild(productPrice);
+        card.appendChild(priceWrapper);
+      }
     }
+  } catch (error) {
+    const errorMsg = document.createElement("div");
+    errorMsg.role = "alert";
+    errorMsg.setAttribute("aria-live", "assertive");
+    errorMsg.textContent = `Could not load products. Please try again later`;
+    carouselWrapper.appendChild(errorMsg);
   }
 }
 function renderProducts(products) {
@@ -171,6 +211,12 @@ function renderProducts(products) {
 
       card.addEventListener("click", () => {
         window.location.href = `product/index.html?id=${product.id}`;
+      });
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          window.location.href = `product/index.html?id=${product.id}`;
+        }
       });
 
       cardImage.src = product.image.url;
@@ -215,8 +261,26 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
+prevBtn.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    navigateCarousel("prev", highestRated);
+  }
+});
+
 nextBtn.addEventListener("click", () => {
   if (highestRated.length > 0) {
     navigateCarousel("next", highestRated);
   }
 });
+
+nextBtn.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    navigateCarousel("next", highestRated);
+  }
+});
+// Change the carousel if there is time? //
+
+// When reaching the end of the list, i want the carousel to return to the beginning of the list //
+//when clicking the prev on the first items it will go to the end of the list//
