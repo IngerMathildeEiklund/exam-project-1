@@ -24,24 +24,27 @@ Troubleshot why API fetch request was not working, "Prompt: Why is the api retur
 
 Troubleshot why items were showing up in a different order than expected. Prompt: "why is the buttons div showing up at the top and not the bottom?" Changes made: appended the buttons wrapper in javascript as the dynamically rendered items showed up before the wrapper in the html.
 
-
 27.04 11:03:
 
 troubleshot why my loop of displaying reviews was not working. prompt: what is wrong with my code? Changes made: I was trying to target like "review.reviews.description" instead of "review.description". chatgpt
 
-27.04 11:11 
+27.04 11:11
 
-Asked chatgpt for a code to have a few images and choosing one of them to display on the review section to mimmic random users. 
+Asked chatgpt for a code to have a few images and choosing one of them to display on the review section to mimmic random users.
 
 ```js
-const avatars = [
-  "images/user1.png",
-  "images/user2.png",
-  "images/user3.png"
-];
+const avatars = ["images/user1.png", "images/user2.png", "images/user3.png"];
 
 function getRandomAvatar() {
   const randomIndex = Math.floor(Math.random() * avatars.length);
   return avatars[randomIndex];
-} 
+}
 ```
+
+01.05 09:58:
+
+prompt: "can you help me with pagination for my cards?" Changes made: Added the core functionality of pagination as when i tried on my own the previous day it did not work. Learned that it needs a function for how many cards to display, one to navigate on the carousel and one to clear the carousel.
+
+01.05 10:45:
+
+prompt: The cards doesn't change depending on screen size. changes made: Needed a function to rerender the cards again to run the checkScreenSize function.
