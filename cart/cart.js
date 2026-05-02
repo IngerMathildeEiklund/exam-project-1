@@ -1,0 +1,164 @@
+"use strict";
+
+import { cart } from "/product/product.js";
+
+function saveCart() {
+  localStorage.setItem("shoppingCart", JSON.stringify(cart));
+}
+
+function loadCart() {
+  const savedCart = localStorage.getItem("shoppingCart");
+  if (saveCart) {
+    cart = JSON.parse(savedCart);
+  }
+}
+
+export function addToCart(product) {
+  cart.push(product);
+  saveCart();
+  // add the toast notif here when item is added to cart//
+  console.log("Item added to cart!");
+}
+
+// loadCart();
+
+const cartAndSummaryWrapper = document.getElementById(
+  "cart-and-summary-wrapper",
+);
+const cartWrapper = document.getElementById("cart-wrapper");
+const summaryWrapper = document.getElementById("summary-wrapper");
+
+function displayCart() {
+  if (!cartAndSummaryWrapper) {
+    return;
+  }
+  if (cart.length === 0) {
+    const goShoppingBtn = document.getElementById("go-shopping-button");
+    cartAndSummaryWrapper.innerHTML = `<h1> No items found in cart </h1> <p> Let's fix that! </p> 
+    <svg id="shopping-bags" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M273.067,315.733c0-14.114-11.486-25.6-25.6-25.6s-25.6,11.486-25.6,25.6c0,11.11,7.151,20.489,17.067,24.03V358.4
+				c0,47.053,38.281,85.333,85.333,85.333S409.6,405.453,409.6,358.4v-18.637c9.916-3.533,17.067-12.919,17.067-24.03
+				c0-14.114-11.486-25.6-25.6-25.6c-14.114,0-25.6,11.486-25.6,25.6c0,11.11,7.151,20.489,17.067,24.03V358.4
+				c0,37.641-30.626,68.267-68.267,68.267c-37.641,0-68.267-30.626-68.267-68.267v-18.637
+				C265.916,336.23,273.067,326.844,273.067,315.733z M401.067,307.2c4.702,0,8.533,3.831,8.533,8.533s-3.823,8.525-8.525,8.533
+				h-0.008h-0.009c-4.702-0.009-8.525-3.831-8.525-8.533S396.365,307.2,401.067,307.2z M247.475,324.267h-0.009h-0.009
+				c-4.702-0.009-8.525-3.831-8.525-8.533s3.831-8.533,8.533-8.533c4.702,0,8.533,3.831,8.533,8.533
+				S252.177,324.258,247.475,324.267z"/>
+			<path d="M93.867,204.8c14.114,0,25.6-11.486,25.6-25.6c0-11.11-7.151-20.497-17.067-24.03v-35.703h145.067
+				c4.71,0,8.533-3.823,8.533-8.533c0-4.719-3.823-8.533-8.533-8.533H102.4c0-47.053,38.281-85.333,85.333-85.333
+				s85.333,38.281,85.333,85.333v52.77C263.151,158.703,256,168.09,256,179.2c0,14.114,11.486,25.6,25.6,25.6s25.6-11.486,25.6-25.6
+				c0-11.11-7.151-20.497-17.067-24.03v-35.703H358.4v93.867c0,4.71,3.823,8.533,8.533,8.533s8.533-3.823,8.533-8.533v-102.05
+				c0-0.06-0.034-0.111-0.034-0.179c0-0.06,0.034-0.111,0.034-0.171c0-4.719-3.823-8.533-8.533-8.533h-76.8
+				c0-56.465-45.935-102.4-102.4-102.4s-102.4,45.935-102.4,102.4v52.77c-9.916,3.533-17.067,12.919-17.067,24.03
+				C68.267,193.314,79.753,204.8,93.867,204.8z M281.6,170.667c4.702,0,8.533,3.831,8.533,8.533c0,4.702-3.831,8.533-8.533,8.533
+				c-4.702,0-8.533-3.831-8.533-8.533C273.067,174.498,276.898,170.667,281.6,170.667z M93.867,170.667
+				c4.702,0,8.533,3.831,8.533,8.533c0,4.702-3.831,8.533-8.533,8.533c-4.702,0-8.533-3.831-8.533-8.533
+				C85.333,174.498,89.165,170.667,93.867,170.667z"/>
+			<path d="M119.467,494.933h-76.8c-14.114,0-25.6-11.486-25.6-25.6V409.6h93.867c4.71,0,8.533-3.823,8.533-8.533
+				c0-4.719-3.823-8.533-8.533-8.533H17.067V119.467h42.317c4.71,0,8.533-3.823,8.533-8.533c0-4.719-3.823-8.533-8.533-8.533H8.533
+				c-4.71,0-8.533,3.814-8.533,8.533v358.4C0,492.851,19.14,512,42.667,512h76.8c4.71,0,8.533-3.823,8.533-8.533
+				C128,498.748,124.177,494.933,119.467,494.933z"/>
+			<path d="M509.295,241.647c-1.553-1.656-3.729-2.714-6.178-2.714H179.2c-4.71,0-8.533,3.814-8.533,8.533
+				c0,4.71,3.823,8.533,8.533,8.533h315.733v213.333c0,14.114-11.486,25.6-25.6,25.6H179.2c-14.114,0-25.6-11.486-25.6-25.6V247.467
+				c0-4.71-3.823-8.533-8.533-8.533c-4.71,0-8.533,3.823-8.533,8.533v221.867c0,23.518,19.14,42.667,42.667,42.667h290.133
+				C492.86,512,512,492.851,512,469.333V247.817C512,245.367,510.942,243.2,509.295,241.647z"/>
+		</g>
+	</g>
+</g>
+</svg>
+<button id="go-shopping-button" class="button blue"> Go shopping <button> `;
+    goShoppingBtn.addEventListener("click", () => {
+      window.location.href = "/index.html";
+    });
+    cartAndSummaryWrapper.classList.add("empty-cart-styling");
+  }
+  const clearCartBtn = document.createElement("button");
+  clearCartBtn.textContent = "Clear cart";
+  clearCartBtn.setAttribute("aria-label", "Clear all items from cart");
+  cartAndSummaryWrapper.appendChild(clearCartBtn);
+
+  clearCartBtn.addEventListener("click", () => {
+    cart.splice(0, cart.length);
+    saveCart;
+    const cartStatus = document.getElementById("cart-status");
+    if (cartStatus) {
+      cartStatus.textContent = "Cart successfully cleared";
+      //add this in the html//
+      displayCart();
+    }
+  });
+  cart.forEach((item, index) => {
+    const productWrapper = document.createElement("div");
+    const productImage = document.createElement("img");
+    const imageWrapper = document.createElement("div");
+    const productName = document.createElement("h4");
+    const productPrice = document.createElement("p");
+    const productPriceSale = document.createElement("p");
+    const productQuantity = document.createElement("p");
+    const deleteBtn = document.createElement("button");
+
+    //add a quantity button//
+
+    // add the same things as the cards with keydown and aria labels//
+
+    productImage.src = item.image.url;
+    productImage.alt = item.title;
+
+    productImage.classList.add("cart-image");
+    productName.textContent = item.title;
+    productPrice.textContent = `${item.price} kr`;
+    productPrice.setAttribute("aria-label", `Original price $${item.price}`);
+    productQuantity.textContent = item.quantity; //unsure//
+
+    deleteBtn.innerHTML = `<svg id="delete-product"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>`;
+
+    deleteBtn.setAttribute("aria-label", `Remove ${item.title} from cart`);
+
+    deleteBtn.addEventListener("click", () => {
+      cart.splice(index, 1);
+      saveCart();
+
+      const cartStatus = document.getElementById("cart-status");
+
+      if (cartStatus) {
+        cartStatus.textContent = `${item.title} removed from cart`;
+        displayCart();
+      }
+    });
+    imageWrapper.appendChild(productImage);
+    productWrapper.appendChild(imageWrapper);
+    productWrapper.appendChild(productName);
+    // productWrapper.appendChild(productPrice);
+    productWrapper.appendChild(productQuantity);
+    productWrapper.appendChild(deleteBtn);
+
+    if (item.price > item.discountedPrice) {
+      productPrice.classList.add("strike");
+      const salePrice = document.createElement("p");
+      salePrice.textContent = `${item.discountedPrice} kr`;
+      salePrice.classList.add("sale");
+      salePrice.setAttribute("aria-label", `Sale price`);
+
+      productWrapper.appendChild(productPrice);
+      productWrapper.appendChild(salePrice);
+    } else {
+      productWrapper.appendChild(productPrice);
+    }
+  });
+
+  renderOrderSummary(cart, summaryWrapper);
+
+  const checkoutBtn = document.createElement("button");
+  checkoutBtn.textContent = "Continue to checkout";
+  checkoutBtn.setAttribute("aria-label", "Continue to checkout");
+  checkoutBtn.classList.add("blue");
+  checkoutBtn.addEventListener("click", () => {
+    window.location.href = "/checkout/index.html";
+  });
+  summaryWrapper.appendChild(checkoutBtn);
+}
+displayCart();

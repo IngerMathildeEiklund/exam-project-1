@@ -1,12 +1,14 @@
 "use strict";
 
 import { URL, ALL_PRODUCTS_ENDPOINT } from "../api.js";
+import { addToCart } from "/cart/cart.js";
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 
 const oneProductEndpoint = `${ALL_PRODUCTS_ENDPOINT}/${id}`;
 
 let oneProduct = {};
+export let cart = [];
 
 const oneProductWrapper = document.getElementById("one-product-wrapper");
 const oneProductImgWrapper = document.getElementById("one-product-img-wrapper");
@@ -61,6 +63,18 @@ function displayOneProduct() {
   if (oneProduct.rating === 0) {
     productRating.textContent = "No rating for this item yet";
   }
+  const addToCartBtn = document.getElementById("add-to-cart-button");
+  addToCartBtn.setAttribute("aria-label", "Add item to cart");
+  addToCartBtn.addEventListener("click", () => {
+    const selectedItem = {
+      id: oneProduct.id,
+      title: oneProduct.title,
+      price: oneProduct.price,
+      image: oneProduct.image.url,
+      quantity: 1,
+    };
+    addToCart(selectedItem);
+  });
 
   oneProductImgWrapper.appendChild(productImage);
   oneProductInfoWrapper.appendChild(productName);
