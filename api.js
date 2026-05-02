@@ -24,10 +24,11 @@ function accessibilityButtons() {
 }
 
 async function fetchProducts(url, endpoint) {
-  productWrapper.setAttribute("aria-busy", "true");
   if (!productWrapper) {
     return;
   }
+  productWrapper.setAttribute("aria-busy", "true");
+
   try {
     const response = await fetch(url + endpoint);
 
@@ -130,11 +131,15 @@ function renderCarouselCards(products) {
       const productName = document.createElement("h3");
       const productPrice = document.createElement("p");
       const priceWrapper = document.createElement("div");
+      const nameRatingWrapper = document.createElement("div");
+      const cardCarouselRating = document.createElement("p");
 
       card.classList.add("card-carousel");
+      nameRatingWrapper.classList.add("flex-row-spacing");
       imageWrapper.classList.add("card-img-wrapper");
       productInfoWrapper.classList.add("card-info-wrapper");
       priceWrapper.classList.add("price-wrapper");
+      cardCarouselRating.classList.add("bold");
 
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", 0);
@@ -157,10 +162,14 @@ function renderCarouselCards(products) {
       productName.textContent = product.title;
       productPrice.textContent = `${product.price} kr`;
 
+      cardCarouselRating.textContent = `${product.rating.toFixed(1)}`;
+
       imageWrapper.appendChild(cardImage);
       card.appendChild(imageWrapper);
       card.appendChild(productInfoWrapper);
-      card.appendChild(productName);
+      nameRatingWrapper.appendChild(productName);
+      nameRatingWrapper.appendChild(cardCarouselRating);
+      card.appendChild(nameRatingWrapper);
       carouselWrapper.appendChild(card);
 
       if (product.price > product.discountedPrice) {
@@ -255,31 +264,36 @@ function renderProducts(products) {
 
 fetchProducts(URL, ALL_PRODUCTS_ENDPOINT);
 
-prevBtn.addEventListener("click", () => {
-  if (highestRated.length > 0) {
-    navigateCarousel("prev", highestRated);
-  }
-});
-
-prevBtn.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" || e.key === " ") {
-    e.preventDefault();
-    navigateCarousel("prev", highestRated);
-  }
-});
-
-nextBtn.addEventListener("click", () => {
-  if (highestRated.length > 0) {
-    navigateCarousel("next", highestRated);
-  }
-});
-
-nextBtn.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" || e.key === " ") {
-    e.preventDefault();
-    navigateCarousel("next", highestRated);
-  }
-});
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    if (highestRated.length > 0) {
+      navigateCarousel("prev", highestRated);
+    }
+  });
+}
+if (prevBtn) {
+  prevBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigateCarousel("prev", highestRated);
+    }
+  });
+}
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    if (highestRated.length > 0) {
+      navigateCarousel("next", highestRated);
+    }
+  });
+}
+if (nextBtn) {
+  nextBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigateCarousel("next", highestRated);
+    }
+  });
+}
 // Change the carousel if there is time? //
 
 // When reaching the end of the list, i want the carousel to return to the beginning of the list //

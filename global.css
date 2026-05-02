@@ -57,6 +57,9 @@ main {
 .strike {
   text-decoration: line-through;
 }
+.bold {
+  font-weight: 800;
+}
 .price-wrapper {
   display: flex;
   flex-direction: row;
@@ -67,12 +70,20 @@ main {
   background-color: white;
   border-radius: 0.5rem;
   filter: drop-shadow(2px 2px 5px var(--dark-gray));
+  cursor: pointer;
 }
 .card-carousel {
   background-color: white;
   border-radius: 0.5rem;
   filter: drop-shadow(2px 2px 5px var(--dark-gray));
   animation: slideIn 0.2s ease-in;
+  cursor: pointer;
+  position: relative;
+}
+.flex-row-spacing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 @keyframes slideIn {
   from {

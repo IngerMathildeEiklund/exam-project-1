@@ -48,3 +48,7 @@ prompt: "can you help me with pagination for my cards?" Changes made: Added the 
 01.05 10:45:
 
 prompt: The cards doesn't change depending on screen size. changes made: Needed a function to rerender the cards again to run the checkScreenSize function.
+
+01.05 13:43
+
+prompt: When clicking the next/prev button on the carousel 3 new products come into frame, but the goal is to have just one product come into frame when clicking. changes made: Had to change the currentPage into currentStartIndex to 0 and calculate it differently by using a modulo operator to give me the remainder of the array after the division. Also needed to update the logic in the showCards function into a for loop.
