@@ -57,7 +57,7 @@ function displayOneProduct() {
   productDesc.textContent = oneProduct.description;
   productTags.textContent = oneProduct.tags;
   productPrice.textContent = `${oneProduct.price} kr`;
-  productRating.textContent = `Average rating: ${oneProduct.rating} / 5`;
+  productRating.textContent = ` ${oneProduct.rating.toFixed(1)}`;
   if (oneProduct.rating === 0) {
     productRating.textContent = "No rating for this item yet";
   }
@@ -97,65 +97,61 @@ if (id) {
 const reviewsWrapper = document.getElementById("reviews-wrapper");
 reviewsWrapper.classList.add("drop-shadow");
 
-
-
 function displayReviews() {
   if (!reviewsWrapper) {
     return;
   }
-   try {
+  try {
     const reviewsTitle = document.createElement("h3");
     reviewsTitle.classList.add("padding");
-    
+
     reviewsWrapper.appendChild(reviewsTitle);
     reviewsTitle.textContent = `Reviews of ${oneProduct.title}`;
     reviewsWrapper.appendChild(reviewsTitle);
 
-      if (oneProduct.reviews.length === 0) {
+    if (oneProduct.reviews.length === 0) {
       const errorMsg = document.createElement("p");
       errorMsg.textContent = "No reviews for this product yet.";
       errorMsg.classList.add("padding");
       reviewsWrapper.appendChild(errorMsg);
     }
 
-  for (const review of oneProduct.reviews) {
-    const userImageWrapper = document.createElement("div");
-    const userImage = document.createElement("img");
-    const reviewUsername = document.createElement("h4");
-    const reviewDescription = document.createElement("p");
-    const reviewRating = document.createElement("p");
+    for (const review of oneProduct.reviews) {
+      const userImageWrapper = document.createElement("div");
+      const userImage = document.createElement("img");
+      const reviewUsername = document.createElement("h4");
+      const reviewDescription = document.createElement("p");
+      const reviewRating = document.createElement("p");
 
-    reviewUsername.textContent = review.username;
-    reviewDescription.textContent = review.description;
-    reviewRating.textContent = `Rating: ${review.rating} / 5`;
-    userImage.src = getRandomAvatar();
-    userImage.alt = "User avatar";
+      reviewUsername.textContent = review.username;
+      reviewDescription.textContent = review.description;
+      reviewRating.textContent = `Rating: ${review.rating} / 5`;
+      userImage.src = getRandomAvatar();
+      userImage.alt = "User avatar";
 
-    userImage.classList.add("avatar");
-    reviewUsername.classList.add("padding");
-    reviewDescription.classList.add("padding");
-    reviewRating.classList.add("padding");
+      userImage.classList.add("avatar");
+      reviewUsername.classList.add("padding");
+      reviewDescription.classList.add("padding");
+      reviewRating.classList.add("padding");
 
-    userImageWrapper.appendChild(userImage);
-    reviewsWrapper.appendChild(userImage);
-    reviewsWrapper.appendChild(reviewUsername);
-    reviewsWrapper.appendChild(reviewDescription);
-    reviewsWrapper.appendChild(reviewRating);
-  }
-   } catch (error) {
+      userImageWrapper.appendChild(userImage);
+      reviewsWrapper.appendChild(userImage);
+      reviewsWrapper.appendChild(reviewUsername);
+      reviewsWrapper.appendChild(reviewDescription);
+      reviewsWrapper.appendChild(reviewRating);
+    }
+  } catch (error) {
     console.log("something went wrong");
-   }
- 
-  
+  }
 }
 
-const avatars = [ 
+const avatars = [
   "/svgs/avatar1.svg",
   "/svgs/avatar2.svg",
   "/svgs/avatar3.svg",
   "/svgs/avatar4.svg",
   "/svgs/avatar5.svg",
-]
+];
 
 function getRandomAvatar() {
   const randomIndex = Math.floor(Math.random() * avatars.length);

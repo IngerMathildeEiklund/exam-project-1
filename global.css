@@ -57,6 +57,9 @@ main {
 .strike {
   text-decoration: line-through;
 }
+.bold {
+  font-weight: 800;
+}
 .price-wrapper {
   display: flex;
   flex-direction: row;
@@ -67,6 +70,31 @@ main {
   background-color: white;
   border-radius: 0.5rem;
   filter: drop-shadow(2px 2px 5px var(--dark-gray));
+  cursor: pointer;
+}
+.card-carousel {
+  background-color: white;
+  border-radius: 0.5rem;
+  filter: drop-shadow(2px 2px 5px var(--dark-gray));
+  animation: slideIn 0.2s ease-in;
+  cursor: pointer;
+  position: relative;
+}
+.flex-row-spacing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .card-img-wrapper {
@@ -88,6 +116,26 @@ main {
   flex-direction: column;
   gap: 3rem;
   justify-content: space-around;
+}
+#carousel-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  transition: opacity 0.3s ease-in-out;
+}
+.pagination {
+display: grid;
+grid-template-columns: 40px 1fr 40px;
+grid-template-rows: auto;
+gap: 1rem;
+margin-bottom: 5rem;
+
+}
+#prev-button {
+  background-color: inherit;
+}
+#next-button {
+  background-color: inherit;
 }
 /* MAKE THE CARDS LOOK BETTER WITH PADDING /*
 /*CARDS*/
@@ -356,6 +404,9 @@ p {
   .margin {
     margin-bottom: 1rem;
   }
+  #carousel-wrapper {
+  grid-template-columns: 1fr 1fr 1fr;
+}
 }
 
 @media (min-width: 1440px) {
