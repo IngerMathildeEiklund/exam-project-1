@@ -1,14 +1,13 @@
 "use strict";
 
 import { URL, ALL_PRODUCTS_ENDPOINT } from "../api.js";
-import { addToCart } from "/cart/cart.js";
+import { addToCart, loadCart } from "/cart/cart.js";
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 
 const oneProductEndpoint = `${ALL_PRODUCTS_ENDPOINT}/${id}`;
 
 let oneProduct = {};
-export let cart = [];
 
 const oneProductWrapper = document.getElementById("one-product-wrapper");
 const oneProductImgWrapper = document.getElementById("one-product-img-wrapper");
@@ -107,6 +106,7 @@ if (id) {
 } else if (oneProductWrapper) {
   oneProductWrapper.innerHTML = `<p> Product not found, please try another product. </p>`;
 }
+loadCart();
 
 const reviewsWrapper = document.getElementById("reviews-wrapper");
 reviewsWrapper.classList.add("drop-shadow");

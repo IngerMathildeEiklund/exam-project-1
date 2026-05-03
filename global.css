@@ -12,12 +12,12 @@ h3,
 h4,
 p,
 a,
-label {
+label, dl, dd {
   font-family: var(--headings-paragraphs);
   color: var(--text);
   font-weight: 600;
 }
-p {
+p, dl, dd {
   font-weight: 400;
 }
 body {
@@ -83,7 +83,7 @@ main {
 .flex-row-spacing {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 @keyframes slideIn {
   from {

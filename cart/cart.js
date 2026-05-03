@@ -1,14 +1,14 @@
 "use strict";
 
-import { cart } from "/product/product.js";
+let cart = [];
 
 function saveCart() {
   localStorage.setItem("shoppingCart", JSON.stringify(cart));
 }
 
-function loadCart() {
+export function loadCart() {
   const savedCart = localStorage.getItem("shoppingCart");
-  if (saveCart) {
+  if (savedCart) {
     cart = JSON.parse(savedCart);
   }
 }
@@ -20,7 +20,7 @@ export function addToCart(product) {
   console.log("Item added to cart!");
 }
 
-// loadCart();
+loadCart();
 
 const cartAndSummaryWrapper = document.getElementById(
   "cart-and-summary-wrapper",
@@ -28,12 +28,83 @@ const cartAndSummaryWrapper = document.getElementById(
 const cartWrapper = document.getElementById("cart-wrapper");
 const summaryWrapper = document.getElementById("summary-wrapper");
 
+const total = cart.reduce((sum, item) => {
+  return sum + item.price;
+}, 0);
+
+function renderOrderSummary(cart, summaryWrapper) {
+  if (!cart || cart.length === 0) return;
+
+  summaryWrapper.innerHTML = "";
+
+  const productAmountWrapper = document.createElement("dl");
+  const productAmount = document.createElement("dt");
+  const productsTotal = document.createElement("dd");
+
+  const shippingWrapper = document.createElement("dl");
+  const shippingPrice = document.createElement("dt");
+  const shippingTotal = document.createElement("dd");
+
+  const totalWrapper = document.createElement("dl");
+  const totalText = document.createElement("dt");
+  const orderTotal = document.createElement("dd");
+
+  productAmountWrapper.classList.add("flex-row-spacing");
+  shippingWrapper.classList.add("flex-row-spacing");
+  totalWrapper.classList.add("flex-row-spacing");
+
+  productAmount.textContent = `${cart.length} products`;
+  productsTotal.textContent = `${total}`;
+
+  shippingPrice.textContent = `Shipping`;
+  shippingTotal.textContent = `200.00 kr`;
+
+  totalText.textContent = `Total`;
+  orderTotal.textContent = `${total}`; //add the 200 kr as well//
+
+  const checkoutBtn = document.createElement("button");
+  checkoutBtn.textContent = "Continue to checkout";
+  checkoutBtn.setAttribute("aria-label", "Continue to checkout");
+  checkoutBtn.classList.add("blue");
+  checkoutBtn.addEventListener("click", () => {
+    window.location.href = "/checkout/index.html";
+  });
+
+  productAmountWrapper.appendChild(productAmount);
+  productAmountWrapper.appendChild(productsTotal);
+  summaryWrapper.appendChild(productAmountWrapper);
+
+  shippingWrapper.appendChild(shippingPrice);
+  shippingWrapper.appendChild(shippingTotal);
+  summaryWrapper.appendChild(shippingWrapper);
+
+  totalWrapper.appendChild(totalText);
+  totalWrapper.appendChild(orderTotal);
+  summaryWrapper.appendChild(totalWrapper);
+
+  const totalWithShipping = total + 200;
+  orderTotal.textContent = `${total.toFixed(2)} kr`;
+  orderTotal.setAttribute(
+    "aria-label",
+    `Order total ${totalWithShipping.toFixed(2)} kr`,
+  );
+
+  // cart.forEach((item) => {
+
+  // });
+
+  summaryWrapper.appendChild(orderTotal);
+  summaryWrapper.appendChild(checkoutBtn);
+}
+
 function displayCart() {
   if (!cartAndSummaryWrapper) {
     return;
   }
+  cartWrapper.innerHTML = "";
+  summaryWrapper.innerHTML = "";
+
   if (cart.length === 0) {
-    const goShoppingBtn = document.getElementById("go-shopping-button");
     cartAndSummaryWrapper.innerHTML = `<h1> No items found in cart </h1> <p> Let's fix that! </p> 
     <svg id="shopping-bags" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512 512" xml:space="preserve">
@@ -70,7 +141,8 @@ function displayCart() {
 	</g>
 </g>
 </svg>
-<button id="go-shopping-button" class="button blue"> Go shopping <button> `;
+<button id="go-shopping-button" class="button blue"> Go shopping </button> `;
+    const goShoppingBtn = document.getElementById("go-shopping-button");
     goShoppingBtn.addEventListener("click", () => {
       window.location.href = "/index.html";
     });
@@ -91,6 +163,7 @@ function displayCart() {
       displayCart();
     }
   });
+
   cart.forEach((item, index) => {
     const productWrapper = document.createElement("div");
     const productImage = document.createElement("img");
@@ -121,6 +194,7 @@ function displayCart() {
     deleteBtn.addEventListener("click", () => {
       cart.splice(index, 1);
       saveCart();
+      displayCart();
 
       const cartStatus = document.getElementById("cart-status");
 
@@ -132,7 +206,6 @@ function displayCart() {
     imageWrapper.appendChild(productImage);
     productWrapper.appendChild(imageWrapper);
     productWrapper.appendChild(productName);
-    // productWrapper.appendChild(productPrice);
     productWrapper.appendChild(productQuantity);
     productWrapper.appendChild(deleteBtn);
 
@@ -148,17 +221,9 @@ function displayCart() {
     } else {
       productWrapper.appendChild(productPrice);
     }
+    cartWrapper.appendChild(productWrapper);
   });
-
   renderOrderSummary(cart, summaryWrapper);
-
-  const checkoutBtn = document.createElement("button");
-  checkoutBtn.textContent = "Continue to checkout";
-  checkoutBtn.setAttribute("aria-label", "Continue to checkout");
-  checkoutBtn.classList.add("blue");
-  checkoutBtn.addEventListener("click", () => {
-    window.location.href = "/checkout/index.html";
-  });
-  summaryWrapper.appendChild(checkoutBtn);
 }
+
 displayCart();
