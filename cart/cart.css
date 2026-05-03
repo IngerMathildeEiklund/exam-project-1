@@ -1,22 +1,23 @@
 #cart-and-summary-wrapper {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: 3rem;
 }
-
 #cart-wrapper {
   background-color: white;
   border-radius: 0.5rem;
-  padding-block: 3rem;
-  padding-inline: 3rem;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+  width: 30rem; /* remove this later, its just there to style easier*/ 
 }
 #summary-wrapper {
   background-color: white;
   border-radius: 0.5rem;
-    padding-block: 3rem;
-  padding-inline: 3rem;
+    padding-block: 1rem;
+  padding-inline: 1rem;
+  height: fit-content;
 }
 .empty-cart-styling {
   display: flex;
@@ -29,10 +30,38 @@
   height: 50px;
 }
 .cart-image {
+  height: clamp(3rem, 5vw, 6rem);
+}
+#delete-product {
   height: 30px;
   width: 30px;
 }
-#delete-product {
-    height: 30px;
-  width: 30px;
+
+ @media (min-width: 768px) {
+#cart-and-summary-wrapper {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 3rem;
+}
+
+#cart-wrapper {
+  background-color: white;
+  padding-block: 3rem;
+  padding-inline: 3rem;
+}
+#summary-wrapper {
+  background-color: white;
+    padding-block: 3rem;
+  padding-inline: 3rem;
+}
+
+ }
+
+ @media (min-width: 1440px) {
+
+ }
+@media (min-width: 1920px) {
+  
 }

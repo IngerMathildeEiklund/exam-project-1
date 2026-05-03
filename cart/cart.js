@@ -36,6 +36,7 @@ function renderOrderSummary(cart, summaryWrapper) {
   if (!cart || cart.length === 0) return;
 
   summaryWrapper.innerHTML = "";
+  summaryWrapper.innerHTML = `<h1> Cart summary </h1>`;
 
   const productAmountWrapper = document.createElement("dl");
   const productAmount = document.createElement("dt");
@@ -54,6 +55,9 @@ function renderOrderSummary(cart, summaryWrapper) {
   totalWrapper.classList.add("flex-row-spacing");
 
   productAmount.textContent = `${cart.length} products`;
+  if (cart.length < 2) {
+    productAmount.textContent = `${cart.length} product`;
+  }
   productsTotal.textContent = `${total}`;
 
   shippingPrice.textContent = `Shipping`;
@@ -89,11 +93,6 @@ function renderOrderSummary(cart, summaryWrapper) {
     `Order total ${totalWithShipping.toFixed(2)} kr`,
   );
 
-  // cart.forEach((item) => {
-
-  // });
-
-  summaryWrapper.appendChild(orderTotal);
   summaryWrapper.appendChild(checkoutBtn);
 }
 
@@ -103,6 +102,7 @@ function displayCart() {
   }
   cartWrapper.innerHTML = "";
   summaryWrapper.innerHTML = "";
+  cartWrapper.innerHTML = `<h1> Your shopping cart </h1>`;
 
   if (cart.length === 0) {
     cartAndSummaryWrapper.innerHTML = `<h1> No items found in cart </h1> <p> Let's fix that! </p> 
@@ -178,14 +178,14 @@ function displayCart() {
 
     // add the same things as the cards with keydown and aria labels//
 
-    productImage.src = item.image.url;
+    productImage.src = item.image;
     productImage.alt = item.title;
 
     productImage.classList.add("cart-image");
     productName.textContent = item.title;
     productPrice.textContent = `${item.price} kr`;
     productPrice.setAttribute("aria-label", `Original price $${item.price}`);
-    productQuantity.textContent = item.quantity; //unsure//
+    productQuantity.textContent = `Quantity: ${item.quantity}`;
 
     deleteBtn.innerHTML = `<svg id="delete-product"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>`;
 
@@ -203,9 +203,9 @@ function displayCart() {
         displayCart();
       }
     });
+    productWrapper.appendChild(productName);
     imageWrapper.appendChild(productImage);
     productWrapper.appendChild(imageWrapper);
-    productWrapper.appendChild(productName);
     productWrapper.appendChild(productQuantity);
     productWrapper.appendChild(deleteBtn);
 
