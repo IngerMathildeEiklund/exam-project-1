@@ -85,6 +85,9 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
+/* .center {
+margin: 0 auto;
+} */
 @keyframes slideIn {
   from {
     opacity: 0;

@@ -28,73 +28,48 @@ const cartAndSummaryWrapper = document.getElementById(
 const cartWrapper = document.getElementById("cart-wrapper");
 const summaryWrapper = document.getElementById("summary-wrapper");
 
-const total = cart.reduce((sum, item) => {
-  return sum + item.price;
-}, 0);
-
 function renderOrderSummary(cart, summaryWrapper) {
   if (!cart || cart.length === 0) return;
+
+  const total = cart.reduce((sum, item) => {
+    return sum + item.price;
+  }, 0);
 
   summaryWrapper.innerHTML = "";
   summaryWrapper.innerHTML = `<h1> Cart summary </h1>`;
 
-  const productAmountWrapper = document.createElement("dl");
-  const productAmount = document.createElement("dt");
-  const productsTotal = document.createElement("dd");
+  const template2 = document.getElementById("summary-template");
+  const totalWrapper = template2.content.cloneNode(true);
 
-  const shippingWrapper = document.createElement("dl");
-  const shippingPrice = document.createElement("dt");
-  const shippingTotal = document.createElement("dd");
-
-  const totalWrapper = document.createElement("dl");
-  const totalText = document.createElement("dt");
-  const orderTotal = document.createElement("dd");
-
-  productAmountWrapper.classList.add("flex-row-spacing");
-  shippingWrapper.classList.add("flex-row-spacing");
-  totalWrapper.classList.add("flex-row-spacing");
-
-  productAmount.textContent = `${cart.length} products`;
+  totalWrapper.querySelector(".products-amount").textContent =
+    `${cart.length} products`;
   if (cart.length < 2) {
-    productAmount.textContent = `${cart.length} product`;
+    totalWrapper.querySelector(".products-amount").textContent =
+      `${cart.length} product`;
   }
-  productsTotal.textContent = `${total}`;
-
-  shippingPrice.textContent = `Shipping`;
-  shippingTotal.textContent = `200.00 kr`;
-
-  totalText.textContent = `Total`;
-  orderTotal.textContent = `${total}`; //add the 200 kr as well//
-  //make this into a template as well//
-
+  totalWrapper.querySelector(".products-total").textContent =
+    `${total.toFixed(2)} kr`;
+  const totalWithShipping = total + 200;
+  totalWrapper.querySelector(".order-total").textContent =
+    `${totalWithShipping.toFixed(2)} kr`;
+  totalWrapper
+    .querySelector(".order-total")
+    .setAttribute(
+      "aria-label",
+      `Order total ${totalWithShipping.toFixed(2)} kr`,
+    );
   const checkoutBtn = document.createElement("button");
-  checkoutBtn.textContent = "Continue to checkout";
-  checkoutBtn.setAttribute("aria-label", "Continue to checkout");
+  checkoutBtn.textContent = `Continue to checkout`;
+  checkoutBtn.setAttribute("aria-label", "Continue to checkout page");
   checkoutBtn.classList.add("blue");
+  checkoutBtn.classList.add("center");
   checkoutBtn.addEventListener("click", () => {
     window.location.href = "/checkout/index.html";
   });
+  totalWrapper.appendChild(checkoutBtn);
 
-  productAmountWrapper.appendChild(productAmount);
-  productAmountWrapper.appendChild(productsTotal);
-  summaryWrapper.appendChild(productAmountWrapper);
-
-  shippingWrapper.appendChild(shippingPrice);
-  shippingWrapper.appendChild(shippingTotal);
-  summaryWrapper.appendChild(shippingWrapper);
-
-  totalWrapper.appendChild(totalText);
-  totalWrapper.appendChild(orderTotal);
+  summaryWrapper.innerHTML = `<h1> Cart summary </h1>`;
   summaryWrapper.appendChild(totalWrapper);
-
-  const totalWithShipping = total + 200;
-  orderTotal.textContent = `${total.toFixed(2)} kr`;
-  orderTotal.setAttribute(
-    "aria-label",
-    `Order total ${totalWithShipping.toFixed(2)} kr`,
-  );
-
-  summaryWrapper.appendChild(checkoutBtn);
 }
 
 function displayCart() {
@@ -157,7 +132,8 @@ function displayCart() {
     productWrapper.querySelector(".cart-image").src = item.image;
     productWrapper.querySelector(".cart-image").alt = item.title;
     productWrapper.querySelector(".product-title").textContent = item.title;
-    productWrapper.querySelector(".product-price").textContent = item.price;
+    productWrapper.querySelector(".product-price").textContent =
+      `${item.price} kr`;
     productWrapper.querySelector(".product-quantity").textContent =
       `Quantity: ${item.quantity}`;
 
@@ -167,7 +143,7 @@ function displayCart() {
       productWrapper.querySelector(".product-price").classList.add("strike");
       salePrice.textContent = `${item.discountedPrice} kr`;
       salePrice.classList.add("sale");
-      salePrice.class.remove("hidden");
+      salePrice.classList.remove("hidden");
     }
     const deleteBtn = productWrapper.querySelector(".trashcan-button");
     deleteBtn.setAttribute("aria-label", `Delete ${item.title} from cart`);

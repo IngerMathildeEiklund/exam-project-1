@@ -194,9 +194,21 @@
           </div>
         </template>
 
-        <div id="summary-wrapper" class="drop-shadow">
-          <h1>Cart summary</h1>
-        </div>
+        <div id="summary-wrapper" class="drop-shadow"></div>
+        <template id="summary-template">
+          <dl class="flex-row-spacing">
+            <dt class="products-amount">0 products</dt>
+            <dd class="products-total"></dd>
+          </dl>
+          <dl class="flex-row-spacing">
+            <dt>Shipping</dt>
+            <dd>200.00 kr</dd>
+          </dl>
+          <dl class="flex-row-spacing">
+            <dt>Total</dt>
+            <dd class="order-total"></dd>
+          </dl>
+        </template>
       </div>
     </main>
     <footer id="footer">
