@@ -36,7 +36,21 @@
   height: 30px;
   width: 30px;
 }
-
+.product-cart-wrapper {
+  display:flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.title-price-quantity-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.trashcan-quantity-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
  @media (min-width: 768px) {
 #cart-and-summary-wrapper {
   margin: 0 auto;

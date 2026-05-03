@@ -14,7 +14,7 @@ Checked and implemented missing accessiblity in the header. Divs aren't keyboard
 
 23.04 13:57:
 
-Checked and implemented missing accessibility in the footer. Prompt: "what accessibility is missing in my footer" Changes made: Added some aria-labels and made the links in the footer into <ul> with <li> elements.
+Checked and implemented missing accessibility in the footer. Prompt: "what accessibility is missing in my footer" Changes made: Added some aria-labels and made the links in the footer into <ul> with <li> elements for screen readers and more semantic html.
 
 24.04 18:39:
 
@@ -52,3 +52,7 @@ prompt: The cards doesn't change depending on screen size. changes made: Needed 
 01.05 13:43
 
 prompt: When clicking the next/prev button on the carousel 3 new products come into frame, but the goal is to have just one product come into frame when clicking. changes made: Had to change the currentPage into currentStartIndex to 0 and calculate it differently by using a modulo operator to give me the remainder of the array after the division. Also needed to update the logic in the showCards function into a for loop.
+
+03.05 14:25
+
+prompt: making cleaner rendering of products (not writing everything in javascript) changes made: Learned about the <template> tag in html to copy the markup into a template that can be reused. I usually render everything in javascript, but styling gets overly complicated. I knew there would be an easier way. I found this very valuable and will do it in this way going forward. No more creating everything in javascript!!!!

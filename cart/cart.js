@@ -65,6 +65,7 @@ function renderOrderSummary(cart, summaryWrapper) {
 
   totalText.textContent = `Total`;
   orderTotal.textContent = `${total}`; //add the 200 kr as well//
+  //make this into a template as well//
 
   const checkoutBtn = document.createElement("button");
   checkoutBtn.textContent = "Continue to checkout";
@@ -148,79 +149,33 @@ function displayCart() {
     });
     cartAndSummaryWrapper.classList.add("empty-cart-styling");
   }
-  const clearCartBtn = document.createElement("button");
-  clearCartBtn.textContent = "Clear cart";
-  clearCartBtn.setAttribute("aria-label", "Clear all items from cart");
-  cartAndSummaryWrapper.appendChild(clearCartBtn);
-
-  clearCartBtn.addEventListener("click", () => {
-    cart.splice(0, cart.length);
-    saveCart;
-    const cartStatus = document.getElementById("cart-status");
-    if (cartStatus) {
-      cartStatus.textContent = "Cart successfully cleared";
-      //add this in the html//
-      displayCart();
-    }
-  });
 
   cart.forEach((item, index) => {
-    const productWrapper = document.createElement("div");
-    const productImage = document.createElement("img");
-    const imageWrapper = document.createElement("div");
-    const productName = document.createElement("h4");
-    const productPrice = document.createElement("p");
-    const productPriceSale = document.createElement("p");
-    const productQuantity = document.createElement("p");
-    const deleteBtn = document.createElement("button");
+    const template = document.getElementById("cart-item-template");
+    const productWrapper = template.content.cloneNode(true);
 
-    //add a quantity button//
+    productWrapper.querySelector(".cart-image").src = item.image;
+    productWrapper.querySelector(".cart-image").alt = item.title;
+    productWrapper.querySelector(".product-title").textContent = item.title;
+    productWrapper.querySelector(".product-price").textContent = item.price;
+    productWrapper.querySelector(".product-quantity").textContent =
+      `Quantity: ${item.quantity}`;
 
-    // add the same things as the cards with keydown and aria labels//
+    const salePrice = productWrapper.querySelector(".product-price-sale");
 
-    productImage.src = item.image;
-    productImage.alt = item.title;
-
-    productImage.classList.add("cart-image");
-    productName.textContent = item.title;
-    productPrice.textContent = `${item.price} kr`;
-    productPrice.setAttribute("aria-label", `Original price $${item.price}`);
-    productQuantity.textContent = `Quantity: ${item.quantity}`;
-
-    deleteBtn.innerHTML = `<svg id="delete-product"xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>`;
-
-    deleteBtn.setAttribute("aria-label", `Remove ${item.title} from cart`);
-
+    if (item.price > item.discountedPrice) {
+      productWrapper.querySelector(".product-price").classList.add("strike");
+      salePrice.textContent = `${item.discountedPrice} kr`;
+      salePrice.classList.add("sale");
+      salePrice.class.remove("hidden");
+    }
+    const deleteBtn = productWrapper.querySelector(".trashcan-button");
+    deleteBtn.setAttribute("aria-label", `Delete ${item.title} from cart`);
     deleteBtn.addEventListener("click", () => {
       cart.splice(index, 1);
       saveCart();
       displayCart();
-
-      const cartStatus = document.getElementById("cart-status");
-
-      if (cartStatus) {
-        cartStatus.textContent = `${item.title} removed from cart`;
-        displayCart();
-      }
     });
-    productWrapper.appendChild(productName);
-    imageWrapper.appendChild(productImage);
-    productWrapper.appendChild(imageWrapper);
-    productWrapper.appendChild(productQuantity);
-    productWrapper.appendChild(deleteBtn);
-
-    if (item.price > item.discountedPrice) {
-      productPrice.classList.add("strike");
-      const salePrice = document.createElement("p");
-      salePrice.textContent = `${item.discountedPrice} kr`;
-      salePrice.classList.add("sale");
-      salePrice.setAttribute("aria-label", `Sale price`);
-
-      productWrapper.appendChild(productPrice);
-      productWrapper.appendChild(salePrice);
-    } else {
-      productWrapper.appendChild(productPrice);
-    }
     cartWrapper.appendChild(productWrapper);
   });
   renderOrderSummary(cart, summaryWrapper);
