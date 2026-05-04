@@ -57,6 +57,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.quantity {
+  display:flex;
+  flex-direction: row;
+}
+#minus-button, #plus-button {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#quantity-input {
+  width: 100%;
+}
+
  @media (min-width: 768px) {
 #cart-and-summary-wrapper {
   margin: 0 auto;

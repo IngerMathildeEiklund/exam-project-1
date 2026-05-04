@@ -32,7 +32,7 @@ function renderOrderSummary(cart, summaryWrapper) {
   if (!cart || cart.length === 0) return;
 
   const total = cart.reduce((sum, item) => {
-    return sum + item.price;
+    return sum + item.price * item.quantity;
   }, 0);
 
   summaryWrapper.innerHTML = "";
@@ -139,6 +139,41 @@ function displayCart() {
 
     const salePrice = productWrapper.querySelector(".product-price-sale");
 
+    const minusBtn = productWrapper.querySelector("#minus-button");
+    const plusBtn = productWrapper.querySelector("#plus-button");
+    const quantityInput = productWrapper.querySelector("#quantity-input");
+    quantityInput.value = item.quantity;
+
+    function increment() {
+      cart[index].quantity += 1;
+      quantityInput.value = cart[index].quantity;
+
+      saveCart();
+
+      renderOrderSummary(cart, summaryWrapper);
+    }
+
+    function decrement() {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+        quantityInput.value = cart[index].quantity;
+
+        saveCart();
+
+        renderOrderSummary(cart, summaryWrapper);
+      }
+    }
+
+    minusBtn.addEventListener("click", () => {
+      decrement();
+      displayCart();
+    });
+
+    plusBtn.addEventListener("click", () => {
+      increment();
+      displayCart();
+    });
+
     if (item.price > item.discountedPrice) {
       productWrapper.querySelector(".product-price").classList.add("strike");
       salePrice.textContent = `${item.discountedPrice} kr`;
@@ -152,6 +187,7 @@ function displayCart() {
       saveCart();
       displayCart();
     });
+
     cartWrapper.appendChild(productWrapper);
   });
   renderOrderSummary(cart, summaryWrapper);
