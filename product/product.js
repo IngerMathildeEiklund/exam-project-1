@@ -62,13 +62,27 @@ function displayOneProduct() {
   if (oneProduct.rating === 0) {
     productRating.textContent = "No rating for this item yet";
   }
+
   const addToCartBtn = document.getElementById("add-to-cart-button");
+  const shareBtn = document.getElementById("share-button");
   addToCartBtn.setAttribute("aria-label", "Add item to cart");
+  shareBtn.setAttribute("aria-label", "Copy link to clipboard");
+
+  function copyCurrentURL() {
+    navigator.clipboard.writeText(window.location.href);
+    console.log("link copied!");
+  }
+  shareBtn.addEventListener("click", () => {
+    copyCurrentURL();
+    //add the toast notif when clicked//
+  });
+
   addToCartBtn.addEventListener("click", () => {
     const selectedItem = {
       id: oneProduct.id,
       title: oneProduct.title,
       price: oneProduct.price,
+      discountedPrice: oneProduct.discountedPrice,
       image: oneProduct.image.url,
       quantity: 1,
     };

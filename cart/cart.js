@@ -41,11 +41,22 @@ function renderOrderSummary(cart, summaryWrapper) {
   const template2 = document.getElementById("summary-template");
   const totalWrapper = template2.content.cloneNode(true);
 
+  let quantityAmount = 0;
+
+  cart.map((item) => {
+    quantityAmount += item.quantity;
+  });
+
   totalWrapper.querySelector(".products-amount").textContent =
-    `${cart.length} products`;
+    `${quantityAmount} products`;
+
   if (cart.length < 2) {
     totalWrapper.querySelector(".products-amount").textContent =
       `${cart.length} product`;
+  }
+  if (cart.length < 2 && quantityAmount > 1) {
+    totalWrapper.querySelector(".products-amount").textContent =
+      `${quantityAmount} products`;
   }
   totalWrapper.querySelector(".products-total").textContent =
     `${total.toFixed(2)} kr`;
@@ -81,7 +92,7 @@ function displayCart() {
   cartWrapper.innerHTML = `<h1> Your shopping cart </h1>`;
 
   if (cart.length === 0) {
-    cartAndSummaryWrapper.innerHTML = `<h1> No items found in cart </h1> <p> Let's fix that! </p> 
+    cartAndSummaryWrapper.innerHTML = `<div id="empty-cart-wrapper" class="drop-shadow"> <h1> No items found in cart </h1> <p> Let's fix that! </p> 
     <svg id="shopping-bags" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512 512" xml:space="preserve">
 <g>
@@ -117,7 +128,8 @@ function displayCart() {
 	</g>
 </g>
 </svg>
-<button id="go-shopping-button" class="button blue"> Go shopping </button> `;
+<button id="go-shopping-button" class="button blue"> Go shopping </button> 
+</div>`;
     const goShoppingBtn = document.getElementById("go-shopping-button");
     goShoppingBtn.addEventListener("click", () => {
       window.location.href = "/index.html";
@@ -133,11 +145,24 @@ function displayCart() {
     productWrapper.querySelector(".cart-image").alt = item.title;
     productWrapper.querySelector(".product-title").textContent = item.title;
     productWrapper.querySelector(".product-price").textContent =
-      `${item.price} kr`;
+      `${item.price.toFixed(2) * item.quantity} kr`;
+    productWrapper.querySelector("#product-price-sale").textContent =
+      item.discountedPrice;
     productWrapper.querySelector(".product-quantity").textContent =
       `Quantity: ${item.quantity}`;
 
-    const salePrice = productWrapper.querySelector(".product-price-sale");
+    console.log(item);
+
+    if (item.price > item.discountedPrice) {
+      productWrapper
+        .querySelector("#product-price-sale")
+        .classList.remove("hidden");
+      productWrapper.querySelector(".product-price").classList.add("strike");
+      productWrapper.querySelector("#product-price-sale").textContent =
+        `${item.discountedPrice * item.quantity.toFixed(2)} kr`;
+      productWrapper.querySelector("#product-price-sale").classList.add("sale");
+    }
+    //fix the tofixed issue on the sale price//
 
     const minusBtn = productWrapper.querySelector("#minus-button");
     const plusBtn = productWrapper.querySelector("#plus-button");
@@ -174,12 +199,6 @@ function displayCart() {
       displayCart();
     });
 
-    if (item.price > item.discountedPrice) {
-      productWrapper.querySelector(".product-price").classList.add("strike");
-      salePrice.textContent = `${item.discountedPrice} kr`;
-      salePrice.classList.add("sale");
-      salePrice.classList.remove("hidden");
-    }
     const deleteBtn = productWrapper.querySelector(".trashcan-button");
     deleteBtn.setAttribute("aria-label", `Delete ${item.title} from cart`);
     deleteBtn.addEventListener("click", () => {
