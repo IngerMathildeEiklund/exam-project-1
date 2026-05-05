@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="login.css" />
   </head>
   <header class="header" role="banner">
-    <a href="index.html" aria-label="Kaleido home"
+    <a href="/index.html" aria-label="Kaleido home"
       ><img id="logo" src="/svgs/LOGO.svg" alt="Kaleido logo"
     /></a>
     <nav class="navigation" aria-label="main navigation">
@@ -151,11 +151,20 @@
           >Email
 
           <input type="email" id="email-registration-input" required />
+          <p id="email-format-error" class="error-message hidden">
+            Email format must be "@stud.noroff.no"
+          </p>
         </label>
 
         <label for="password-registration-input"
           >Password
           <input type="password" id="password-registration-input" required />
+          <p id="passwords-do-not-match" class="error-message hidden">
+            Entered passwords do not match
+          </p>
+          <p id="passwords-length" class="error-message hidden">
+            Password must be 8 characters or more
+          </p>
         </label>
 
         <label for="password-repeat-registration-input"
@@ -166,7 +175,7 @@
             required
           />
         </label>
-        <button id="signup-button" class="blue">Sign up</button>
+        <button type="submit" id="signup-button" class="blue">Sign up</button>
       </form>
     </main>
     <footer id="footer">
