@@ -12,12 +12,12 @@ h3,
 h4,
 p,
 a,
-label {
+label, dl, dd {
   font-family: var(--headings-paragraphs);
   color: var(--text);
   font-weight: 600;
 }
-p {
+p, dl, dd {
   font-weight: 400;
 }
 body {
@@ -85,6 +85,9 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
+/* .center {
+margin: 0 auto;
+} */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -344,13 +347,13 @@ p {
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 2rem;
-  }
-  h2 {
     font-size: 1.8rem;
   }
-  h3 {
+  h2 {
     font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.2rem;
   }
   p {
     font-size: 1rem;
