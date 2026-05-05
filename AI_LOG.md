@@ -56,3 +56,7 @@ prompt: When clicking the next/prev button on the carousel 3 new products come i
 03.05 14:25
 
 prompt: making cleaner rendering of products (not writing everything in javascript) changes made: Learned about the <template> tag in html to copy the markup into a template that can be reused. I usually render everything in javascript, but styling gets overly complicated. I knew there would be an easier way. I found this very valuable and will do it in this way going forward. No more creating everything in javascript!!!!
+
+04.05 11:32:
+
+Promt: why isnt my quantity button working? Changes made: Had to change logic as using a cloned template works differently. I had to target the "cart[index].quantity"

@@ -147,11 +147,11 @@ function displayCart() {
     productWrapper.querySelector(".product-price").textContent =
       `${item.price.toFixed(2) * item.quantity} kr`;
     productWrapper.querySelector("#product-price-sale").textContent =
-      item.discountedPrice;
+      item.discountedPrice.toFixed(2);
     productWrapper.querySelector(".product-quantity").textContent =
       `Quantity: ${item.quantity}`;
 
-    console.log(item);
+    // console.log(item);
 
     if (item.price > item.discountedPrice) {
       productWrapper
@@ -159,7 +159,7 @@ function displayCart() {
         .classList.remove("hidden");
       productWrapper.querySelector(".product-price").classList.add("strike");
       productWrapper.querySelector("#product-price-sale").textContent =
-        `${item.discountedPrice * item.quantity.toFixed(2)} kr`;
+        `${item.discountedPrice.toFixed(2) * item.quantity} kr`;
       productWrapper.querySelector("#product-price-sale").classList.add("sale");
     }
     //fix the tofixed issue on the sale price//
