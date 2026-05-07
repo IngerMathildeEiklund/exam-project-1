@@ -1,45 +1,32 @@
 import { URL } from "../api.js";
+import { toastNotification } from "../messages.js";
 const registerEndpoint = URL + "/auth/register";
 
 async function registerUser(url, data) {
-  if (!registrationForm) {
-    return;
-  }
+  const postOptions = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(url, postOptions);
+  const status = response.status;
+  // console.log(status);
 
-  try {
-    const postOptions = {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-    const response = await fetch(url, postOptions);
-    const status = response.status;
-    console.log(status);
-    if (status === 400) {
-      console.log("incorrect form data");
-      // toast notif
-    }
-
-    if (status === 409) {
-      console.log("credentials already in use");
-      //show toast notif of user with these credentials already exists//
-    }
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Registration failed: ${JSON.stringify(errorData)}`);
-    }
-    const json = await response.json();
-    console.log("User registered successfully", json);
-    return json;
-  } catch (error) {
-    console.error("There was an error", error);
+  if (status === 400) {
+    toastNotification("Entered information already in use", "warning", 2);
+    throw new Error("Email or username already in use");
   }
+  if (!response.ok) {
+    throw new Error(`Registration failed: ${status}`);
+  }
+  const json = await response.json();
+  return json;
 }
 const registrationForm = document.getElementById("registration-form");
 
-registrationForm.addEventListener("submit", (e) => {
+registrationForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const userNameRegistrationInput = document
@@ -62,7 +49,7 @@ registrationForm.addEventListener("submit", (e) => {
     password: passwordRegistrationInput,
   };
 
-  const signUpBtn = document.getElementById("signup-button");
+  // const signUpBtn = document.getElementById("signup-button");
   const emailTemplate = "@stud.noroff.no";
 
   if (passwordRepeatRegistrationInput !== passwordRegistrationInput) {
@@ -82,7 +69,10 @@ registrationForm.addEventListener("submit", (e) => {
   document.querySelector("#email-format-error").classList.add("hidden");
   document.querySelector("#passwords-do-not-match").classList.add("hidden");
   document.querySelector("#passwords-length").classList.add("hidden");
-
-  registerUser(registerEndpoint, userData);
-  //relocate to login, show toast notif on loginpage of successful signup//
+  try {
+    await registerUser(registerEndpoint, userData);
+    window.location.href = "login.html";
+  } catch (error) {
+    console.error(error);
+  }
 });

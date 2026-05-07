@@ -60,3 +60,17 @@ prompt: making cleaner rendering of products (not writing everything in javascri
 04.05 11:32:
 
 Promt: why isnt my quantity button working? Changes made: Had to change logic as using a cloned template works differently. I had to target the "cart[index].quantity"
+
+07.05 09:46:
+
+(I wanted to create a reuseable toast notification where i could also pass in an argument of an icon from an array). I created the array and tried to pass it in but my logic was off. prompt: "why arent the toast notif icons showing up?" changes made: I needed to add this line
+
+```js
+iconImg.src = messageIcons[iconIndex];
+```
+
+and change the name of the parameter.
+
+07.05 14:55;
+
+prompt: Does my login and register functions look solid? Changes made: Removed some double error logging and code that was never reached.

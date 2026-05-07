@@ -2,6 +2,8 @@
 
 import { URL, ALL_PRODUCTS_ENDPOINT } from "../api.js";
 import { addToCart, loadCart } from "/cart/cart.js";
+import { toastNotification } from "../messages.js";
+
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 
@@ -70,11 +72,10 @@ function displayOneProduct() {
 
   function copyCurrentURL() {
     navigator.clipboard.writeText(window.location.href);
-    console.log("link copied!");
   }
   shareBtn.addEventListener("click", () => {
     copyCurrentURL();
-    //add the toast notif when clicked//
+    toastNotification("Link copied to clipboard", "success", 0);
   });
 
   addToCartBtn.addEventListener("click", () => {
