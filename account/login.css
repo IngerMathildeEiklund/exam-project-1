@@ -31,8 +31,18 @@
   margin: 0 auto;
 }
 
+.error-message {
+  color: var(--text-error);
+  font-weight: 800;
+}
+
 #login-button {
   width: fit-content;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+#signup-button {
+    width: fit-content;
   margin: 0 auto;
   padding-inline: 1rem;
 }
@@ -41,12 +51,12 @@ label {
   flex-direction: column;
   gap: 1rem;
 }
+.register-p {
+  margin: 0 auto;
+}
 
 @media (min-width: 768px) {
-  #login-form {
-    /* height: 50vh;
-    width: 70vw; */
-  }
+
 }
 
 @media (min-width: 1440px) {

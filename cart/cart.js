@@ -1,5 +1,7 @@
 "use strict";
 
+import { toastNotification } from "../messages.js";
+
 let cart = [];
 
 function saveCart() {
@@ -16,8 +18,7 @@ export function loadCart() {
 export function addToCart(product) {
   cart.push(product);
   saveCart();
-  // add the toast notif here when item is added to cart//
-  console.log("Item added to cart!");
+  toastNotification(`${product.title} added to cart!`, "success", 0);
 }
 
 loadCart();
@@ -151,8 +152,6 @@ function displayCart() {
     productWrapper.querySelector(".product-quantity").textContent =
       `Quantity: ${item.quantity}`;
 
-    // console.log(item);
-
     if (item.price > item.discountedPrice) {
       productWrapper
         .querySelector("#product-price-sale")
@@ -162,7 +161,6 @@ function displayCart() {
         `${item.discountedPrice.toFixed(2) * item.quantity} kr`;
       productWrapper.querySelector("#product-price-sale").classList.add("sale");
     }
-    //fix the tofixed issue on the sale price//
 
     const minusBtn = productWrapper.querySelector("#minus-button");
     const plusBtn = productWrapper.querySelector("#plus-button");

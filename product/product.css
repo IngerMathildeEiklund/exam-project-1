@@ -46,6 +46,41 @@
   width: 40px;
   height: 40px;
 }
+#login-popup-wrapper {
+  position: relative;
+  padding: 1rem;
+  /* width: 100%; */
+}
+main.popup-active { 
+  filter: blur(1.5rem);
+  pointer-events: none;
+  user-select: none;
+}
+#login-popup {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  z-index: 100000;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  width: 95%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#login-popup.active {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
 
 @media (min-width: 768px) {
   #one-product-wrapper {

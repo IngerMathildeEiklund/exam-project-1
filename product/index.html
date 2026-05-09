@@ -15,7 +15,7 @@
       /></a>
       <nav class="navigation" aria-label="main navigation">
         <div class="user-shoppingcart-wrapper">
-          <a href="account/user.html" aria-label="User profile">
+          <a href="/account/user.html" aria-label="User profile">
             <svg
               id="user"
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@
         </button>
         <div class="mobile-navigation">
           <div class="icon-link-wrapper">
-            <a href="account/user.html" aria-label="User profile">
+            <a href="/account/user.html" aria-label="User profile">
               Profile
               <svg
                 id="user"
@@ -118,7 +118,7 @@
             </a>
           </div>
           <div class="icon-link-wrapper">
-            <a href="cart/index.html" aria-label="shoppingcart">
+            <a href="/cart/index.html" aria-label="shoppingcart">
               Shoppingcart
               <svg
                 id="shoppingcart"
@@ -139,7 +139,25 @@
         </div>
       </nav>
     </header>
+    <div id="login-popup-wrapper">
+      <div
+        id="login-popup"
+        class="drop-shadow"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <h3>Login required</h3>
+        <p>You need to be logged in to purchase this item.</p>
+        <div>
+          <button id="cancel-popup" class="blue">Cancel</button>
+          <button id="login-button" class="blue">Login</button>
+        </div>
+      </div>
+    </div>
     <main>
+      <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+      <button id="remove-token" class="blue">remove token</button>
       <div id="one-product-wrapper" class="drop-shadow">
         <div id="one-product-img-wrapper"></div>
         <div id="one-product-info-wrapper" class="flex-column">
@@ -187,9 +205,11 @@
           </div>
         </div>
       </div>
+
       <div id="reviews-wrapper"></div>
     </main>
     <script type="module" src="product.js"></script>
     <script type="module" src="/header.js"></script>
+    <script type="module" src="/messages.js"></script>
   </body>
 </html>
