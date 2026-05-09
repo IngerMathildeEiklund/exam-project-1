@@ -49,7 +49,6 @@ registrationForm.addEventListener("submit", async (e) => {
     password: passwordRegistrationInput,
   };
 
-  // const signUpBtn = document.getElementById("signup-button");
   const emailTemplate = "@stud.noroff.no";
 
   if (passwordRepeatRegistrationInput !== passwordRegistrationInput) {

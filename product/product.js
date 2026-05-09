@@ -11,6 +11,37 @@ const oneProductEndpoint = `${ALL_PRODUCTS_ENDPOINT}/${id}`;
 
 let oneProduct = {};
 
+const removeTokenBtn = document.getElementById("remove-token");
+
+removeTokenBtn.addEventListener("click", () => {
+  if (localStorage.getItem("access_token") === null) {
+    console.log("token already removed");
+  } else {
+    localStorage.removeItem("access_token");
+    console.log("Token removed");
+  }
+});
+
+function loginPopUp() {
+  const main = document.querySelector("main");
+  const popUpWrapper = document.getElementById("login-popup-wrapper");
+  const popUp = document.getElementById("login-popup");
+  const cancelBtn = document.getElementById("cancel-popup");
+  const loginBtn = document.getElementById("login-button");
+
+  const toggle = () => {
+    main.classList.toggle("popup-active");
+    popUp.classList.toggle("active");
+  };
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "/account/login.html";
+  });
+
+  cancelBtn.addEventListener("click", toggle);
+  return toggle;
+}
+const popupToggle = loginPopUp();
+
 const oneProductWrapper = document.getElementById("one-product-wrapper");
 const oneProductImgWrapper = document.getElementById("one-product-img-wrapper");
 const oneProductInfoWrapper = document.getElementById(
@@ -79,15 +110,20 @@ function displayOneProduct() {
   });
 
   addToCartBtn.addEventListener("click", () => {
-    const selectedItem = {
-      id: oneProduct.id,
-      title: oneProduct.title,
-      price: oneProduct.price,
-      discountedPrice: oneProduct.discountedPrice,
-      image: oneProduct.image.url,
-      quantity: 1,
-    };
-    addToCart(selectedItem);
+    if (localStorage.getItem("access_token") === null) {
+      console.log("You are not logged in!");
+      popupToggle();
+    } else {
+      const selectedItem = {
+        id: oneProduct.id,
+        title: oneProduct.title,
+        price: oneProduct.price,
+        discountedPrice: oneProduct.discountedPrice,
+        image: oneProduct.image.url,
+        quantity: 1,
+      };
+      addToCart(selectedItem);
+    }
   });
 
   oneProductImgWrapper.appendChild(productImage);

@@ -1,12 +1,26 @@
 function HamburgerMenu() {
   const userIcon = document.getElementById("user");
-  const shoppingcartIcon = document.getElementById("shoppingcart");
+  const shoppingcartIcons = document.querySelectorAll("#shoppingcart");
   const hamburgerButton = document.querySelector(".hamburger-menu");
   const hamburgerIcon = document.getElementById("hamburger");
   const hamburgerCloseIcon = document.getElementById("hamburger-close");
   const mobileNav = document.querySelector(".mobile-navigation");
 
-  if (!mobileNav || !hamburgerIcon) return;
+  if (!mobileNav || !hamburgerIcon || !hamburgerButton) return;
+
+  shoppingcartIcons.forEach((icon) => {
+    const shoppingcartLink = icon.closest("a");
+    if (shoppingcartLink) {
+      shoppingcartLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (localStorage.getItem("access_token") === null) {
+          window.location.href = "/account/login.html?redirected=cart";
+        } else {
+          window.location.href = shoppingcartLink.href;
+        }
+      });
+    }
+  });
 
   hamburgerButton.addEventListener("click", () => {
     hamburgerIcon.classList.toggle("hidden");

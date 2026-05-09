@@ -1,16 +1,8 @@
 AI LOG
 
-21.04: 14.13:
-
-Troubleshot why images on the cards were not scaling correctly.
-
 23.04 11:04:
 
-Troubleshot why hamburger menu was not opening.
-
-23.04 11.42:
-
-Checked and implemented missing accessiblity in the header. Divs aren't keyboard focusable so I had to place the hamburger icons into a button.
+Troubleshot why hamburger menu was not opening. changes made: Changes made: Divs aren't keyboard focusable so I had to place the hamburger icons into a button. Also Checked and implemented missing accessiblity in the header.
 
 23.04 13:57:
 
@@ -74,3 +66,38 @@ and change the name of the parameter.
 07.05 14:55;
 
 prompt: Does my login and register functions look solid? Changes made: Removed some double error logging and code that was never reached.
+
+09:05 10:30:
+
+Prompt: Why is my access token returning nothing? Changes made: Needed to const the accessToken on the calling of the login function with an await. (async code is hard). My logic was otherwise correct!
+
+```js
+const accessToken = await logIn(credentials);
+```
+
+09:05 12:08:
+
+prompt: why isnt the popup showing up? Changes made: had to return the toggle function and apply it to the loginPopUp() so i could use it on the add to cart button.
+
+09:05 13:16:
+
+Prompt: Why isnt shoppingcart relocating to login if there is no access token? Changes made: Needed to include both mobile and desktop header links. Needed to const shoppingcarticons with queryselectorAll to get both links. Then looped through the links and added this; to store that link in the shoppingcartLink variable`
+
+```js
+const shoppingcartLink = icon.closest("a");
+```
+
+09:05 14:04:
+
+prompt: Why isnt my toast notification showing up on the login page if the user was redirected from another page that required login? changes made: Added a params to the checkReferrer function.
+
+```js
+const params = new URLSearchParams(window.location.search);
+if (params.get("redirected") === "cart") {
+  toastNotification(
+    "You need to be logged in to access this page",
+    "warning",
+    2,
+  );
+}
+```
