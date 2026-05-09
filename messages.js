@@ -38,3 +38,11 @@ export function toastNotification(message, type, iconIndex) {
     toastElement.remove();
   });
 }
+
+const backBtn = document.getElementById("back-button");
+
+if (backBtn) {
+  backBtn.addEventListener("click", () => {
+    window.history.back();
+  });
+}
