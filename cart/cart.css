@@ -33,7 +33,6 @@
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  
 }
 
 .trashcan-button {
@@ -68,9 +67,6 @@
   display: flex;
   gap: 1rem;
   flex-direction: column;
-
-
-
 }
 
 .quantity {
@@ -86,9 +82,12 @@
 #quantity-input {
 text-align: center;
 width: 3rem;
-
 }
 
+.checkout-button  {
+  width: 100%;
+  margin: 0 auto;
+}
  @media (min-width: 768px) {
 #cart-and-summary-wrapper {
   margin: 0 auto;

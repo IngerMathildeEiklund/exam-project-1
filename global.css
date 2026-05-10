@@ -31,6 +31,8 @@ main {
   justify-content: center;
   margin-bottom: 5rem;
   margin-top: 5rem;
+  /* max-width: 100%;
+  box-sizing: border-box; */
 }
 .padding {
   padding-bottom: 0.5rem;
@@ -282,7 +284,8 @@ p {
   border-bottom: 2px solid var(--dark-gray);
   background-color: var(--light-gray);
   position: relative;
-  z-index: 99;
+  z-index: 200;
+  
 }
 .navigation {
   display: flex;
@@ -293,26 +296,41 @@ p {
 .mobile-navigation {
   display: flex;
   flex-direction: column;
-  right: 0;
-  top: 0;
   background-color: var(--gray);
-  width: 100vw;
+  width: 100%;
   height: fit-content;
   position: absolute;
-  right: -100%;
+  right: 0%;
   top: 4rem;
-  transition: 0.3s ease-in-out;
   border-bottom: 2px solid var(--dark-gray);
   gap: 2rem;
   padding-block: 1.5rem;
   z-index: 98;
+  visibility: hidden;
+  pointer-events: none;
+}
+.mobile-navigation.active {
+  right: 0;
+  visibility: visible;
+  pointer-events: auto;
+  animation-name: slideIn;
+  animation-duration: 0.2s;
+  animation-fill-mode:none;
+}
+@keyframes slideIn {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
 }
 .mobile-navigation a {
   color: var(--text);
 }
-.mobile-navigation.active {
-  right: 0;
-}
+
 .user-shoppingcart-wrapper-mobile {
   display: flex;
   flex-direction: column;
