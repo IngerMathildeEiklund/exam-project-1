@@ -1,0 +1,17 @@
+#success-wrapper {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  padding: 1rem;
+}
+#success-circle{
+  width: 100px;
+  height: 100px;
+}
+.success-circle-wrapper {
+  color: var(--main-color);
+}
