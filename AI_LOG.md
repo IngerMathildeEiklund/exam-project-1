@@ -101,3 +101,24 @@ if (params.get("redirected") === "cart") {
   );
 }
 ```
+
+11:05 09:58:
+
+Prompt: What accessibility is missing from my checkout page? Changes made: Moved everything inside the form element, added fieldset and legend for semantic grouping and aria-labels.
+
+11:05 11:02:
+
+prompt: I need to use my toast notification to show that fields cannot be empty but placing it in the forEach makes it repeat as many times as there are inputfields, I dont know where to place it. Changes made: needed to create a let variable that is
+
+```js
+isFormValid = true;
+```
+
+Placed this in the if statement that if inputfields are empty the form is invalid. And then outside the loop i placed; to keep it away from the loop.
+
+```js
+if (!isFormValid) {
+  toastNotification("Fields cannot be empty!", "warning", 2);
+  return;
+}
+```

@@ -68,6 +68,9 @@ loginForm.addEventListener("submit", async (e) => {
   };
   try {
     const accessToken = await logIn(credentials);
+    if (!accessToken) {
+      return;
+    }
     localStorage.setItem("access_token", accessToken);
     const value = localStorage.getItem("access_token");
     console.log(value); //remove this later, its just to see that it works

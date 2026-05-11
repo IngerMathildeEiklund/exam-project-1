@@ -141,6 +141,26 @@
       </nav>
     </header>
     <main>
+      <button id="back-button" aria-label="Go back to previous page">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 12l14 0" />
+          <path d="M5 12l4 4" />
+          <path d="M5 12l4 -4" />
+        </svg>
+        Back
+      </button>
       <div id="cart-and-summary-wrapper">
         <div id="cart-wrapper" class="drop-shadow">
           <h1>My shopping cart</h1>
@@ -209,6 +229,9 @@
             <dt>Total</dt>
             <dd class="order-total"></dd>
           </dl>
+          <button id="continue-to-checkout-button" class="blue">
+            Continue to checkout
+          </button>
         </template>
       </div>
     </main>

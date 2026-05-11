@@ -12,7 +12,7 @@ h3,
 h4,
 p,
 a,
-label, dl, dd {
+label, dl, dd,legend {
   font-family: var(--headings-paragraphs);
   color: var(--text);
   font-weight: 600;
@@ -134,6 +134,12 @@ gap: 1rem;
 margin-bottom: 5rem;
 
 }
+fieldset {
+  border: none;
+}
+legend {
+  margin-bottom: 1rem;
+}
 #prev-button {
   background-color: inherit;
 }
@@ -172,11 +178,16 @@ button {
   color: var(--button-text);
 }
 input {
-  border: solid 1px;
-  border-color: var(--dark-gray);
+  border: solid 2px;
+  border-color: var(--gray);
   border-radius: 0.3rem;
   padding-inline: 1rem;
   padding-block: 0.3rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.empty-input {
+  border: 2px solid var(--text-error);
 }
 .icon {
   color: var(--text);
@@ -208,6 +219,7 @@ a {
 input:focus {
   border: 2px solid var(--main-color); /* is this color enough to see? */
   outline: none;
+
 }
 .blue {
   background-color: var(--blue);
@@ -226,7 +238,7 @@ input:focus {
 h1 {
   font-size: 1.25rem;
 }
-h2 {
+h2, legend {
   font-size: 1.125rem;
 }
 h3 {
@@ -241,6 +253,17 @@ p {
 
 .hidden {
   display: none;
+}
+#back-button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  position: absolute;
+  top: 5rem;
+  left: 1.5rem;
 }
 
 .flex-column {
@@ -271,7 +294,8 @@ p {
   border-bottom: 2px solid var(--dark-gray);
   background-color: var(--light-gray);
   position: relative;
-  z-index: 99;
+  z-index: 200;
+  
 }
 .navigation {
   display: flex;
@@ -282,26 +306,41 @@ p {
 .mobile-navigation {
   display: flex;
   flex-direction: column;
-  right: 0;
-  top: 0;
   background-color: var(--gray);
-  width: 100vw;
+  width: 100%;
   height: fit-content;
-  position: fixed;
-  right: -100%;
+  position: absolute;
+  right: 0%;
   top: 4rem;
-  transition: 0.3s ease-in-out;
   border-bottom: 2px solid var(--dark-gray);
   gap: 2rem;
   padding-block: 1.5rem;
   z-index: 98;
+  visibility: hidden;
+  pointer-events: none;
+}
+.mobile-navigation.active {
+  right: 0;
+  visibility: visible;
+  pointer-events: auto;
+  animation-name: slideIn;
+  animation-duration: 0.2s;
+  animation-fill-mode:none;
+}
+@keyframes slideIn {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
 }
 .mobile-navigation a {
   color: var(--text);
 }
-.mobile-navigation.active {
-  right: 0;
-}
+
 .user-shoppingcart-wrapper-mobile {
   display: flex;
   flex-direction: column;
@@ -406,7 +445,7 @@ p {
   h1 {
     font-size: 1.8rem;
   }
-  h2 {
+  h2, legend {
     font-size: 1.5rem;
   }
   h3 {
@@ -475,7 +514,7 @@ p {
     gap: 2rem;
   }
   main {
-    margin-inline: 15rem;
+    margin-inline: 10rem;
   }
 }
 @media (min-width: 1920px) {

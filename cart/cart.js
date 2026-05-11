@@ -29,7 +29,7 @@ const cartAndSummaryWrapper = document.getElementById(
 const cartWrapper = document.getElementById("cart-wrapper");
 const summaryWrapper = document.getElementById("summary-wrapper");
 
-function renderOrderSummary(cart, summaryWrapper) {
+export function renderOrderSummary(cart, summaryWrapper) {
   if (!cart || cart.length === 0) return;
 
   const total = cart.reduce((sum, item) => {
@@ -70,16 +70,6 @@ function renderOrderSummary(cart, summaryWrapper) {
       "aria-label",
       `Order total ${totalWithShipping.toFixed(2)} kr`,
     );
-  const checkoutBtn = document.createElement("button");
-  checkoutBtn.textContent = `Continue to checkout`;
-  checkoutBtn.setAttribute("aria-label", "Continue to checkout page");
-  checkoutBtn.classList.add("blue");
-  checkoutBtn.classList.add("center");
-  checkoutBtn.addEventListener("click", () => {
-    window.location.href = "/checkout/index.html";
-  });
-  totalWrapper.appendChild(checkoutBtn);
-
   summaryWrapper.innerHTML = `<h1> Cart summary </h1>`;
   summaryWrapper.appendChild(totalWrapper);
 }
@@ -208,6 +198,10 @@ function displayCart() {
     cartWrapper.appendChild(productWrapper);
   });
   renderOrderSummary(cart, summaryWrapper);
+  const checkoutBtn = document.getElementById("continue-to-checkout-button");
+  checkoutBtn.addEventListener("click", () => {
+    window.location.href = "/checkout/index.html";
+  });
 }
 
 displayCart();

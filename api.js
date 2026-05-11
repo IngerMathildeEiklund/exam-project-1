@@ -294,7 +294,3 @@ if (nextBtn) {
     }
   });
 }
-// Change the carousel if there is time? //
-
-// When reaching the end of the list, i want the carousel to return to the beginning of the list //
-//when clicking the prev on the first items it will go to the end of the list//
