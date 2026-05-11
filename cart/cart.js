@@ -83,6 +83,7 @@ function displayCart() {
   cartWrapper.innerHTML = `<h1> Your shopping cart </h1>`;
 
   if (cart.length === 0) {
+    const breadcrumbs = (document.querySelector(".breadcrumbs").innerHTML = "");
     cartAndSummaryWrapper.innerHTML = `<div id="empty-cart-wrapper" class="drop-shadow"> <h1> No items found in cart </h1> <p> Let's fix that! </p> 
     <svg id="shopping-bags" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512 512" xml:space="preserve">
@@ -197,11 +198,25 @@ function displayCart() {
 
     cartWrapper.appendChild(productWrapper);
   });
+  const clearCartBtn = document.createElement("button");
+  clearCartBtn.textContent = "Clear all items from cart";
+  clearCartBtn.classList.add("clear-cart-button");
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener("click", () => {
+      cart.splice(0, cart.length);
+      saveCart();
+      displayCart();
+    });
+  }
+
+  cartWrapper.appendChild(clearCartBtn);
   renderOrderSummary(cart, summaryWrapper);
   const checkoutBtn = document.getElementById("continue-to-checkout-button");
-  checkoutBtn.addEventListener("click", () => {
-    window.location.href = "/checkout/index.html";
-  });
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      window.location.href = "/checkout/index.html";
+    });
+  }
 }
 
 displayCart();

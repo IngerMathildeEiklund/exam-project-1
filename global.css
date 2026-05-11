@@ -187,7 +187,8 @@ ul.breadcrumbs li a:hover {
 button {
   font-family: var(--buttons);
   color: var(--button-text);
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 1rem;
   padding-inline: 1rem;
   padding-block: 0.5rem;
   border-radius: 0.3rem;
@@ -264,6 +265,7 @@ input:focus {
 
 h1 {
   font-size: 1.25rem;
+  margin-bottom: 1rem; /* remove maybe */ 
 }
 h2, legend {
   font-size: 1.125rem;
@@ -470,7 +472,8 @@ p {
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    
   }
   h2, legend {
     font-size: 1.5rem;
@@ -530,7 +533,7 @@ ul.breadcrumbs li {
     padding-bottom: 1rem;
   }
   .margin {
-    margin-bottom: 1rem;
+    margin: 1rem;
   }
   #carousel-wrapper {
   grid-template-columns: 1fr 1fr 1fr;
@@ -543,12 +546,15 @@ ul.breadcrumbs li {
     gap: 2rem;
   }
   main {
-    margin-inline: 10rem;
+    margin-inline: 15rem;
   }
 }
 @media (min-width: 1920px) {
   #products-wrapper {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 3rem;
+  }
+    main {
+    margin-inline: 15rem;
   }
 }

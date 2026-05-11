@@ -16,7 +16,7 @@
       /></a>
       <nav class="navigation" aria-label="main navigation">
         <div class="user-shoppingcart-wrapper">
-          <a href="account/user.html" aria-label="User profile">
+          <a href="/account/user.html" aria-label="User profile">
             <svg
               id="user"
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@
               />
             </svg>
           </a>
-          <a href="cart/index.html" aria-label="Shoppingcart">
+          <a href="index.html" aria-label="Shoppingcart">
             <svg
               id="shoppingcart"
               xmlns="http://www.w3.org/2000/svg"
@@ -196,28 +196,30 @@
               <p class="product-quantity"></p>
             </div>
             <div class="trashcan-quantity-wrapper">
-              <button class="trashcan-button">
-                <svg
-                  id="delete-product"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4 7l16 0" />
-                  <path d="M10 11l0 6" />
-                  <path d="M14 11l0 6" />
-                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                </svg>
-              </button>
+              <div class="trashcan-wrapper">
+                <button class="trashcan-button">
+                  <svg
+                    id="delete-product"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 7l16 0" />
+                    <path d="M10 11l0 6" />
+                    <path d="M14 11l0 6" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                  </svg>
+                </button>
+              </div>
               <div class="quantity">
                 <button id="minus-button">-</button>
                 <input
@@ -231,7 +233,7 @@
               </div>
             </div>
           </div>
-          <hr class="margin" />
+          <hr class="line" />
         </template>
 
         <div id="summary-wrapper" class="drop-shadow"></div>
@@ -354,5 +356,6 @@
     </footer>
     <script type="module" src="cart.js"></script>
     <script type="module" src="/header.js"></script>
+    <script type="module" src="/messages.js"></script>
   </body>
 </html>

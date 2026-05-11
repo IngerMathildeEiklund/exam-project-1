@@ -122,3 +122,7 @@ if (!isFormValid) {
   return;
 }
 ```
+
+11:05 14:46:
+
+prompt: i want the image to stay to the left, then the : .title-price-quantity-wrapper beside that with a gap and then the .trashcan-quantity-wrapper at the end of the row. changes made: added flex-shrink to the elements.
