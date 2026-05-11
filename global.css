@@ -85,9 +85,7 @@ main {
   flex-direction: row;
   justify-content: space-between;
 }
-/* .center {
-margin: 0 auto;
-} */
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -146,6 +144,35 @@ legend {
 #next-button {
   background-color: inherit;
 }
+/* breadcrumbs */ 
+
+ul.breadcrumbs {
+  padding: 0.8rem 1rem;
+  list-style: none;
+  background-color: transparent;
+}
+ul.breadcrumbs li {
+  display: inline;
+  font-size: 1rem;
+}
+ul.breadcrumbs li+li:before {
+  padding: 0.5rem;
+  color: var(--text);
+  content: "/\00a0";
+}
+ul.breadcrumbs li a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+ul.breadcrumbs li a:hover {
+  text-decoration: underline;
+}
+.current-page {
+  font-weight: 800;
+}
+/* breadcrumbs */ 
+
 /* MAKE THE CARDS LOOK BETTER WITH PADDING /*
 /*CARDS*/
 
@@ -458,7 +485,9 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;
   }
-
+ul.breadcrumbs li {
+  font-size: 1.2rem;
+}
   /* HEADER */
   #logo {
     width: clamp(90px, 70vw, 160px);
