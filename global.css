@@ -12,7 +12,7 @@ h3,
 h4,
 p,
 a,
-label, dl, dd {
+label, dl, dd,legend {
   font-family: var(--headings-paragraphs);
   color: var(--text);
   font-weight: 600;
@@ -31,8 +31,6 @@ main {
   justify-content: center;
   margin-bottom: 5rem;
   margin-top: 5rem;
-  /* max-width: 100%;
-  box-sizing: border-box; */
 }
 .padding {
   padding-bottom: 0.5rem;
@@ -136,6 +134,12 @@ gap: 1rem;
 margin-bottom: 5rem;
 
 }
+fieldset {
+  border: none;
+}
+legend {
+  margin-bottom: 1rem;
+}
 #prev-button {
   background-color: inherit;
 }
@@ -174,11 +178,16 @@ button {
   color: var(--button-text);
 }
 input {
-  border: solid 1px;
-  border-color: var(--dark-gray);
+  border: solid 2px;
+  border-color: var(--gray);
   border-radius: 0.3rem;
   padding-inline: 1rem;
   padding-block: 0.3rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.empty-input {
+  border: 2px solid var(--text-error);
 }
 .icon {
   color: var(--text);
@@ -210,6 +219,7 @@ a {
 input:focus {
   border: 2px solid var(--main-color); /* is this color enough to see? */
   outline: none;
+
 }
 .blue {
   background-color: var(--blue);
@@ -228,7 +238,7 @@ input:focus {
 h1 {
   font-size: 1.25rem;
 }
-h2 {
+h2, legend {
   font-size: 1.125rem;
 }
 h3 {
@@ -435,7 +445,7 @@ p {
   h1 {
     font-size: 1.8rem;
   }
-  h2 {
+  h2, legend {
     font-size: 1.5rem;
   }
   h3 {
@@ -504,7 +514,7 @@ p {
     gap: 2rem;
   }
   main {
-    margin-inline: 15rem;
+    margin-inline: 10rem;
   }
 }
 @media (min-width: 1920px) {

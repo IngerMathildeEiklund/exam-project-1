@@ -140,7 +140,7 @@
       </nav>
     </header>
     <main>
-      <button id="back-button">
+      <button id="back-button" aria-label="Go back to previous page">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -160,7 +160,6 @@
         </svg>
         Back
       </button>
-
       <div id="success-wrapper" class="drop-shadow">
         <svg
           id="success-circle"
@@ -181,8 +180,7 @@
         <h1>Thank you for your order!</h1>
         <p>An order confirmation has been sent to your provided email.</p>
         <p>Order number: #87849</p>
-        <p id="total-paid"></p>
-        <button class="blue">Return to homepage</button>
+        <button id="return-to-homepage" class="blue">Return to homepage</button>
       </div>
     </main>
     <footer id="footer">
@@ -284,5 +282,7 @@
       </div>
     </footer>
     <script type="module" src="/header.js"></script>
+    <script type="module" src="/messages.js"></script>
+    <script type="module" src="success.js"></script>
   </body>
 </html>
