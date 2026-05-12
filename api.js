@@ -2,6 +2,8 @@
 
 export const URL = "https://v2.api.noroff.dev";
 export const ALL_PRODUCTS_ENDPOINT = "/online-shop";
+import { loadingSpinner } from "./messages.js";
+import { removeLoadingSpinner } from "./messages.js";
 
 let allProducts = [];
 
@@ -27,6 +29,7 @@ async function fetchProducts(url, endpoint) {
   if (!productWrapper) {
     return;
   }
+  loadingSpinner();
   productWrapper.setAttribute("aria-busy", "true");
 
   try {
@@ -47,8 +50,10 @@ async function fetchProducts(url, endpoint) {
 
     renderCarouselCards(highestRated);
     rerenderCards();
+    removeLoadingSpinner();
     productWrapper.setAttribute("aria-busy", "false");
   } catch (error) {
+    removeLoadingSpinner();
     const errorMsg = document.createElement("div");
     errorMsg.role = "alert";
     errorMsg.setAttribute("aria-live", "assertive");

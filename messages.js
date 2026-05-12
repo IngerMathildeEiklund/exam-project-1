@@ -46,3 +46,21 @@ if (backBtn) {
     window.history.back();
   });
 }
+
+export function loadingSpinner() {
+  const body = document.getElementsByTagName("body")[0];
+  const spinner = document.createElement("div");
+  spinner.classList.add("spinner");
+  spinner.id = "loading-spinner";
+  spinner.setAttribute("role", "status");
+  spinner.setAttribute("aria-live", "polite");
+  spinner.setAttribute("aria-label", "Loading");
+  document.body.appendChild(spinner);
+}
+
+export function removeLoadingSpinner() {
+  const spinner = document.getElementById("loading-spinner");
+  if (spinner) {
+    spinner.remove();
+  }
+}

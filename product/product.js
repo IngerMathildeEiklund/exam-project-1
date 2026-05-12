@@ -3,6 +3,7 @@
 import { URL, ALL_PRODUCTS_ENDPOINT } from "../api.js";
 import { addToCart, loadCart } from "/cart/cart.js";
 import { toastNotification } from "../messages.js";
+import { loadingSpinner, removeLoadingSpinner } from "../messages.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -52,6 +53,7 @@ async function fetchOneProduct() {
   if (!oneProductWrapper) {
     return;
   }
+  loadingSpinner();
   try {
     const response = await fetch(URL + oneProductEndpoint);
     if (!response.ok) {
@@ -62,7 +64,9 @@ async function fetchOneProduct() {
     oneProduct = result.data;
 
     displayOneProduct();
+    removeLoadingSpinner();
   } catch (error) {
+    removeLoadingSpinner();
     console.error("Full error object:", error);
     console.error("Error message:", error.message);
 
