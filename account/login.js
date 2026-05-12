@@ -9,8 +9,17 @@ function checkReferrer() {
     toastNotification("Successful register! You can now log in.", "success", 0);
     return;
   }
+
   const params = new URLSearchParams(window.location.search);
+
   if (params.get("redirected") === "cart") {
+    toastNotification(
+      "You need to be logged in to access this page",
+      "warning",
+      2,
+    );
+  }
+  if (params.get("redirected") === "user") {
     toastNotification(
       "You need to be logged in to access this page",
       "warning",

@@ -1,5 +1,5 @@
 function HamburgerMenu() {
-  const userIcon = document.getElementById("user");
+  const userIcons = document.querySelectorAll("#user");
   const shoppingcartIcons = document.querySelectorAll("#shoppingcart");
   const hamburgerButton = document.querySelector(".hamburger-menu");
   const hamburgerIcon = document.getElementById("hamburger");
@@ -7,6 +7,20 @@ function HamburgerMenu() {
   const mobileNav = document.querySelector(".mobile-navigation");
 
   if (!mobileNav || !hamburgerIcon || !hamburgerButton) return;
+
+  userIcons.forEach((icon) => {
+    const userLink = icon.closest("a");
+    if (userLink) {
+      userLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (localStorage.getItem("access_token") === null) {
+          window.location.href = "/account/login.html?redirected=user";
+        } else {
+          window.location.href = userLink.href;
+        }
+      });
+    }
+  });
 
   shoppingcartIcons.forEach((icon) => {
     const shoppingcartLink = icon.closest("a");

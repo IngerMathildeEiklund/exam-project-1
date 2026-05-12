@@ -1,0 +1,40 @@
+#user-wrapper {
+  background-color: white;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 3rem;
+  width: 100%;
+  text-align: center;
+  max-width: 50rem;
+}
+ 
+.red {
+  background-color: #C42317;
+  color: var(--button-text);
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.red:hover {
+  background-color: #A41D13;
+}
+
+#user-img{
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.separate {
+  border: 1px solid var(--gray);
+  margin: 0;
+}
+
+
+ @media (min-width: 768px) {
+#user-img{
+  width: 200px;
+  height: 200px;
+}
+ }

@@ -132,6 +132,13 @@ gap: 1rem;
 margin-bottom: 5rem;
 
 }
+.line {
+  margin-block: 1rem;
+  border: 1px solid var(--gray);
+}
+.bold {
+  font-weight: 600;
+}
 fieldset {
   border: none;
 }
@@ -196,6 +203,8 @@ button {
   border: none;
   cursor: pointer;
 }
+
+
 .icon-button-flex {
   display: flex;
   flex-direction: row;
@@ -272,7 +281,7 @@ h1 {
   margin-bottom: 1rem; /* remove maybe */ 
 }
 h2, legend {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
 }
 h3 {
   font-size: 1.1rem;
@@ -484,6 +493,32 @@ p {
 
 /* Messages*/ 
 
+/*Footer page */ 
+
+#company-info-wrapper {
+background-color: white;
+border-radius: 0.6rem;
+padding: 1rem;
+display: flex;
+flex-direction: column
+}
+.question {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.margin-bottom {
+  margin-bottom: 2rem;
+}
+.margin-block {
+  margin-block: 2rem;
+}
+#kaleido-logo {
+  width: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+/*Footer page */ 
+
 @media (min-width: 768px) {
   h1 {
     font-size: 1.5rem;
@@ -495,6 +530,7 @@ p {
   h3 {
     font-size: 1.2rem;
   }
+  
   p {
     font-size: 1rem;
   }
@@ -504,6 +540,15 @@ p {
   }
 ul.breadcrumbs li {
   font-size: 1.2rem;
+}
+#company-info-wrapper {
+
+padding: 3rem;
+}
+#kaleido-logo {
+  width: 300px;
+  width: 300px;
+
 }
   /* HEADER */
   #logo {

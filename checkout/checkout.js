@@ -14,14 +14,11 @@ if (summaryWrapper) {
 
     const detailInputs = document.querySelectorAll(".details-input");
     let isFormValid = true;
-    console.log(detailInputs);
 
     detailInputs.forEach((input) => {
       if (!input.value.trim()) {
         input.classList.add("empty-input");
         isFormValid = false;
-      } else {
-        input.classList.remove("empty-input");
       }
     });
     if (!isFormValid) {
