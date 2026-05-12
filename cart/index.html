@@ -97,7 +97,7 @@
         </button>
         <div class="mobile-navigation">
           <div class="icon-link-wrapper">
-            <a href="account/user.html" aria-label="User profile">
+            <a href="/account/user.html" aria-label="User profile">
               Profile
               <svg
                 id="user"
@@ -119,7 +119,7 @@
             </a>
           </div>
           <div class="icon-link-wrapper">
-            <a href="cart/index.html" aria-label="shoppingcart">
+            <a href="index.html" aria-label="shoppingcart">
               Shoppingcart
               <svg
                 id="shoppingcart"
@@ -169,14 +169,10 @@
             >
           </li>
           <li>
-            <a href="/checkout/index.html" aria-label="Go to checkout page"
-              >Checkout</a
-            >
+            <a href="/checkout/index.html">Checkout</a>
           </li>
           <li>
-            <a href="/success/index.html" aria-label="Go to success page"
-              >Success</a
-            >
+            <a href="/success/index.html">Success</a>
           </li>
         </ul>
       </nav>
@@ -197,7 +193,10 @@
             </div>
             <div class="trashcan-quantity-wrapper">
               <div class="trashcan-wrapper">
-                <button class="trashcan-button">
+                <button
+                  class="trashcan-button"
+                  aria-label="Remove item from cart"
+                >
                   <svg
                     id="delete-product"
                     xmlns="http://www.w3.org/2000/svg"
@@ -220,8 +219,11 @@
                   </svg>
                 </button>
               </div>
-              <div class="quantity">
-                <button id="minus-button">-</button>
+              <div class="quantity" role="group" aria-label="Quantity selector">
+                <button id="minus-button" aria-label="Decrease quantity">
+                  -
+                </button>
+                <label for="quantity-input" class="sr-only">Quantity </label>
                 <input
                   type="number"
                   id="quantity-input"
@@ -229,27 +231,34 @@
                   min="1"
                   readonly
                 />
-                <button id="plus-button">+</button>
+                <button id="plus-button" aria-label="Increment quantity">
+                  +
+                </button>
               </div>
             </div>
           </div>
           <hr class="line" />
         </template>
 
-        <div id="summary-wrapper" class="drop-shadow"></div>
+        <div
+          id="summary-wrapper"
+          aria-live="polite"
+          aria-label="Order summary"
+          class="drop-shadow"
+        ></div>
         <template id="summary-template">
-          <dl class="flex-row-spacing">
-            <dt class="products-amount">0 products</dt>
-            <dd class="products-total"></dd>
-          </dl>
-          <dl class="flex-row-spacing">
-            <dt>Shipping</dt>
-            <dd>200.00 kr</dd>
-          </dl>
-          <dl class="flex-row-spacing">
-            <dt>Total</dt>
-            <dd class="order-total"></dd>
-          </dl>
+          <div class="flex-row-spacing">
+            <p class="products-amount">0 products</p>
+            <p class="products-total"></p>
+          </div>
+          <div class="flex-row-spacing">
+            <p>Shipping</p>
+            <p>200.00 kr</p>
+          </div>
+          <div class="flex-row-spacing">
+            <p>Total</p>
+            <p class="order-total"></p>
+          </div>
           <button id="continue-to-checkout-button" class="blue">
             Continue to checkout
           </button>

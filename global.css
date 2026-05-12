@@ -150,6 +150,7 @@ ul.breadcrumbs {
   padding: 0.8rem 1rem;
   list-style: none;
   background-color: transparent;
+  margin-bottom: 2rem;
 }
 ul.breadcrumbs li {
   display: inline;
@@ -207,6 +208,9 @@ button {
 }
 input {
   border: solid 2px;
+  font-family: 'Roboto';
+  color: var(--text);
+  font-weight: 600;
   border-color: var(--gray);
   border-radius: 0.3rem;
   padding-inline: 1rem;
@@ -307,7 +311,17 @@ p {
   flex-direction: row;
   gap: 1rem;
 }
-
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 /* HEADER */
 
 #logo {

@@ -126,3 +126,14 @@ if (!isFormValid) {
 11:05 14:46:
 
 prompt: i want the image to stay to the left, then the : .title-price-quantity-wrapper beside that with a gap and then the .trashcan-quantity-wrapper at the end of the row. changes made: added flex-shrink to the elements.
+
+12:05 10:05:
+
+Prompt: What is my cart html missing in regards of accessibility? Changes made: Added some aria-labels, aria-live and aria-role.
+
+12:05 10:32:
+Prompt: What is my cart javascript file missing in regards of accessibility? Changes made: Added an aria-hidden to the empty cart image and added an aria-label to the quantity buttons and a setTimeout to focus to the "Go shopping" button when the cart is empty.
+
+12:05 10:40
+
+Prompt: Can you help me fix this bug with the price having several decimals even though i've set the price toFixed(2)? Changes made: Needed to multiply the price and quantity before adding toFixed(2) and not after.

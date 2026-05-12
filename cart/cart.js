@@ -83,9 +83,9 @@ function displayCart() {
   cartWrapper.innerHTML = `<h1> Your shopping cart </h1>`;
 
   if (cart.length === 0) {
-    const breadcrumbs = (document.querySelector(".breadcrumbs").innerHTML = "");
+    document.querySelector(".breadcrumbs").innerHTML = "";
     cartAndSummaryWrapper.innerHTML = `<div id="empty-cart-wrapper" class="drop-shadow"> <h1> No items found in cart </h1> <p> Let's fix that! </p> 
-    <svg id="shopping-bags" fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+    <svg id="shopping-bags" fill="#483D3A" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512 512" xml:space="preserve">
 <g>
 	<g>
@@ -120,9 +120,14 @@ function displayCart() {
 	</g>
 </g>
 </svg>
-<button id="go-shopping-button" class="button blue"> Go shopping </button> 
+<button id="go-shopping-button" class="button blue" aria-label="Continue shopping"> Go shopping </button> 
 </div>`;
+
+    document
+      .querySelector("#shopping-bags")
+      .setAttribute("aria-hidden", "true");
     const goShoppingBtn = document.getElementById("go-shopping-button");
+    setTimeout(() => goShoppingBtn.focus(), 0);
     goShoppingBtn.addEventListener("click", () => {
       window.location.href = "/index.html";
     });
@@ -137,7 +142,7 @@ function displayCart() {
     productWrapper.querySelector(".cart-image").alt = item.title;
     productWrapper.querySelector(".product-title").textContent = item.title;
     productWrapper.querySelector(".product-price").textContent =
-      `${item.price.toFixed(2) * item.quantity} kr`;
+      `${(item.price * item.quantity).toFixed(2)} kr`;
     productWrapper.querySelector("#product-price-sale").textContent =
       item.discountedPrice.toFixed(2);
     productWrapper.querySelector(".product-quantity").textContent =
@@ -149,7 +154,7 @@ function displayCart() {
         .classList.remove("hidden");
       productWrapper.querySelector(".product-price").classList.add("strike");
       productWrapper.querySelector("#product-price-sale").textContent =
-        `${item.discountedPrice.toFixed(2) * item.quantity} kr`;
+        `${(item.discountedPrice * item.quantity).toFixed(2)} kr`;
       productWrapper.querySelector("#product-price-sale").classList.add("sale");
     }
 
@@ -161,7 +166,10 @@ function displayCart() {
     function increment() {
       cart[index].quantity += 1;
       quantityInput.value = cart[index].quantity;
-
+      quantityInput.setAttribute(
+        "aria-label",
+        `Quantity: ${cart[index].quantity}`,
+      );
       saveCart();
 
       renderOrderSummary(cart, summaryWrapper);
@@ -171,6 +179,10 @@ function displayCart() {
       if (cart[index].quantity > 1) {
         cart[index].quantity -= 1;
         quantityInput.value = cart[index].quantity;
+        quantityInput.setAttribute(
+          "aria-label",
+          `Quantity: ${cart[index].quantity}`,
+        );
 
         saveCart();
 
@@ -193,6 +205,7 @@ function displayCart() {
     deleteBtn.addEventListener("click", () => {
       cart.splice(index, 1);
       saveCart();
+      toastNotification(`${item.title} removed from cart`, "success", 0);
       displayCart();
     });
 
@@ -200,6 +213,7 @@ function displayCart() {
   });
   const clearCartBtn = document.createElement("button");
   clearCartBtn.textContent = "Clear all items from cart";
+  clearCartBtn.setAttribute("aria-label", "Remove all items from cart");
   clearCartBtn.classList.add("clear-cart-button");
   if (clearCartBtn) {
     clearCartBtn.addEventListener("click", () => {
