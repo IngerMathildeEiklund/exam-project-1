@@ -132,6 +132,13 @@ gap: 1rem;
 margin-bottom: 5rem;
 
 }
+.line {
+  margin-block: 1rem;
+  border: 1px solid var(--gray);
+}
+.bold {
+  font-weight: 600;
+}
 fieldset {
   border: none;
 }
@@ -196,6 +203,8 @@ button {
   border: none;
   cursor: pointer;
 }
+
+
 .icon-button-flex {
   display: flex;
   flex-direction: row;
