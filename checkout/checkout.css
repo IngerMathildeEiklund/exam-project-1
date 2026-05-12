@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
+  max-width: 50rem;
 }
 
 #payment-options-wrapper {
@@ -61,13 +63,14 @@
 }
 
  @media (min-width: 768px) {
+#details-summary-wrapper {
 
+  padding-inline: 1rem;
+}
  }
 
  @media (min-width: 1440px) {
-#details-summary-wrapper {
-  flex-direction: row;
-}
+
  }
 @media (min-width: 1920px) {
   

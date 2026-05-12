@@ -16,7 +16,7 @@
       /></a>
       <nav class="navigation" aria-label="main navigation">
         <div class="user-shoppingcart-wrapper">
-          <a href="account/user.html" aria-label="User profile">
+          <a href="/account/user.html" aria-label="User profile">
             <svg
               id="user"
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@
               />
             </svg>
           </a>
-          <a href="cart/index.html" aria-label="Shoppingcart">
+          <a href="index.html" aria-label="Shoppingcart">
             <svg
               id="shoppingcart"
               xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@
         </button>
         <div class="mobile-navigation">
           <div class="icon-link-wrapper">
-            <a href="account/user.html" aria-label="User profile">
+            <a href="/account/user.html" aria-label="User profile">
               Profile
               <svg
                 id="user"
@@ -119,7 +119,7 @@
             </a>
           </div>
           <div class="icon-link-wrapper">
-            <a href="cart/index.html" aria-label="shoppingcart">
+            <a href="index.html" aria-label="shoppingcart">
               Shoppingcart
               <svg
                 id="shoppingcart"
@@ -169,14 +169,10 @@
             >
           </li>
           <li>
-            <a href="/checkout/index.html" aria-label="Go to checkout page"
-              >Checkout</a
-            >
+            <a href="/checkout/index.html">Checkout</a>
           </li>
           <li>
-            <a href="/success/index.html" aria-label="Go to success page"
-              >Success</a
-            >
+            <a href="/success/index.html">Success</a>
           </li>
         </ul>
       </nav>
@@ -196,30 +192,38 @@
               <p class="product-quantity"></p>
             </div>
             <div class="trashcan-quantity-wrapper">
-              <button class="trashcan-button">
-                <svg
-                  id="delete-product"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+              <div class="trashcan-wrapper">
+                <button
+                  class="trashcan-button"
+                  aria-label="Remove item from cart"
                 >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4 7l16 0" />
-                  <path d="M10 11l0 6" />
-                  <path d="M14 11l0 6" />
-                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                </svg>
-              </button>
-              <div class="quantity">
-                <button id="minus-button">-</button>
+                  <svg
+                    id="delete-product"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 7l16 0" />
+                    <path d="M10 11l0 6" />
+                    <path d="M14 11l0 6" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                  </svg>
+                </button>
+              </div>
+              <div class="quantity" role="group" aria-label="Quantity selector">
+                <button id="minus-button" aria-label="Decrease quantity">
+                  -
+                </button>
+                <label for="quantity-input" class="sr-only">Quantity </label>
                 <input
                   type="number"
                   id="quantity-input"
@@ -227,27 +231,34 @@
                   min="1"
                   readonly
                 />
-                <button id="plus-button">+</button>
+                <button id="plus-button" aria-label="Increment quantity">
+                  +
+                </button>
               </div>
             </div>
           </div>
-          <hr class="margin" />
+          <hr class="line" />
         </template>
 
-        <div id="summary-wrapper" class="drop-shadow"></div>
+        <div
+          id="summary-wrapper"
+          aria-live="polite"
+          aria-label="Order summary"
+          class="drop-shadow"
+        ></div>
         <template id="summary-template">
-          <dl class="flex-row-spacing">
-            <dt class="products-amount">0 products</dt>
-            <dd class="products-total"></dd>
-          </dl>
-          <dl class="flex-row-spacing">
-            <dt>Shipping</dt>
-            <dd>200.00 kr</dd>
-          </dl>
-          <dl class="flex-row-spacing">
-            <dt>Total</dt>
-            <dd class="order-total"></dd>
-          </dl>
+          <div class="flex-row-spacing">
+            <p class="products-amount">0 products</p>
+            <p class="products-total"></p>
+          </div>
+          <div class="flex-row-spacing">
+            <p>Shipping</p>
+            <p>200.00 kr</p>
+          </div>
+          <div class="flex-row-spacing">
+            <p>Total</p>
+            <p class="order-total"></p>
+          </div>
           <button id="continue-to-checkout-button" class="blue">
             Continue to checkout
           </button>
@@ -354,5 +365,6 @@
     </footer>
     <script type="module" src="cart.js"></script>
     <script type="module" src="/header.js"></script>
+    <script type="module" src="/messages.js"></script>
   </body>
 </html>
