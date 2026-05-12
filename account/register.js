@@ -1,5 +1,6 @@
 import { URL } from "../api.js";
 import { toastNotification } from "../messages.js";
+import { loadingSpinner, removeLoadingSpinner } from "../messages.js";
 const registerEndpoint = URL + "/auth/register";
 
 async function registerUser(url, data) {
@@ -68,10 +69,15 @@ registrationForm.addEventListener("submit", async (e) => {
   document.querySelector("#email-format-error").classList.add("hidden");
   document.querySelector("#passwords-do-not-match").classList.add("hidden");
   document.querySelector("#passwords-length").classList.add("hidden");
+
+  loadingSpinner();
+
   try {
     await registerUser(registerEndpoint, userData);
+    removeLoadingSpinner();
     window.location.href = "login.html";
   } catch (error) {
+    removeLoadingSpinner();
     console.error(error);
   }
 });

@@ -1,6 +1,6 @@
 import { URL } from "../api.js";
 import { toastNotification } from "../messages.js";
-
+import { loadingSpinner, removeLoadingSpinner } from "../messages.js";
 const loginEndpoint = URL + "/auth/login";
 const accessToken = [];
 
@@ -75,9 +75,11 @@ loginForm.addEventListener("submit", async (e) => {
     email: emailLoginInput,
     password: passwordLoginInput,
   };
+  loadingSpinner();
   try {
     const accessToken = await logIn(credentials);
     if (!accessToken) {
+      removeLoadingSpinner();
       return;
     }
     localStorage.setItem("access_token", accessToken);
@@ -85,6 +87,7 @@ loginForm.addEventListener("submit", async (e) => {
     console.log(value); //remove this later, its just to see that it works
     window.location.href = "/index.html"; // see if i can make this relocate back to the page the user was on when being prompted to login//
   } catch (error) {
+    removeLoadingSpinner();
     toastNotification("Something went wrong", "error", 1);
   }
 });
