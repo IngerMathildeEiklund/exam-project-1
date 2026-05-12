@@ -14,14 +14,14 @@ let oneProduct = {};
 
 const removeTokenBtn = document.getElementById("remove-token");
 
-removeTokenBtn.addEventListener("click", () => {
-  if (localStorage.getItem("access_token") === null) {
-    console.log("token already removed");
-  } else {
-    localStorage.removeItem("access_token");
-    console.log("Token removed");
-  }
-});
+// removeTokenBtn.addEventListener("click", () => {
+//   if (localStorage.getItem("access_token") === null) {
+//     console.log("token already removed");
+//   } else {
+//     localStorage.removeItem("access_token");
+//     console.log("Token removed");
+//   }
+// });
 
 function loginPopUp() {
   const main = document.querySelector("main");

@@ -1,6 +1,7 @@
 #one-product-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   background-color: white;
   border-radius: 1rem;
 }
@@ -83,7 +84,7 @@ main.popup-active {
 
 @media (min-width: 768px) {
   #one-product-wrapper {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
     background-color: white;
   }
   #one-product-img-wrapper {
@@ -92,7 +93,9 @@ main.popup-active {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1440px) {  
+  
+
 }
 @media (min-width: 1920px) {
 }

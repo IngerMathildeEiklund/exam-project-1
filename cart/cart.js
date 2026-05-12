@@ -192,11 +192,13 @@ function displayCart() {
 
     minusBtn.addEventListener("click", () => {
       decrement();
+      toastNotification(`Removed one ${item.title} from cart`, "success", 0);
       displayCart();
     });
 
     plusBtn.addEventListener("click", () => {
       increment();
+      toastNotification(`Added one more ${item.title} to cart`, "success", 0);
       displayCart();
     });
 
