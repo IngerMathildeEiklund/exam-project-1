@@ -17,8 +17,6 @@
 --text: #483D3A;
 --blue: #2E4CE0;
 --blue-hover: #1632BA;
---purple: #BC248A;
---purple-hover: #960D69;
 --button-text: #F3F3F3;
 --dark-gray: #B1B1B1;
 --light-gray: #F3F3F3;
@@ -31,4 +29,6 @@
 --text-warning: #995200;
 --background-success: #CDF2CA;
 --text-success: #096800;
+--gray-button: #525252;
+--gray-button-hover: #303030;
 }

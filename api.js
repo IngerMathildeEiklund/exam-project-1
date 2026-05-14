@@ -215,6 +215,7 @@ function renderProducts(products) {
       const priceWrapper = document.createElement("div");
 
       card.classList.add("card");
+      productPrice.classList.add("price");
       imageWrapper.classList.add("card-img-wrapper");
       productInfoWrapper.classList.add("card-info-wrapper");
       priceWrapper.classList.add("price-wrapper");

@@ -137,3 +137,17 @@ Prompt: What is my cart javascript file missing in regards of accessibility? Cha
 12:05 10:40
 
 Prompt: Can you help me fix this bug with the price having several decimals even though i've set the price toFixed(2)? Changes made: Needed to multiply the price and quantity before adding toFixed(2) and not after.
+
+12:05 15:21:
+
+Prompt: what is wrong with my loading spinner? Needed to add a few things to the loading spinner both for accessibility and needed body[0] and not just body to target the correct thing. Also needed a remove loading spinner function. Needed help with where to place the two different functions in the async code.
+
+14:05 11:50:
+
+Prompt: What is my one product page missing in regards of accessibility? Changes made: Added some aria attributes on the pop up message if prompted to log in. Needed to move my event listeners outside of the display one product so then i needed to
+
+const popupToggle = loginPopUp(addToCartBtn);
+
+14:05 13:03:
+
+Prompt: What is my header missing in regards of accessibility? Changes made: Instead of writing the logic of closing the hamburger menu several times made it into a function and called it when needed inside the event handlers. S

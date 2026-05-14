@@ -139,14 +139,14 @@
         </div>
       </nav>
     </header>
-    <div id="login-popup-wrapper">
-      <div
-        id="login-popup"
-        class="drop-shadow"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <h3>Login required</h3>
+    <div
+      id="login-popup-wrapper"
+      role="dialog"
+      aria-labelledby="login-required"
+      aria-modal="true"
+    >
+      <div id="login-popup" class="drop-shadow">
+        <h3 id="login-required">Login required</h3>
         <p>You need to be logged in to purchase this item.</p>
         <div>
           <button id="cancel-popup" class="blue">Cancel</button>
@@ -177,10 +177,10 @@
       </button>
       <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
-      <button id="remove-token" class="blue">remove token</button>
+      <!-- <button id="remove-token" class="blue">remove token</button> -->
       <div id="one-product-wrapper" class="drop-shadow">
         <div id="one-product-img-wrapper"></div>
-        <div id="one-product-info-wrapper" class="flex-column">
+        <div id="one-product-info-wrapper">
           <div id="buttons-wrapper">
             <button id="add-to-cart-button" class="blue icon-button-flex">
               <svg
@@ -199,7 +199,7 @@
               </svg>
               Add to cart
             </button>
-            <button id="share-button" class="purple icon-button-flex">
+            <button id="share-button" class="gray icon-button-flex">
               <svg
                 id="icon-on-button"
                 xmlns="http://www.w3.org/2000/svg"

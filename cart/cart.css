@@ -159,7 +159,10 @@ padding-block: 1rem;
  @media (min-width: 1440px) {
   #cart-and-summary-wrapper {
     grid-template-columns: 1fr 1fr 1fr;
-    max-width: 100rem;
+    width: 100%;
+  }
+  #empty-cart-wrapper {
+    grid-column: span 3;
   }
 
 #cart-wrapper {

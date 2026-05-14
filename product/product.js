@@ -14,16 +14,23 @@ let oneProduct = {};
 
 const removeTokenBtn = document.getElementById("remove-token");
 
-removeTokenBtn.addEventListener("click", () => {
-  if (localStorage.getItem("access_token") === null) {
-    console.log("token already removed");
-  } else {
-    localStorage.removeItem("access_token");
-    console.log("Token removed");
-  }
-});
+// removeTokenBtn.addEventListener("click", () => {
+//   if (localStorage.getItem("access_token") === null) {
+//     console.log("token already removed");
+//   } else {
+//     localStorage.removeItem("access_token");
+//     console.log("Token removed");
+//   }
+// });
+const addToCartBtn = document.getElementById("add-to-cart-button");
+const shareBtn = document.getElementById("share-button");
+addToCartBtn.setAttribute("aria-label", "Add item to cart");
+shareBtn.setAttribute("aria-label", "Copy link to clipboard");
 
-function loginPopUp() {
+function copyCurrentURL() {
+  navigator.clipboard.writeText(window.location.href);
+}
+function loginPopUp(triggerBtn) {
   const main = document.querySelector("main");
   const popUpWrapper = document.getElementById("login-popup-wrapper");
   const popUp = document.getElementById("login-popup");
@@ -33,15 +40,27 @@ function loginPopUp() {
   const toggle = () => {
     main.classList.toggle("popup-active");
     popUp.classList.toggle("active");
+
+    if (popUp.classList.contains("active")) {
+      cancelBtn.focus();
+    } else {
+      triggerBtn.focus();
+    }
   };
   loginBtn.addEventListener("click", () => {
     window.location.href = "/account/login.html";
   });
 
   cancelBtn.addEventListener("click", toggle);
+
+  popUpWrapper.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && popUp.classList.contains("active")) {
+      toggle();
+    }
+  });
   return toggle;
 }
-const popupToggle = loginPopUp();
+const popupToggle = loginPopUp(addToCartBtn);
 
 const oneProductWrapper = document.getElementById("one-product-wrapper");
 const oneProductImgWrapper = document.getElementById("one-product-img-wrapper");
@@ -67,16 +86,33 @@ async function fetchOneProduct() {
     removeLoadingSpinner();
   } catch (error) {
     removeLoadingSpinner();
-    console.error("Full error object:", error);
-    console.error("Error message:", error.message);
-
     const errorMsg = document.createElement("p");
     errorMsg.setAttribute("role", "alert");
     errorMsg.textContent = "Something went wrong, please try again later.";
     oneProductWrapper.appendChild(errorMsg);
   }
 }
+shareBtn.addEventListener("click", () => {
+  copyCurrentURL();
+  toastNotification("Link copied to clipboard", "success", 0);
+});
 
+addToCartBtn.addEventListener("click", () => {
+  if (localStorage.getItem("access_token") === null) {
+    console.log("You are not logged in!");
+    popupToggle();
+  } else {
+    const selectedItem = {
+      id: oneProduct.id,
+      title: oneProduct.title,
+      price: oneProduct.price,
+      discountedPrice: oneProduct.discountedPrice,
+      image: oneProduct.image.url,
+      quantity: 1,
+    };
+    addToCart(selectedItem);
+  }
+});
 function displayOneProduct() {
   if (!oneProductWrapper || !oneProductImgWrapper || !oneProductInfoWrapper) {
     return;
@@ -85,6 +121,8 @@ function displayOneProduct() {
   const productName = document.createElement("h2");
   const productDesc = document.createElement("p");
   const productRating = document.createElement("p");
+  const nameDescRatingWrapper = document.createElement("div");
+  nameDescRatingWrapper.classList.add("title-price-rating-spacing");
   const productPrice = document.createElement("p");
   const productTags = document.createElement("p");
   const priceWrapper = document.createElement("div");
@@ -93,53 +131,27 @@ function displayOneProduct() {
   productImage.alt = oneProduct.title;
   productName.textContent = oneProduct.title;
   productDesc.textContent = oneProduct.description;
-  productTags.textContent = oneProduct.tags;
+  productTags.textContent = `Tags: ${oneProduct.tags}`;
   productPrice.textContent = `${oneProduct.price} kr`;
-  productRating.textContent = ` ${oneProduct.rating.toFixed(1)}`;
+  productPrice.classList.add("price");
+  productRating.textContent = `Average rating: ${oneProduct.rating.toFixed(1)}`;
   if (oneProduct.rating === 0) {
-    productRating.textContent = "No rating for this item yet";
+    productRating.textContent = "Average rating: No rating for this item yet";
   }
-
-  const addToCartBtn = document.getElementById("add-to-cart-button");
-  const shareBtn = document.getElementById("share-button");
-  addToCartBtn.setAttribute("aria-label", "Add item to cart");
-  shareBtn.setAttribute("aria-label", "Copy link to clipboard");
-
-  function copyCurrentURL() {
-    navigator.clipboard.writeText(window.location.href);
-  }
-  shareBtn.addEventListener("click", () => {
-    copyCurrentURL();
-    toastNotification("Link copied to clipboard", "success", 0);
-  });
-
-  addToCartBtn.addEventListener("click", () => {
-    if (localStorage.getItem("access_token") === null) {
-      console.log("You are not logged in!");
-      popupToggle();
-    } else {
-      const selectedItem = {
-        id: oneProduct.id,
-        title: oneProduct.title,
-        price: oneProduct.price,
-        discountedPrice: oneProduct.discountedPrice,
-        image: oneProduct.image.url,
-        quantity: 1,
-      };
-      addToCart(selectedItem);
-    }
-  });
 
   oneProductImgWrapper.appendChild(productImage);
-  oneProductInfoWrapper.appendChild(productName);
-  oneProductInfoWrapper.appendChild(productDesc);
-  oneProductInfoWrapper.appendChild(productRating);
+  nameDescRatingWrapper.appendChild(productName);
+  nameDescRatingWrapper.appendChild(productDesc);
+  nameDescRatingWrapper.appendChild(productRating);
+  oneProductInfoWrapper.appendChild(nameDescRatingWrapper);
 
   if (oneProduct.price > oneProduct.discountedPrice) {
     productPrice.classList.add("strike");
     const salePrice = document.createElement("p");
     salePrice.textContent = `${oneProduct.discountedPrice} kr`;
     salePrice.classList.add("sale");
+    priceWrapper.classList.add("flex-row");
+    priceWrapper.classList.add("margin");
 
     priceWrapper.appendChild(productPrice);
     priceWrapper.appendChild(salePrice);
@@ -174,7 +186,6 @@ function displayReviews() {
     const reviewsTitle = document.createElement("h3");
     reviewsTitle.classList.add("padding");
 
-    reviewsWrapper.appendChild(reviewsTitle);
     reviewsTitle.textContent = `Reviews of ${oneProduct.title}`;
     reviewsWrapper.appendChild(reviewsTitle);
 
@@ -191,12 +202,13 @@ function displayReviews() {
       const reviewUsername = document.createElement("h4");
       const reviewDescription = document.createElement("p");
       const reviewRating = document.createElement("p");
-
+      const hr = document.createElement("hr");
+      hr.classList.add("line");
       reviewUsername.textContent = review.username;
       reviewDescription.textContent = review.description;
       reviewRating.textContent = `Rating: ${review.rating} / 5`;
       userImage.src = getRandomAvatar();
-      userImage.alt = "User avatar";
+      userImage.setAttribute("aria-hidden", "true");
 
       userImage.classList.add("avatar");
       reviewUsername.classList.add("padding");
@@ -208,6 +220,7 @@ function displayReviews() {
       reviewsWrapper.appendChild(reviewUsername);
       reviewsWrapper.appendChild(reviewDescription);
       reviewsWrapper.appendChild(reviewRating);
+      reviewRating.appendChild(hr);
     }
   } catch (error) {
     console.log("something went wrong");
