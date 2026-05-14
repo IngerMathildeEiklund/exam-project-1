@@ -7,12 +7,20 @@ function HamburgerMenu() {
   const mobileNav = document.querySelector(".mobile-navigation");
 
   if (!mobileNav || !hamburgerIcon || !hamburgerButton) return;
+  hamburgerButton.setAttribute("aria-expanded", "false");
 
+  const closeMenu = () => {
+    mobileNav.classList.remove("active");
+    hamburgerCloseIcon.classList.add("hidden");
+    hamburgerIcon.classList.remove("hidden");
+    hamburgerButton.setAttribute("aria-expanded", "false");
+  };
   userIcons.forEach((icon) => {
     const userLink = icon.closest("a");
     if (userLink) {
       userLink.addEventListener("click", (e) => {
         e.preventDefault();
+        closeMenu();
         if (localStorage.getItem("access_token") === null) {
           window.location.href = "/account/login.html?redirected=user";
         } else {
@@ -27,6 +35,7 @@ function HamburgerMenu() {
     if (shoppingcartLink) {
       shoppingcartLink.addEventListener("click", (e) => {
         e.preventDefault();
+        closeMenu();
         if (localStorage.getItem("access_token") === null) {
           window.location.href = "/account/login.html?redirected=cart";
         } else {
@@ -49,10 +58,19 @@ function HamburgerMenu() {
 
   mediaQuery.addEventListener("change", (e) => {
     if (e.matches) {
-      mobileNav.classList.remove("active");
-      hamburgerCloseIcon.classList.add("hidden");
-      hamburgerIcon.classList.remove("hidden");
+      closeMenu();
     }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileNav.classList.contains("active")) {
+      closeMenu();
+      hamburgerButton.focus();
+    }
+  });
+
+  const mobileNavLinks = mobileNav.querySelectorAll("a");
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 }
 

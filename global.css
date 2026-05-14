@@ -56,10 +56,17 @@ main {
 }
 .sale {
   color: var(--sale-price);
+  font-weight: 600;
 }
 .strike {
   text-decoration: line-through;
+  font-size: 1rem;
 }
+.price {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 .bold {
   font-weight: 800;
 }
@@ -251,13 +258,16 @@ a {
 }
 .price {
   font-weight: 600;
+  font-size: 1.1rem;
 }
 .sale {
   color: var(--sale-price);
   font-weight: 600;
+  font-size: 1.1rem;
 }
 .strike {
   text-decoration: line-through;
+  font-size: 1.1rem;
 }
 
 input:focus {
@@ -269,14 +279,14 @@ input:focus {
   background-color: var(--blue);
 }
 
-.purple {
-  background-color: var(--purple);
+.gray {
+  background-color: var(--gray-button);
 }
 .blue:hover {
   background-color: var(--blue-hover);
 }
-.purple:hover {
-  background-color: var(--purple-hover);
+.gray:hover {
+  background-color: var(--gray-button-hover);
 }
 
 h1 {
@@ -323,6 +333,7 @@ p {
   flex-direction: row;
   gap: 1rem;
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -641,5 +652,19 @@ padding: 3rem;
   }
     main {
     margin-inline: 15rem;
+  }
+    h1 {
+    font-size: 1.8rem;
+    
+  }
+    h2, legend {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
   }
 }
