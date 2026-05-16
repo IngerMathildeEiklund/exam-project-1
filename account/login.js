@@ -88,6 +88,10 @@ loginForm.addEventListener("submit", async (e) => {
     window.location.href = "/index.html"; // see if i can make this relocate back to the page the user was on when being prompted to login//
   } catch (error) {
     removeLoadingSpinner();
-    toastNotification("Something went wrong", "error", 1);
+    toastNotification(
+      "Something went wrong, please try gain later",
+      "error",
+      1,
+    );
   }
 });

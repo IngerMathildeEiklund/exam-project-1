@@ -264,8 +264,11 @@ function renderProducts(products) {
       }
     }
   } catch (error) {
-    productWrapper.innerHTML =
-      "<p> Could not load products, please try again later. </p>";
+    const errorMsg = document.createElement("div");
+    errorMsg.role = "alert";
+    errorMsg.setAttribute("aria-live", "assertive");
+    errorMsg.textContent = `Could not load products. Please try again later`;
+    productWrapper.appendChild(errorMsg);
   }
 }
 
