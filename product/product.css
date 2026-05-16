@@ -4,7 +4,6 @@
   grid-template-rows: auto;
   background-color: white;
   border-radius: 0.6rem;
-  max-width: 80rem;
   margin: 0 auto;
   gap: 0.5rem;
 }
@@ -45,7 +44,6 @@
   background-color: white;
   border-radius: 0.6rem;
   width: 100%;
-  max-width: 80rem;
   padding: 1rem;
   margin-top: 5rem;
 }

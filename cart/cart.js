@@ -84,7 +84,7 @@ function displayCart() {
 
   if (cart.length === 0) {
     document.querySelector(".breadcrumbs").innerHTML = "";
-    cartAndSummaryWrapper.innerHTML = `<div id="empty-cart-wrapper" class="drop-shadow"> <h1> No items found in cart </h1> <p> Let's fix that! </p> 
+    cartAndSummaryWrapper.innerHTML = `<div id="empty-cart-wrapper" class="drop-shadow section-smaller"> <h1> No items found in cart </h1> <p> Let's fix that! </p> 
     <svg id="shopping-bags" fill="#483D3A" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
 	 viewBox="0 0 512 512" xml:space="preserve">
 <g>

@@ -161,47 +161,49 @@
         Back
       </button>
       <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
-      <form id="registration-form" class="drop-shadow">
-        <h1 id="registration-header">Registration</h1>
-        <label for="username-registration-input"
-          >Username
+      <section class="section-smaller">
+        <form id="registration-form" class="drop-shadow">
+          <h1 id="registration-header">Registration</h1>
+          <label for="username-registration-input"
+            >Username
 
-          <input type="text" id="username-registration-input" required />
-        </label>
+            <input type="text" id="username-registration-input" required />
+          </label>
 
-        <label for="email-registration-input"
-          >Email
+          <label for="email-registration-input"
+            >Email
 
-          <input type="email" id="email-registration-input" required />
-          <p id="email-format-error" class="error-message hidden">
-            Email format must be "@stud.noroff.no"
+            <input type="email" id="email-registration-input" required />
+            <p id="email-format-error" class="error-message hidden">
+              Email format must be "@stud.noroff.no"
+            </p>
+          </label>
+
+          <label for="password-registration-input"
+            >Password
+            <input type="password" id="password-registration-input" required />
+            <p id="passwords-do-not-match" class="error-message hidden">
+              Entered passwords do not match
+            </p>
+            <p id="passwords-length" class="error-message hidden">
+              Password must be 8 characters or more
+            </p>
+          </label>
+
+          <label for="password-repeat-registration-input"
+            >Repeat password
+            <input
+              type="password"
+              id="password-repeat-registration-input"
+              required
+            />
+          </label>
+          <p class="register-p">
+            Already have an account? Login <a href="login.html"> here</a>
           </p>
-        </label>
-
-        <label for="password-registration-input"
-          >Password
-          <input type="password" id="password-registration-input" required />
-          <p id="passwords-do-not-match" class="error-message hidden">
-            Entered passwords do not match
-          </p>
-          <p id="passwords-length" class="error-message hidden">
-            Password must be 8 characters or more
-          </p>
-        </label>
-
-        <label for="password-repeat-registration-input"
-          >Repeat password
-          <input
-            type="password"
-            id="password-repeat-registration-input"
-            required
-          />
-        </label>
-        <p class="register-p">
-          Already have an account? Login <a href="login.html"> here</a>
-        </p>
-        <button type="submit" id="signup-button" class="blue">Sign up</button>
-      </form>
+          <button type="submit" id="signup-button" class="blue">Sign up</button>
+        </form>
+      </section>
     </main>
     <footer id="footer">
       <div class="footer-navigation-wrapper" aria-label="footer navigation">
