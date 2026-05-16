@@ -20,6 +20,26 @@ label, dl, dd,legend {
   color: var(--text);
   font-weight: 600;
 }
+section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+}
+.section-smaller {
+    width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  max-width: 30rem;
+}
+.section-medium {
+      width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  max-width: 80rem;
+}
 p, dl, dd {
   font-weight: 400;
 }
@@ -595,6 +615,12 @@ ul.breadcrumbs li {
 #company-info-wrapper {
 
 padding: 3rem;
+}
+section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
 }
 #kaleido-logo {
   width: 300px;

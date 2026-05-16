@@ -139,8 +139,7 @@
         </div>
       </nav>
     </header>
-    <a href="#main-content" class="screen-reader-text">Skip to main content</a>
-    <main id="main-content">
+    <main>
       <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
       <button id="back-button" aria-label="Go back to previous page">
         <svg
@@ -178,94 +177,102 @@
           </li>
         </ul>
       </nav>
-      <div id="cart-and-summary-wrapper">
-        <div id="cart-wrapper" class="drop-shadow">
-          <h1>My shopping cart</h1>
-        </div>
-        <template id="cart-item-template">
-          <div class="product-cart-wrapper">
-            <div class="cart-image-wrapper">
-              <img class="cart-image" alt="" />
-            </div>
-            <div class="title-price-quantity-wrapper">
-              <h4 class="product-title"></h4>
-              <p class="product-price"></p>
-              <p id="product-price-sale" class="hidden"></p>
-              <p class="product-quantity"></p>
-            </div>
-            <div class="trashcan-quantity-wrapper">
-              <div class="trashcan-wrapper">
-                <button
-                  class="trashcan-button"
-                  aria-label="Remove item from cart"
-                >
-                  <svg
-                    id="delete-product"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+      <section>
+        <div id="cart-and-summary-wrapper">
+          <div id="cart-wrapper" class="drop-shadow">
+            <h1>My shopping cart</h1>
+          </div>
+          <template id="cart-item-template">
+            <div class="product-cart-wrapper">
+              <div class="cart-image-wrapper">
+                <img class="cart-image" alt="" />
+              </div>
+              <div class="title-price-quantity-wrapper">
+                <h4 class="product-title"></h4>
+                <p class="product-price"></p>
+                <p id="product-price-sale" class="hidden"></p>
+                <p class="product-quantity"></p>
+              </div>
+              <div class="trashcan-quantity-wrapper">
+                <div class="trashcan-wrapper">
+                  <button
+                    class="trashcan-button"
+                    aria-label="Remove item from cart"
                   >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 7l16 0" />
-                    <path d="M10 11l0 6" />
-                    <path d="M14 11l0 6" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                  </svg>
-                </button>
-              </div>
-              <div class="quantity" role="group" aria-label="Quantity selector">
-                <button id="minus-button" aria-label="Decrease quantity">
-                  -
-                </button>
-                <label for="quantity-input" class="sr-only">Quantity </label>
-                <input
-                  type="number"
-                  id="quantity-input"
-                  value="1"
-                  min="1"
-                  readonly
-                />
-                <button id="plus-button" aria-label="Increment quantity">
-                  +
-                </button>
+                    <svg
+                      id="delete-product"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 7l16 0" />
+                      <path d="M10 11l0 6" />
+                      <path d="M14 11l0 6" />
+                      <path
+                        d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+                      />
+                      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  class="quantity"
+                  role="group"
+                  aria-label="Quantity selector"
+                >
+                  <button id="minus-button" aria-label="Decrease quantity">
+                    -
+                  </button>
+                  <label for="quantity-input" class="sr-only">Quantity </label>
+                  <input
+                    type="number"
+                    id="quantity-input"
+                    value="1"
+                    min="1"
+                    readonly
+                  />
+                  <button id="plus-button" aria-label="Increment quantity">
+                    +
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <hr class="line" />
-        </template>
+            <hr class="line" />
+          </template>
 
-        <div
-          id="summary-wrapper"
-          aria-live="polite"
-          aria-label="Order summary"
-          class="drop-shadow"
-        ></div>
-        <template id="summary-template">
-          <div class="flex-row-spacing">
-            <p class="products-amount">0 products</p>
-            <p class="products-total"></p>
-          </div>
-          <div class="flex-row-spacing">
-            <p>Shipping</p>
-            <p>200.00 kr</p>
-          </div>
-          <div class="flex-row-spacing">
-            <p>Total</p>
-            <p class="order-total"></p>
-          </div>
-          <button id="continue-to-checkout-button" class="blue">
-            Continue to checkout
-          </button>
-        </template>
-      </div>
+          <div
+            id="summary-wrapper"
+            aria-live="polite"
+            aria-label="Order summary"
+            class="drop-shadow"
+          ></div>
+          <template id="summary-template">
+            <div class="flex-row-spacing">
+              <p class="products-amount">0 products</p>
+              <p class="products-total"></p>
+            </div>
+            <div class="flex-row-spacing">
+              <p>Shipping</p>
+              <p>200.00 kr</p>
+            </div>
+            <div class="flex-row-spacing">
+              <p>Total</p>
+              <p class="order-total"></p>
+            </div>
+            <button id="continue-to-checkout-button" class="blue">
+              Continue to checkout
+            </button>
+          </template>
+        </div>
+      </section>
     </main>
     <footer id="footer">
       <div class="footer-navigation-wrapper" aria-label="footer navigation">

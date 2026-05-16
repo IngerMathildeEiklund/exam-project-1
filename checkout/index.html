@@ -178,183 +178,189 @@
       </nav>
       <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
       <div id="details-summary-wrapper">
-        <form id="details-wrapper" class="drop-shadow">
-          <h1>Shipping information</h1>
-          <label class="label-input-wrapper" for="first-name"
-            >First name
+        <section>
+          <form id="details-wrapper" class="drop-shadow">
+            <h1>Shipping information</h1>
+            <label class="label-input-wrapper" for="first-name"
+              >First name
 
-            <input class="details-input" type="text" id="first-name" />
-          </label>
-          <label class="label-input-wrapper" for="last-name"
-            >Last name
+              <input class="details-input" type="text" id="first-name" />
+            </label>
+            <label class="label-input-wrapper" for="last-name"
+              >Last name
 
-            <input class="details-input" type="text" id="last-name" />
-          </label>
-          <label class="label-input-wrapper" for="shipping-address"
-            >Shipping address
+              <input class="details-input" type="text" id="last-name" />
+            </label>
+            <label class="label-input-wrapper" for="shipping-address"
+              >Shipping address
 
-            <input class="details-input" type="text" id="shipping-address" />
-          </label>
-          <label class="label-input-wrapper" for="phone-number"
-            >Phone number
-
-            <input
-              class="details-input"
-              type="text"
-              id="phone-number"
-              inputmode="tel"
-            />
-          </label>
-          <fieldset>
-            <legend>Payment method</legend>
-            <div id="payment-options-wrapper">
-              <div class="radio-wrapper">
-                <input
-                  type="radio"
-                  id="american-express-payment"
-                  name="payment_option"
-                  value="American Express"
-                />
-
-                <img
-                  class="payment-icon"
-                  src="/svgs/amex-svgrepo-com.svg"
-                  alt="image of American express"
-                />
-
-                <label class="radio-label" for="american-express-payment"
-                  >American Express
-                </label>
-              </div>
-              <div class="radio-wrapper">
-                <input
-                  type="radio"
-                  id="paypal-payment-option"
-                  name="payment_option"
-                  value="PayPal"
-                />
-
-                <img
-                  class="payment-icon"
-                  src="/svgs/paypal-svgrepo-com.svg"
-                  alt="image of PayPal"
-                />
-                <label class="radio-label" for="paypal-payment-option"
-                  >PayPal</label
-                >
-              </div>
-              <div class="radio-wrapper">
-                <input
-                  type="radio"
-                  id="visa-payment-option"
-                  name="payment_option"
-                  value="Visa"
-                />
-
-                <img
-                  class="payment-icon"
-                  src="/svgs/visa-svgrepo-com.svg"
-                  alt="image of Visa"
-                />
-                <label class="radio-label" for="visa-payment-option"
-                  >Visa</label
-                >
-              </div>
-              <div class="radio-wrapper">
-                <input
-                  type="radio"
-                  id="mastercard-payment-option"
-                  name="payment_option"
-                  value="Mastercard"
-                />
-
-                <img
-                  class="payment-icon"
-                  src="/svgs/mastercard-svgrepo-com.svg"
-                  alt="image of MasterCard"
-                />
-                <label class="radio-label" for="mastercard-payment-option"
-                  >MasterCard</label
-                >
-              </div>
-            </div>
-          </fieldset>
-          <fieldset id="payment-details">
-            <legend>Payment details</legend>
-            <label class="label-input-wrapper" for="card-number"
-              >Card number
+              <input class="details-input" type="text" id="shipping-address" />
+            </label>
+            <label class="label-input-wrapper" for="phone-number"
+              >Phone number
 
               <input
                 class="details-input"
                 type="text"
-                inputmode="numeric"
-                id="card-number"
-                maxlength="16"
-                placeholder="0000 0000 0000 0000"
+                id="phone-number"
+                inputmode="tel"
               />
             </label>
-            <div id="expiration-safety-code-wrapper">
-              <label class="label-input-wrapper" for="expiration-date"
-                >Expiration date
+            <fieldset>
+              <legend>Payment method</legend>
+              <div id="payment-options-wrapper">
+                <div class="radio-wrapper">
+                  <input
+                    type="radio"
+                    id="american-express-payment"
+                    name="payment_option"
+                    value="American Express"
+                  />
+
+                  <img
+                    class="payment-icon"
+                    src="/svgs/amex-svgrepo-com.svg"
+                    alt="image of American express"
+                  />
+
+                  <label class="radio-label" for="american-express-payment"
+                    >American Express
+                  </label>
+                </div>
+                <div class="radio-wrapper">
+                  <input
+                    type="radio"
+                    id="paypal-payment-option"
+                    name="payment_option"
+                    value="PayPal"
+                  />
+
+                  <img
+                    class="payment-icon"
+                    src="/svgs/paypal-svgrepo-com.svg"
+                    alt="image of PayPal"
+                  />
+                  <label class="radio-label" for="paypal-payment-option"
+                    >PayPal</label
+                  >
+                </div>
+                <div class="radio-wrapper">
+                  <input
+                    type="radio"
+                    id="visa-payment-option"
+                    name="payment_option"
+                    value="Visa"
+                  />
+
+                  <img
+                    class="payment-icon"
+                    src="/svgs/visa-svgrepo-com.svg"
+                    alt="image of Visa"
+                  />
+                  <label class="radio-label" for="visa-payment-option"
+                    >Visa</label
+                  >
+                </div>
+                <div class="radio-wrapper">
+                  <input
+                    type="radio"
+                    id="mastercard-payment-option"
+                    name="payment_option"
+                    value="Mastercard"
+                  />
+
+                  <img
+                    class="payment-icon"
+                    src="/svgs/mastercard-svgrepo-com.svg"
+                    alt="image of MasterCard"
+                  />
+                  <label class="radio-label" for="mastercard-payment-option"
+                    >MasterCard</label
+                  >
+                </div>
+              </div>
+            </fieldset>
+            <fieldset id="payment-details">
+              <legend>Payment details</legend>
+              <label class="label-input-wrapper" for="card-number"
+                >Card number
 
                 <input
                   class="details-input"
                   type="text"
                   inputmode="numeric"
-                  id="expiration-date"
-                  maxlength="5"
-                  placeholder="MM/YY"
+                  id="card-number"
+                  maxlength="16"
+                  placeholder="0000 0000 0000 0000"
                 />
               </label>
-              <label class="label-input-wrapper" for="safety-code"
-                >Safety code
+              <div id="expiration-safety-code-wrapper">
+                <label class="label-input-wrapper" for="expiration-date"
+                  >Expiration date
+
+                  <input
+                    class="details-input"
+                    type="text"
+                    inputmode="numeric"
+                    id="expiration-date"
+                    maxlength="5"
+                    placeholder="MM/YY"
+                  />
+                </label>
+                <label class="label-input-wrapper" for="safety-code"
+                  >Safety code
+
+                  <input
+                    class="details-input"
+                    type="text"
+                    inputmode="numeric"
+                    id="safety-code"
+                    maxlength="3"
+                    placeholder="CVV"
+                  />
+                </label>
+              </div>
+              <label class="label-input-wrapper" for="card-holder-name"
+                >Name of cardholder
 
                 <input
                   class="details-input"
                   type="text"
-                  inputmode="numeric"
-                  id="safety-code"
-                  maxlength="3"
-                  placeholder="CVV"
+                  id="card-holder-name"
                 />
               </label>
-            </div>
-            <label class="label-input-wrapper" for="card-holder-name"
-              >Name of cardholder
+            </fieldset>
 
-              <input class="details-input" type="text" id="card-holder-name" />
-            </label>
-          </fieldset>
-
-          <div
-            id="summary-wrapper"
-            role="region"
-            aria-live="polite"
-            aria-label="Order summary"
-          ></div>
-          <template id="summary-template">
-            <dl class="flex-row-spacing">
-              <dt class="products-amount">0 products</dt>
-              <dd class="products-total"></dd>
-            </dl>
-            <dl class="flex-row-spacing">
-              <dt>Shipping</dt>
-              <dd>200.00 kr</dd>
-            </dl>
-            <dl class="flex-row-spacing">
-              <dt>Total</dt>
-              <dd class="order-total"></dd>
-            </dl>
-            <button
-              id="pay-order-button"
-              aria-label="Pay order"
-              class="blue"
-              type="submit"
-            >
-              Pay order
-            </button>
-          </template>
-        </form>
+            <div
+              id="summary-wrapper"
+              role="region"
+              aria-live="polite"
+              aria-label="Order summary"
+            ></div>
+            <template id="summary-template">
+              <dl class="flex-row-spacing">
+                <dt class="products-amount">0 products</dt>
+                <dd class="products-total"></dd>
+              </dl>
+              <dl class="flex-row-spacing">
+                <dt>Shipping</dt>
+                <dd>200.00 kr</dd>
+              </dl>
+              <dl class="flex-row-spacing">
+                <dt>Total</dt>
+                <dd class="order-total"></dd>
+              </dl>
+              <button
+                id="pay-order-button"
+                aria-label="Pay order"
+                class="blue"
+                type="submit"
+              >
+                Pay order
+              </button>
+            </template>
+          </form>
+        </section>
       </div>
     </main>
     <footer id="footer">
