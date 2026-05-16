@@ -50,7 +50,13 @@ function loginPopUp(triggerBtn) {
   loginBtn.addEventListener("click", () => {
     window.location.href = "/account/login.html";
   });
-
+  if (popUp.classList.contains("active")) {
+    main.inert = true;
+    cancelBtn.focus();
+  } else {
+    main.inert = false;
+    triggerBtn.focus();
+  }
   cancelBtn.addEventListener("click", toggle);
 
   popUpWrapper.addEventListener("keydown", (e) => {

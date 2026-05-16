@@ -77,7 +77,6 @@
           </svg>
           <svg
             id="hamburger-close"
-            class="hidden"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -87,7 +86,7 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+            class="hidden icon icon-tabler icons-tabler-outline icon-tabler-x"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M18 6l-12 12" />
@@ -142,9 +141,10 @@
     <main>
       <h2>Highest reviewed products</h2>
       <div class="pagination">
-        <button id="prev-button">
+        <button id="prev-button" aria-label="View previous product">
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -160,9 +160,10 @@
           </svg>
         </button>
         <div id="carousel-wrapper"></div>
-        <button id="next-button">
+        <button id="next-button" aria-label="View next product">
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -186,24 +187,24 @@
         <div class="flex-column">
           <h3 class="footer-headings">Support</h3>
           <ul class="flex-column">
-            <li><a href="footerpages.html"> Contact us </a></li>
-            <li><a href="footerpages.html"> Help and FAQ </a></li>
-            <li><a href="footerpages.html"> Return policy </a></li>
+            <li><a href="/footerpages.html"> Contact us </a></li>
+            <li><a href="/footerpages.html"> Help and FAQ </a></li>
+            <li><a href="/footerpages.html"> Return policy </a></li>
           </ul>
         </div>
         <div class="flex-column">
           <h3 class="footer-headings">Company</h3>
           <ul class="flex-column">
-            <li><a href="footerpages.html"> About us </a></li>
-            <li><a href="footerpages.html"> Sustainability </a></li>
-            <li><a href="footerpages.html"> Career in Kaleido </a></li>
+            <li><a href="/footerpages.html"> About us </a></li>
+            <li><a href="/footerpages.html"> Sustainability </a></li>
+            <li><a href="/footerpages.html"> Career in Kaleido </a></li>
           </ul>
         </div>
         <div class="flex-column">
           <h3 class="footer-headings">Collaboration</h3>
           <ul class="flex-column">
-            <li><a href="footerpages.html"> Our affiliates </a></li>
-            <li><a href="footerpages.html"> Our sponsors </a></li>
+            <li><a href="/footerpages.html"> Our affiliates </a></li>
+            <li><a href="/footerpages.html"> Our sponsors </a></li>
           </ul>
         </div>
         <div class="flex-column">

@@ -150,4 +150,7 @@ const popupToggle = loginPopUp(addToCartBtn);
 
 14:05 13:03:
 
-Prompt: What is my header missing in regards of accessibility? Changes made: Instead of writing the logic of closing the hamburger menu several times made it into a function and called it when needed inside the event handlers. S
+Prompt: What is my header missing in regards of accessibility? Changes made: Instead of writing the logic of closing the hamburger menu several times made it into a function and called it when needed inside the event handlers.
+
+16:05 10:30
+Prompt: Is my cart js file missing any accessibility? Added inert to the main so that when the login pop up comes up everything else in main is not keyboard focusable also added aria-hidden="true" on svgs.
