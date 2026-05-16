@@ -43,6 +43,7 @@ async function fetchProducts(url, endpoint) {
       throw new Error("Unexpected API response format");
     }
     allProducts = result.data;
+    allProducts.splice(0, 11);
     checkScreenSize();
     renderProducts(allProducts);
 
