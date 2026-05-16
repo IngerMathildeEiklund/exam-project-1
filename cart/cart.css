@@ -124,6 +124,40 @@ border: none;
   font-size: 1rem;
   color: var(--text);
 }
+#clear-cart-wrapper {
+  position: relative;
+  padding: 1rem;
+}
+main.popup-active { 
+  filter: blur(1.5rem);
+  pointer-events: none;
+  user-select: none;
+}
+#clear-cart-popup {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  z-index: 100000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#clear-cart-popup.active {
+  top: 50%;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
  @media (min-width: 768px) {
 #cart-and-summary-wrapper {
   display: grid;

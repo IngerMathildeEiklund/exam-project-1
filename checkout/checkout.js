@@ -9,12 +9,16 @@ if (summaryWrapper) {
 
   const payOrderBtn = document.getElementById("pay-order-button");
   const detailsForm = document.getElementById("details-wrapper");
+
   detailsForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const detailInputs = document.querySelectorAll(".details-input");
     let isFormValid = true;
 
+    const paymentOption = document.querySelector(
+      'input[name="payment_option"]:checked',
+    );
     detailInputs.forEach((input) => {
       if (!input.value.trim()) {
         input.classList.add("empty-input");
@@ -23,6 +27,14 @@ if (summaryWrapper) {
     });
     if (!isFormValid) {
       toastNotification("Fields cannot be empty!", "warning", 2);
+      const emptyInput = document.querySelector(".empty-input");
+      if (emptyInput) {
+        emptyInput.focus();
+      }
+      return;
+    }
+    if (!paymentOption) {
+      toastNotification("No payment method selected!", "warning", 2);
       return;
     }
     window.location.href = "/success/index.html";
