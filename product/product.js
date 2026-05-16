@@ -229,7 +229,11 @@ function displayReviews() {
       reviewRating.appendChild(hr);
     }
   } catch (error) {
-    console.log("something went wrong");
+    toastNotification(
+      "Something went wrong, please try again later",
+      "error",
+      1,
+    );
   }
 }
 

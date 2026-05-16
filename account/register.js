@@ -78,6 +78,10 @@ registrationForm.addEventListener("submit", async (e) => {
     window.location.href = "login.html";
   } catch (error) {
     removeLoadingSpinner();
-    console.error(error);
+    toastNotification(
+      "Something went wrong, please try again later",
+      "error",
+      1,
+    );
   }
 });
