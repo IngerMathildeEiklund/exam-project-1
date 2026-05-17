@@ -19,13 +19,13 @@ function HamburgerMenu() {
     const userLink = icon.closest("a");
     if (userLink) {
       userLink.addEventListener("click", (e) => {
-        e.preventDefault();
         closeMenu();
         if (localStorage.getItem("access_token") === null) {
-          window.location.href =
-            "/exam-project-1/account/login.html?redirected=user";
-        } else {
-          window.location.href = userLink.href;
+          e.preventDefault();
+          window.location.href = userLink.href.replace(
+            /account\/user\.html/,
+            "account/login.html?redirected=user",
+          );
         }
       });
     }
@@ -35,13 +35,13 @@ function HamburgerMenu() {
     const shoppingcartLink = icon.closest("a");
     if (shoppingcartLink) {
       shoppingcartLink.addEventListener("click", (e) => {
-        e.preventDefault();
         closeMenu();
         if (localStorage.getItem("access_token") === null) {
-          window.location.href =
-            "/exam-project-1/account/login.html?redirected=cart";
-        } else {
-          window.location.href = shoppingcartLink.href;
+          e.preventDefault();
+          window.location.href = shoppingcartLink.href.replace(
+            /cart\/index.html/,
+            "account/login.html?redirected=cart",
+          );
         }
       });
     }
