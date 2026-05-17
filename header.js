@@ -23,7 +23,7 @@ function HamburgerMenu() {
         closeMenu();
         if (localStorage.getItem("access_token") === null) {
           window.location.href =
-            "/exam-project-1/account/account/login.html?redirected=user";
+            "/exam-project-1/account/login.html?redirected=user";
         } else {
           window.location.href = userLink.href;
         }
