@@ -7,9 +7,9 @@ export function toastNotification(message, type, iconIndex) {
     return;
   }
   const messageIcons = [
-    "/svgs/rosette-discount-check.svg", //success0//
-    "/svgs/exclamation-circle.svg", //error1//
-    "/svgs/alert-triangle.svg", //warning2//
+    "../svgs/rosette-discount-check.svg", //success0//
+    "../svgs/exclamation-circle.svg", //error1//
+    "../svgs/alert-triangle.svg", //warning2//
   ];
 
   const toastIconWrapper = document.createElement("div");
