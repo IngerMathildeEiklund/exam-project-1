@@ -119,10 +119,9 @@ border: none;
 }
 .clear-cart-button {
   background-color: transparent;
-  font-size: 1rem;
   color: var(--text);
 }
-#clear-cart-wrapper {
+#clear-cart-popup-wrapper {
   position: relative;
   padding: 1rem;
 }
@@ -156,6 +155,7 @@ main.popup-active {
   opacity: 1;
   transition: 0.5s;
 }
+
  @media (min-width: 768px) {
 #cart-and-summary-wrapper {
   display: grid;
