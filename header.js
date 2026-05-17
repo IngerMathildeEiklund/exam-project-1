@@ -73,5 +73,6 @@ function HamburgerMenu() {
     link.addEventListener("click", closeMenu);
   });
 }
-
-HamburgerMenu();
+document.addEventListener("DOMContentLoaded", () => {
+  HamburgerMenu();
+});
