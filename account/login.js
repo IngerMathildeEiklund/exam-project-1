@@ -85,7 +85,7 @@ loginForm.addEventListener("submit", async (e) => {
     localStorage.setItem("access_token", accessToken);
     const value = localStorage.getItem("access_token");
     console.log(value); //remove this later, its just to see that it works
-    window.location.href = "/index.html"; // see if i can make this relocate back to the page the user was on when being prompted to login//
+    window.location.href = "../index.html"; // see if i can make this relocate back to the page the user was on when being prompted to login//
   } catch (error) {
     removeLoadingSpinner();
     toastNotification(
