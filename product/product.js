@@ -48,7 +48,7 @@ function loginPopUp(triggerBtn) {
     }
   };
   loginBtn.addEventListener("click", () => {
-    window.location.href = "/account/login.html";
+    window.location.href = "../account/login.html";
   });
   if (popUp.classList.contains("active")) {
     main.inert = true;
