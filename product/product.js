@@ -238,11 +238,11 @@ function displayReviews() {
 }
 
 const avatars = [
-  "/svgs/avatar1.svg",
-  "/svgs/avatar2.svg",
-  "/svgs/avatar3.svg",
-  "/svgs/avatar4.svg",
-  "/svgs/avatar5.svg",
+  "../svgs/avatar1.svg",
+  "../svgs/avatar2.svg",
+  "../svgs/avatar3.svg",
+  "../svgs/avatar4.svg",
+  "../svgs/avatar5.svg",
 ];
 
 function getRandomAvatar() {
