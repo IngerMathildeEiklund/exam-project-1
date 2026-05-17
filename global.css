@@ -20,6 +20,44 @@ label, dl, dd,legend {
   color: var(--text);
   font-weight: 600;
 }
+
+#hero-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: 55% 50%;
+  display: block;
+}
+.hero-image-wrapper {
+position: relative;
+width: 100%;
+overflow: hidden;
+}
+
+.image-overlay {
+position: absolute;
+top: 0;
+right: 0;
+width: 100%;
+height: 100%;
+background:linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 97%);
+z-index: 10;
+}
+.hero-section {
+  position: relative;
+  display: flex;
+}
+#hero-image-text {
+  position: absolute;
+  font-weight: 500; 
+  font-family: var(--logo-font);
+  font-size: 1.3rem;
+  color: white;
+  z-index: 20;
+  top: 80%;
+  bottom: 20%;
+  right: 5%;
+}
 section {
   width: 100%;
   margin: 0 auto;
@@ -613,8 +651,11 @@ ul.breadcrumbs li {
   font-size: 1.2rem;
 }
 #company-info-wrapper {
-
 padding: 3rem;
+}
+#hero-image-text {
+  font-weight: 600; 
+  font-size: 2rem;
 }
 section {
   width: 100%;
@@ -626,6 +667,9 @@ section {
   width: 300px;
   width: 300px;
 
+}
+#hero-image {
+  height: 400px;
 }
   /* HEADER */
   #logo {
@@ -684,6 +728,13 @@ section {
   main {
     margin-inline: 15rem;
   }
+  #hero-image {
+  height: 800px;
+}
+#hero-image-text {
+  font-weight: 800; 
+  font-size: 3rem;
+}
 }
 @media (min-width: 1920px) {
   #products-wrapper {
