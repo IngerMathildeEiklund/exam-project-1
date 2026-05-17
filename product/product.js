@@ -1,7 +1,7 @@
 "use strict";
 
 import { URL, ALL_PRODUCTS_ENDPOINT } from "../api.js";
-import { addToCart, loadCart } from "/cart/cart.js";
+import { addToCart, loadCart } from "../cart/cart.js";
 import { toastNotification } from "../messages.js";
 import { loadingSpinner, removeLoadingSpinner } from "../messages.js";
 
