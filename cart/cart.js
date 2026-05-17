@@ -25,6 +25,48 @@ export function addToCart(product) {
   saveCart();
   toastNotification(`${product.title} added to cart!`, "success", 0);
 }
+let clearCartBtn = null;
+let popupToggle = null;
+
+function clearCartPopUp(triggerBtn) {
+  const main = document.querySelector("main");
+  const popUpWrapper = document.getElementById("clear-cart-popup-wrapper");
+  const popUp = document.getElementById("clear-cart-popup");
+  const cancelBtn = document.getElementById("cancel-clear");
+  const confirmClearBtn = document.getElementById("confirm-clear");
+
+  const toggle = () => {
+    main.classList.toggle("popup-active");
+    popUp.classList.toggle("active");
+
+    if (popUp.classList.contains("active")) {
+      cancelBtn.focus();
+    } else {
+      triggerBtn.focus();
+    }
+  };
+  if (popUp.classList.contains("active")) {
+    main.inert = true;
+    cancelBtn.focus();
+  } else {
+    main.inert = false;
+    triggerBtn.focus();
+  }
+  cancelBtn.addEventListener("click", toggle);
+
+  confirmClearBtn.addEventListener("click", () => {
+    cart.splice(0, cart.length);
+    saveCart();
+    toggle();
+    displayCart();
+  });
+  popUpWrapper.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && popUp.classList.contains("active")) {
+      toggle();
+    }
+  });
+  return toggle;
+}
 
 loadCart();
 
@@ -221,17 +263,17 @@ function displayCart() {
 
     cartWrapper.appendChild(productWrapper);
   });
-  const clearCartBtn = document.createElement("button");
+  clearCartBtn = document.createElement("button");
   clearCartBtn.textContent = "Clear all items from cart";
   clearCartBtn.setAttribute("aria-label", "Remove all items from cart");
   clearCartBtn.classList.add("clear-cart-button");
-  if (clearCartBtn) {
-    clearCartBtn.addEventListener("click", () => {
-      cart.splice(0, cart.length);
-      saveCart();
-      displayCart();
-    });
+
+  if (!popupToggle) {
+    popupToggle = clearCartPopUp(clearCartBtn);
   }
+  clearCartBtn.addEventListener("click", () => {
+    popupToggle();
+  });
 
   cartWrapper.appendChild(clearCartBtn);
   renderOrderSummary(cart, summaryWrapper);

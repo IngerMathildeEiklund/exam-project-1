@@ -67,7 +67,7 @@ and change the name of the parameter.
 
 prompt: Does my login and register functions look solid? Changes made: Removed some double error logging and code that was never reached.
 
-09:05 10:30:
+09.05 10:30:
 
 Prompt: Why is my access token returning nothing? Changes made: Needed to const the accessToken on the calling of the login function with an await. (async code is hard). My logic was otherwise correct!
 
@@ -75,11 +75,11 @@ Prompt: Why is my access token returning nothing? Changes made: Needed to const 
 const accessToken = await logIn(credentials);
 ```
 
-09:05 12:08:
+09.05 12:08:
 
 prompt: why isnt the popup showing up? Changes made: had to return the toggle function and apply it to the loginPopUp() so i could use it on the add to cart button.
 
-09:05 13:16:
+09.05 13:16:
 
 Prompt: Why isnt shoppingcart relocating to login if there is no access token? Changes made: Needed to include both mobile and desktop header links. Needed to const shoppingcarticons with queryselectorAll to get both links. Then looped through the links and added this; to store that link in the shoppingcartLink variable`
 
@@ -87,7 +87,7 @@ Prompt: Why isnt shoppingcart relocating to login if there is no access token? C
 const shoppingcartLink = icon.closest("a");
 ```
 
-09:05 14:04:
+09.05 14:04:
 
 prompt: Why isnt my toast notification showing up on the login page if the user was redirected from another page that required login? changes made: Added a params to the checkReferrer function.
 
@@ -102,11 +102,11 @@ if (params.get("redirected") === "cart") {
 }
 ```
 
-11:05 09:58:
+11.05 09:58:
 
 Prompt: What accessibility is missing from my checkout page? Changes made: Moved everything inside the form element, added fieldset and legend for semantic grouping and aria-labels.
 
-11:05 11:02:
+11.05 11:02:
 
 prompt: I need to use my toast notification to show that fields cannot be empty but placing it in the forEach makes it repeat as many times as there are inputfields, I dont know where to place it. Changes made: needed to create a let variable that is
 
@@ -123,18 +123,18 @@ if (!isFormValid) {
 }
 ```
 
-11:05 14:46:
+11.05 14:46:
 
 prompt: i want the image to stay to the left, then the : .title-price-quantity-wrapper beside that with a gap and then the .trashcan-quantity-wrapper at the end of the row. changes made: added flex-shrink to the elements.
 
-12:05 10:05:
+12.05 10:05:
 
 Prompt: What is my cart html missing in regards of accessibility? Changes made: Added some aria-labels, aria-live and aria-role.
 
-12:05 10:32:
+12.05 10:32:
 Prompt: What is my cart javascript file missing in regards of accessibility? Changes made: Added an aria-hidden to the empty cart image and added an aria-label to the quantity buttons and a setTimeout to focus to the "Go shopping" button when the cart is empty.
 
-12:05 10:40
+12.05 10:40
 
 Prompt: Can you help me fix this bug with the price having several decimals even though i've set the price toFixed(2)? Changes made: Needed to multiply the price and quantity before adding toFixed(2) and not after.
 
@@ -142,15 +142,31 @@ Prompt: Can you help me fix this bug with the price having several decimals even
 
 Prompt: what is wrong with my loading spinner? Needed to add a few things to the loading spinner both for accessibility and needed body[0] and not just body to target the correct thing. Also needed a remove loading spinner function. Needed help with where to place the two different functions in the async code.
 
-14:05 11:50:
+14.05 11:50:
 
 Prompt: What is my one product page missing in regards of accessibility? Changes made: Added some aria attributes on the pop up message if prompted to log in. Needed to move my event listeners outside of the display one product so then i needed to
 
 const popupToggle = loginPopUp(addToCartBtn);
 
-14:05 13:03:
+14.05 13:03:
 
 Prompt: What is my header missing in regards of accessibility? Changes made: Instead of writing the logic of closing the hamburger menu several times made it into a function and called it when needed inside the event handlers.
 
-16:05 10:30
+16.05 10:30
 Prompt: Is my cart js file missing any accessibility? Added inert to the main so that when the login pop up comes up everything else in main is not keyboard focusable also added aria-hidden="true" on svgs.
+
+17.05 09:06
+
+Prompt: How do I make sure items with the same id in cart add to the quantity and not cart length?
+Changes made: Added this to the addToCart function:
+
+```js
+const alreadyInCart = cart.find((item) => item.id === product.id);
+if (alreadyInCart) {
+  alreadyInCart.quantity += 1;
+}
+```
+
+17.05 09:54
+
+Prompt: What is wrong with my popup on clear cart? Changes made: Reused the pop up from the product page but needed tweaking as the clear cart lived inside displayCart. Needed to initialize clearCartBtn and popupToggle globally to null so i could use them in the other functions. Also pass triggerBtn as the parameters of clearCartPopUp so that i could use that in the displayCart function.
