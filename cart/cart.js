@@ -16,7 +16,12 @@ export function loadCart() {
 }
 
 export function addToCart(product) {
-  cart.push(product);
+  const alreadyInCart = cart.find((item) => item.id === product.id);
+  if (alreadyInCart) {
+    alreadyInCart.quantity += 1;
+  } else {
+    cart.push(product);
+  }
   saveCart();
   toastNotification(`${product.title} added to cart!`, "success", 0);
 }
@@ -187,18 +192,21 @@ function displayCart() {
         saveCart();
 
         renderOrderSummary(cart, summaryWrapper);
+      } else if (cart[index].quantity === 1) {
+        cart.splice(index, 1);
+        saveCart();
+        toastNotification(`${item.title} removed from cart`, "success", 0);
+        displayCart();
       }
     }
 
     minusBtn.addEventListener("click", () => {
       decrement();
-      toastNotification(`Removed one ${item.title} from cart`, "success", 0);
       displayCart();
     });
 
     plusBtn.addEventListener("click", () => {
       increment();
-      toastNotification(`Added one more ${item.title} to cart`, "success", 0);
       displayCart();
     });
 
