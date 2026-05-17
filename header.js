@@ -22,7 +22,7 @@ function HamburgerMenu() {
         e.preventDefault();
         closeMenu();
         if (localStorage.getItem("access_token") === null) {
-          window.location.href = "/account/login.html?redirected=user";
+          window.location.href = "account/login.html?redirected=user";
         } else {
           window.location.href = userLink.href;
         }
@@ -37,7 +37,7 @@ function HamburgerMenu() {
         e.preventDefault();
         closeMenu();
         if (localStorage.getItem("access_token") === null) {
-          window.location.href = "/account/login.html?redirected=cart";
+          window.location.href = "account/login.html?redirected=cart";
         } else {
           window.location.href = shoppingcartLink.href;
         }
