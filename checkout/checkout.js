@@ -37,6 +37,6 @@ if (summaryWrapper) {
       toastNotification("No payment method selected!", "warning", 2);
       return;
     }
-    window.location.href = "/success/index.html";
+    window.location.href = "../success/index.html";
   });
 }
