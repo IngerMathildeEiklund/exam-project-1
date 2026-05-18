@@ -24,10 +24,6 @@ function HamburgerMenu() {
           e.preventDefault();
           window.location.href =
             "/exam-project-1/account/login.html?redirected=user";
-          // window.location.href = userLink.href.replace(
-          //   /account\/user\.html/,
-          //   "account/login.html?redirected=user",
-          // );
         } else {
           window.location.href = userLink.href;
         }
@@ -44,10 +40,6 @@ function HamburgerMenu() {
           e.preventDefault();
           window.location.href =
             "/exam-project-1/account/login.html?redirected=cart";
-          // window.location.href = shoppingcartLink.href.replace(
-          //   /cart\/index.html/,
-          //   "account/login.html?redirected=cart",
-          // );
         } else {
           window.location.href = shoppingcartIcons.href;
         }
