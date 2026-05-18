@@ -12,16 +12,6 @@ const oneProductEndpoint = `${ALL_PRODUCTS_ENDPOINT}/${id}`;
 
 let oneProduct = {};
 
-const removeTokenBtn = document.getElementById("remove-token");
-
-// removeTokenBtn.addEventListener("click", () => {
-//   if (localStorage.getItem("access_token") === null) {
-//     console.log("token already removed");
-//   } else {
-//     localStorage.removeItem("access_token");
-//     console.log("Token removed");
-//   }
-// });
 const addToCartBtn = document.getElementById("add-to-cart-button");
 const shareBtn = document.getElementById("share-button");
 addToCartBtn.setAttribute("aria-label", "Add item to cart");

@@ -170,3 +170,7 @@ if (alreadyInCart) {
 17.05 09:54
 
 Prompt: What is wrong with my popup on clear cart? Changes made: Reused the pop up from the product page but needed tweaking as the clear cart lived inside displayCart. Needed to initialize clearCartBtn and popupToggle globally to null so i could use them in the other functions. Also pass triggerBtn as the parameters of clearCartPopUp so that i could use that in the displayCart function.
+
+18.05 11:38
+
+Prompt: What is wrong with my itemsInCart function? Changes made: Tried appending the div to the svg element which did not work, needed to append it to the anchortag instead.

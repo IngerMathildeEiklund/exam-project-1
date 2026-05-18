@@ -37,6 +37,7 @@ if (summaryWrapper) {
       toastNotification("No payment method selected!", "warning", 2);
       return;
     }
+    localStorage.removeItem("shoppingCart");
     window.location.href = "../success/index.html";
   });
 }
