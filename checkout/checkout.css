@@ -1,31 +1,31 @@
 #details-summary-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
   width: 100%;
-  max-width: 50rem;
 }
-
 #payment-options-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
 }
 .payment-icon {
   width: 50px;
   height: 50px;
 }
 #details-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  width: 100%;
+}
+#grid-1 {
+    background-color: white;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
 }
 .label-input-wrapper {
   display: flex;
@@ -33,8 +33,10 @@
 }
 #expiration-safety-code-wrapper {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
 .details-input {
   width: 100%;
 }
@@ -61,17 +63,31 @@
   flex-direction: column;
   gap: 2rem;
 }
-
- @media (min-width: 768px) {
-#details-summary-wrapper {
-
-  padding-inline: 1rem;
+label.label-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
 }
- }
 
  @media (min-width: 1440px) {
-
+#details-summary-wrapper {
+  padding-inline: 1rem;
+}
+#details-wrapper {
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr;
+}
+#grid-1 {
+  grid-column: span 2;
+}
+#grid-2 {
+  grid-column: span 1;
+}
+.payment-icon {
+  width: 60px;
+  height: 60px;
+}
  }
+ 
 @media (min-width: 1920px) {
   
 }
