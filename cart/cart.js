@@ -176,7 +176,7 @@ function displayCart() {
     const goShoppingBtn = document.getElementById("go-shopping-button");
     setTimeout(() => goShoppingBtn.focus(), 0);
     goShoppingBtn.addEventListener("click", () => {
-      window.location.href = "/index.html";
+      window.location.href = "../index.html";
     });
     cartAndSummaryWrapper.classList.add("empty-cart-styling");
   }

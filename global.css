@@ -423,6 +423,18 @@ p {
   width: clamp(80px, 70vw, 150px);
 }
 
+.cart-items {
+  border-radius: 50%;
+  background-color: var(--main-color);
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.cart-a {
+  position: relative;
+}
 .user-shoppingcart-wrapper {
   display: none;
 }
@@ -477,6 +489,7 @@ p {
 }
 .mobile-navigation a {
   color: var(--text);
+  position: relative;
 }
 
 .user-shoppingcart-wrapper-mobile {
