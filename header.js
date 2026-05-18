@@ -27,6 +27,8 @@ function HamburgerMenu() {
           //   /account\/user\.html/,
           //   "account/login.html?redirected=user",
           // );
+        } else {
+          window.location.href = userLink.href;
         }
       });
     }
@@ -44,6 +46,8 @@ function HamburgerMenu() {
           //   /cart\/index.html/,
           //   "account/login.html?redirected=cart",
           // );
+        } else {
+          window.location.href = shoppingcartLink.href;
         }
       });
     }
