@@ -280,7 +280,7 @@ function displayCart() {
   const checkoutBtn = document.getElementById("continue-to-checkout-button");
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
-      window.location.href = "/checkout/index.html";
+      window.location.href = "../checkout/index.html";
     });
   }
 }
