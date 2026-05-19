@@ -1,5 +1,6 @@
 #details-summary-wrapper {
   width: 100%;
+  max-width: 50rem;
 }
 #payment-options-wrapper {
   display: flex;
@@ -12,6 +13,17 @@
   width: 50px;
   height: 50px;
 }
+input[type="radio"]:focus-visible + img {
+  outline: 3px solid var(--outline);
+  outline-offset: 8px;
+}
+
+
+label.label-input-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
 #details-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -21,7 +33,7 @@
 #grid-1 {
     background-color: white;
   padding: 2rem;
-  border-radius: 0.6rem;
+  border-radius: 0.3rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -32,9 +44,14 @@
   flex-direction: column;
 }
 #expiration-safety-code-wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 2rem;
+}
+
+#expiration-safety-code-wrapper input {
+width: 100%;
 }
 
 .details-input {
@@ -54,8 +71,8 @@
   flex-direction: column;
   gap: 1rem;
   background-color: white;
-  border-radius: 0.6rem;
-  padding: 1rem;
+  border-radius: 0.2rem;
+  padding: 2rem;
   height: fit-content;
 }
 #payment-details {
@@ -63,10 +80,7 @@
   flex-direction: column;
   gap: 2rem;
 }
-label.label-input-wrapper {
-  display: flex;
-  gap: 0.5rem;
-}
+
 
  @media (min-width: 1440px) {
 #details-summary-wrapper {
@@ -75,9 +89,12 @@ label.label-input-wrapper {
 #details-wrapper {
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: 1fr;
+  padding-bottom: 2rem;
 }
 #grid-1 {
   grid-column: span 2;
+  padding-bottom: 4rem;
+
 }
 #grid-2 {
   grid-column: span 1;
@@ -85,6 +102,9 @@ grid-template-rows: 1fr;
 .payment-icon {
   width: 60px;
   height: 60px;
+}
+#details-summary-wrapper {
+  max-width: none;
 }
  }
  

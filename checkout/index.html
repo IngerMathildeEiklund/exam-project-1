@@ -212,7 +212,12 @@
                 />
               </label>
               <fieldset>
-                <legend>Payment method</legend>
+                <legend
+                  id="payment-method"
+                  aria-label="Please select a payment method"
+                >
+                  Payment method
+                </legend>
                 <div id="payment-options-wrapper">
                   <div class="radio-wrapper">
                     <input
@@ -220,6 +225,7 @@
                       id="american-express-payment"
                       name="payment_option"
                       value="American Express"
+                      tabindex="0"
                     />
 
                     <img
@@ -240,6 +246,7 @@
                       id="paypal-payment-option"
                       name="payment_option"
                       value="PayPal"
+                      tabindex="0"
                     />
 
                     <img
@@ -259,6 +266,7 @@
                       id="visa-payment-option"
                       name="payment_option"
                       value="Visa"
+                      tabindex="0"
                     />
 
                     <img
@@ -276,6 +284,7 @@
                       id="mastercard-payment-option"
                       name="payment_option"
                       value="Mastercard"
+                      tabindex="0"
                     />
 
                     <img

@@ -3,6 +3,7 @@ import { toastNotification } from "../messages.js";
 
 const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
 const summaryWrapper = document.getElementById("summary-wrapper");
+const paymentOptions = document.getElementById("payment-option");
 
 if (summaryWrapper) {
   renderOrderSummary(cart, summaryWrapper);
