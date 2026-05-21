@@ -637,6 +637,7 @@ p {
 
 #company-info-wrapper {
 background-color: white;
+margin-top: 3rem;
 border-radius: 0.3rem;
 padding: 1rem;
 display: flex;
