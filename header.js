@@ -1,6 +1,6 @@
 function header() {
-  const userIcons = document.querySelectorAll("#user");
-  const shoppingcartIcons = document.querySelectorAll("#shoppingcart");
+  const userIcons = document.querySelectorAll(".user");
+  const shoppingcartIcons = document.querySelectorAll(".shoppingcart");
   const hamburgerButton = document.querySelector(".hamburger-menu");
   const hamburgerIcon = document.getElementById("hamburger");
   const hamburgerCloseIcon = document.getElementById("hamburger-close");

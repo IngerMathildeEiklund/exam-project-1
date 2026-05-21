@@ -114,7 +114,7 @@ function displayOneProduct() {
     return;
   }
   const productImage = document.createElement("img");
-  const productName = document.createElement("h2");
+  const productName = document.createElement("h1");
   const productDesc = document.createElement("p");
   const productRating = document.createElement("p");
   const nameDescRatingWrapper = document.createElement("div");

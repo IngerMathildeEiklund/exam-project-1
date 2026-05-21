@@ -37,7 +37,7 @@
     />
   </head>
   <body>
-    <header class="header" role="banner">
+    <header class="header">
       <a href="../index.html" aria-label="Kaleido home"
         ><img id="logo" src="../svgs/LOGO.svg" alt="Kaleido logo"
       /></a>
@@ -45,7 +45,7 @@
         <div class="user-shoppingcart-wrapper">
           <a href="user.html" aria-label="User profile">
             <svg
-              id="user"
+              class="user"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -64,7 +64,7 @@
           </a>
           <a class="cart-a" href="../cart/index.html" aria-label="Shoppingcart">
             <svg
-              id="shoppingcart"
+              class="shoppingcart"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -126,7 +126,7 @@
             <a href="/account/user.html" aria-label="User profile">
               Profile
               <svg
-                id="user"
+                class="user"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -148,7 +148,7 @@
             <a href="../cart/index.html" aria-label="shoppingcart">
               Shoppingcart
               <svg
-                id="shoppingcart"
+                class="shoppingcart"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -204,14 +204,18 @@
           </label>
 
           <button type="submit" id="login-button" class="blue">Login</button>
-          <p class="register-p">
+          <h2 class="register-p">
             Don't have an account? Sign up <a href="register.html">here</a>
-          </p>
+          </h2>
         </form>
       </section>
     </main>
     <footer id="footer">
-      <div class="footer-navigation-wrapper" aria-label="footer navigation">
+      <div
+        class="footer-navigation-wrapper"
+        role="navigation"
+        aria-label="footer navigation"
+      >
         <div class="flex-column">
           <h3 class="footer-headings">Support</h3>
           <ul class="flex-column">
@@ -236,7 +240,7 @@
           </ul>
         </div>
         <div class="flex-column">
-          <h3 class="/footer-headings">Socials</h3>
+          <h3 class="footer-headings">Socials</h3>
           <nav aria-label="Social media links">
             <ul class="flex-row">
               <li>

@@ -37,7 +37,7 @@
     />
   </head>
   <body>
-    <header class="header" role="banner">
+    <header class="header">
       <a href="../index.html" aria-label="Kaleido home"
         ><img id="logo" src="../svgs/LOGO.svg" alt="Kaleido logo"
       /></a>
@@ -45,7 +45,7 @@
         <div class="user-shoppingcart-wrapper">
           <a href="../account/user.html" aria-label="User profile">
             <svg
-              id="user"
+              class="user"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -64,7 +64,7 @@
           </a>
           <a class="cart-a" href="../cart/index.html" aria-label="Shoppingcart">
             <svg
-              id="shoppingcart"
+              class="shoppingcart"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -126,7 +126,7 @@
             <a href="../account/user.html" aria-label="User profile">
               Profile
               <svg
-                id="user"
+                class="user"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -148,7 +148,7 @@
             <a href="index.html" aria-label="shoppingcart">
               Shoppingcart
               <svg
-                id="shoppingcart"
+                class="shoppingcart"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -230,7 +230,7 @@
                 <img class="cart-image" alt="" />
               </div>
               <div class="title-price-quantity-wrapper">
-                <h4 class="product-title"></h4>
+                <p class="product-title"></p>
                 <p class="product-price"></p>
                 <p id="product-price-sale" class="hidden"></p>
                 <p class="product-quantity"></p>
@@ -294,6 +294,7 @@
             id="summary-wrapper"
             aria-live="polite"
             aria-label="Order summary"
+            role="region"
             class="drop-shadow"
           ></div>
           <template id="summary-template">
@@ -317,7 +318,11 @@
       </section>
     </main>
     <footer id="footer">
-      <div class="footer-navigation-wrapper" aria-label="footer navigation">
+      <div
+        class="footer-navigation-wrapper"
+        role="navigation"
+        aria-label="footer navigation"
+      >
         <div class="flex-column">
           <h3 class="footer-headings">Support</h3>
           <ul class="flex-column">
