@@ -174,3 +174,7 @@ Prompt: What is wrong with my popup on clear cart? Changes made: Reused the pop 
 18.05 11:38
 
 Prompt: What is wrong with my itemsInCart function? Changes made: Tried appending the div to the svg element which did not work, needed to append it to the anchortag instead.
+
+19.05 14:03
+
+Prompt: I want my cards title, description and price to be at the same height regardless of differentiating content. Changes made: Added flex shrink on the image, and flex grow on the info container so it takes up the remaining space.

@@ -7,7 +7,7 @@
 }
 #cart-wrapper {
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   padding-block: 1rem;
   padding-inline: 1rem;
   box-sizing: border-box;
@@ -15,7 +15,7 @@
 }
 #summary-wrapper {
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   padding-block: 1rem;
   padding-inline: 1rem;
   height: fit-content;
@@ -26,20 +26,21 @@
 }
 #empty-cart-wrapper {
   background-color: white;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   padding-block: 1rem;
   padding-inline: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 3rem;
 }
 
 
 #shopping-bags {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
 }
 .cart-image {
   height: clamp(4rem, 20vw, 8rem);
@@ -88,7 +89,7 @@
   display:flex;
   flex-direction: row;
   border: 2px solid var(--gray);
-  border-radius: 0.6rem;
+  border-radius: 0.3rem;
   align-items: center;
   overflow: hidden;
 }
@@ -133,7 +134,7 @@ main.popup-active {
 #clear-cart-popup {
   background-color: white;
   padding: 1rem;
-  border-radius: 0.6rem;
+  border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -142,7 +143,8 @@ main.popup-active {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 95%;
+  width: fit-content;
+  padding-inline: 3rem;
   transform: translate(-50%, -50%);
   visibility: hidden;
   opacity: 0;
@@ -164,7 +166,12 @@ main.popup-active {
   gap: 3rem;
   width: 100%;
 }
+#empty-cart-wrapper {
 
+  padding-block: 5rem;
+  padding-inline: 5rem;
+
+}
 .product-cart-wrapper {
   gap: 2rem;
 }
