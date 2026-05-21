@@ -114,7 +114,7 @@ function displayOneProduct() {
     return;
   }
   const productImage = document.createElement("img");
-  const productName = document.createElement("h1");
+  const productName = document.getElementById("product-name");
   const productDesc = document.createElement("p");
   const productRating = document.createElement("p");
   const nameDescRatingWrapper = document.createElement("div");
@@ -179,7 +179,7 @@ function displayReviews() {
     return;
   }
   try {
-    const reviewsTitle = document.createElement("h3");
+    const reviewsTitle = document.getElementById("reviews-title");
     reviewsTitle.classList.add("padding");
 
     reviewsTitle.textContent = `Reviews of ${oneProduct.title}`;

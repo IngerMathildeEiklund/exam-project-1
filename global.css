@@ -352,7 +352,7 @@ button.blue:focus, button.gray:focus {
   gap: 0.5rem;
 }
 .icon-on-button {
-  color: var(--button-text);
+  color: var(--button-text) !important;
 }
 input {
   border: solid 2px;
