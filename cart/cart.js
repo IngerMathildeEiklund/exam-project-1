@@ -84,7 +84,7 @@ export function renderOrderSummary(cart, summaryWrapper) {
   }, 0);
 
   summaryWrapper.innerHTML = "";
-  summaryWrapper.innerHTML = `<h1> Cart summary </h1>`;
+  summaryWrapper.innerHTML = `<h2> Cart summary </h2>`;
 
   const template2 = document.getElementById("summary-template");
   const totalWrapper = template2.content.cloneNode(true);
@@ -117,7 +117,7 @@ export function renderOrderSummary(cart, summaryWrapper) {
       "aria-label",
       `Order total ${totalWithShipping.toFixed(2)} kr`,
     );
-  summaryWrapper.innerHTML = `<h1> Cart summary </h1>`;
+  summaryWrapper.innerHTML = `<h2> Cart summary </h2>`;
   summaryWrapper.appendChild(totalWrapper);
 }
 

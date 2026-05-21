@@ -40,7 +40,7 @@
     />
   </head>
   <body>
-    <header class="header" role="banner">
+    <header class="header">
       <a href="../index.html" aria-label="Kaleido home"
         ><img id="logo" src="../svgs/LOGO.svg" alt="Kaleido logo"
       /></a>
@@ -48,7 +48,7 @@
         <div class="user-shoppingcart-wrapper">
           <a href="../account/user.html" aria-label="User profile">
             <svg
-              id="user"
+              class="user"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -67,7 +67,7 @@
           </a>
           <a class="cart-a" href="../cart/index.html" aria-label="Shoppingcart">
             <svg
-              id="shoppingcart"
+              class="shoppingcart"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -129,7 +129,7 @@
             <a href="../account/user.html" aria-label="User profile">
               Profile
               <svg
-                id="user"
+                class="user"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -151,7 +151,7 @@
             <a href="../cart/index.html" aria-label="shoppingcart">
               Shoppingcart
               <svg
-                id="shoppingcart"
+                class="shoppingcart"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -226,7 +226,9 @@
           </svg>
 
           <h1>Thank you for your order!</h1>
-          <p>An order confirmation has been sent to your provided email.</p>
+          <h2 class="order-confirmation">
+            An order confirmation has been sent to your provided email.
+          </h2>
           <p>Order number: #87849</p>
           <button id="return-to-homepage" class="blue">
             Return to homepage
@@ -235,7 +237,11 @@
       </section>
     </main>
     <footer id="footer">
-      <div class="footer-navigation-wrapper" aria-label="footer navigation">
+      <div
+        class="footer-navigation-wrapper"
+        role="navigation"
+        aria-label="footer navigation"
+      >
         <div class="flex-column">
           <h3 class="footer-headings">Support</h3>
           <ul class="flex-column">

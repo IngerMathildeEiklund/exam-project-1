@@ -17,7 +17,10 @@
 .success-circle-wrapper {
   color: var(--main-color);
 }
-
+.order-confirmation {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
 
  @media (min-width: 768px) {
   #success-wrapper {

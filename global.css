@@ -351,7 +351,7 @@ button.blue:focus, button.gray:focus {
   align-items: center;
   gap: 0.5rem;
 }
-#icon-on-button {
+.icon-on-button {
   color: var(--button-text);
 }
 input {
@@ -478,6 +478,9 @@ p {
 .user-shoppingcart-wrapper {
   display: none;
 }
+.user, .shoppingcart {
+  color: var(--text);
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -485,7 +488,6 @@ p {
   background-color: var(--light-gray);
   position: relative;
   z-index: 200;
-  
 }
 .navigation {
   display: flex;
@@ -749,8 +751,8 @@ gap: 1rem;
   #logo {
     width: clamp(90px, 70vw, 160px);
   }
-  #user,
-  #shoppingcart {
+  .user,
+  .shoppingcart {
     width: 25px;
     height: 25px;
   }
