@@ -154,6 +154,9 @@ main.popup-active {
   opacity: 0;
   transition: 0.5s;
 }
+.lets-fix-that {
+  font-size: 1.1rem;
+}
 
 #clear-cart-popup.active {
   top: 50%;

@@ -82,7 +82,9 @@ width: 100%;
   flex-direction: column;
   gap: 2rem;
 }
-
+#payment-method {
+font-size: 1rem;
+}
 
  @media (min-width: 1440px) {
 #details-summary-wrapper {
@@ -107,6 +109,9 @@ grid-template-rows: 1fr;
 }
 #details-summary-wrapper {
   max-width: none;
+}
+#payment-method {
+font-size: 1rem;
 }
  }
  
