@@ -72,7 +72,7 @@ section {
   max-width: 30rem;
 }
 .section-medium {
-      width: 100%;
+  width: 100%;
   margin: 0 auto;
   padding: 0;
   display: block;
@@ -161,7 +161,7 @@ main {
   flex-direction: column;
   gap: 0.2rem;
 }
-/* CARDS */
+
 .card {
   background-color: white;
   border-radius: 0.3rem;
@@ -180,13 +180,13 @@ main {
   background-color: white;
   border-radius: 0.3rem;
   filter: drop-shadow(2px 2px 5px var(--dark-gray));
-  animation: slideIn 0.2s ease-in;
   cursor: pointer;
   position: relative;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
 }
+
 .card-carousel:hover {
   transform: scale(1.05);
 }
@@ -216,18 +216,6 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .card-img-wrapper {
@@ -304,7 +292,6 @@ legend {
 #next-button {
   background-color: inherit;
 }
-/* breadcrumbs */ 
 
 ul.breadcrumbs {
   padding: 0.8rem 1rem;
@@ -332,8 +319,6 @@ ul.breadcrumbs li a:hover {
 .current-page {
   font-weight: 800;
 }
-/* breadcrumbs */ 
-
 
 button {
   font-family: var(--buttons);
@@ -411,7 +396,7 @@ a {
 
 h1 {
   font-size: 1.25rem;
-  margin-bottom: 1rem; /* remove maybe */ 
+  margin-bottom: 1rem; 
 }
 h2, legend {
   font-size: 1.2rem;
@@ -420,7 +405,7 @@ h3 {
   font-size: 1.1rem;
 }
 p {
-  font-size: 0.875rem; /* change this to 1 rem? */
+  font-size: 0.875rem; 
 }
 .visible {
   display: block;
@@ -465,7 +450,7 @@ p {
   white-space: nowrap;
   border-width: 0;
 }
-/* HEADER */
+
 
 #logo {
   width: clamp(80px, 70vw, 150px);
@@ -556,9 +541,7 @@ p {
   gap: 3rem;
   margin-right: 1rem;
 }
-/* HEADER */
 
-/*FOOTER */
 #footer {
   background-color: var(--light-gray);
   display: flex;
@@ -584,8 +567,6 @@ p {
   font-weight: 800;
   font-style: italic;
 }
-
-/* Messages */ 
 #toast-container {
   position: fixed;
   top:4.5rem;
@@ -639,10 +620,6 @@ p {
   color: var(--text-warning);
 }
 
-/* Messages*/ 
-
-/*Footer page */ 
-
 #company-info-wrapper {
 background-color: white;
 margin-top: 3rem;
@@ -666,7 +643,7 @@ flex-direction: column
   width: 200px;
   margin: 0 auto;
 }
-/* loading spinner */
+
 .spinner{
   border: 4px solid var(--main-color);
   width: 50px;
@@ -688,8 +665,7 @@ flex-direction: column
   transform: translate(-50%, -50%) rotate(360deg);
 }
 } 
-/* loading spinner */
-/*Footer page */ 
+
 
 @media (min-width: 768px) {
   h1 {
@@ -756,7 +732,7 @@ gap: 1rem;
   order: 3;
   height:auto;
 }
-  /* HEADER */
+
   #logo {
     width: clamp(90px, 70vw, 160px);
   }
@@ -776,7 +752,6 @@ gap: 1rem;
     display: none;
   }
 
-  /*FOOTER*/
 
   .footer-navigation-wrapper {
     display: flex;
