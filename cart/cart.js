@@ -205,9 +205,9 @@ function displayCart() {
       productWrapper.querySelector("#product-price-sale").classList.add("sale");
     }
 
-    const minusBtn = productWrapper.querySelector("#minus-button");
-    const plusBtn = productWrapper.querySelector("#plus-button");
-    const quantityInput = productWrapper.querySelector("#quantity-input");
+    const minusBtn = productWrapper.querySelector(".minus-button");
+    const plusBtn = productWrapper.querySelector(".plus-button");
+    const quantityInput = productWrapper.querySelector(".quantity-input");
     quantityInput.value = item.quantity;
 
     function increment() {

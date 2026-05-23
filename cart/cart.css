@@ -92,7 +92,7 @@
   align-items: center;
   overflow: hidden;
 }
-#minus-button, #plus-button {
+.minus-button, .plus-button {
   color: var(--text);
   font-weight: 600;
   font-size: 1rem;
@@ -107,7 +107,7 @@
   line-height: 1;
 }
 
-#quantity-input {
+.quantity-input {
 text-align: center;
 width: 3rem;
 padding: 0.25rem;

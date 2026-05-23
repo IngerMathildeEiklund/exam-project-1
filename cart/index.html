@@ -266,19 +266,20 @@
                   role="group"
                   aria-label="Quantity selector"
                 >
-                  <button id="minus-button" aria-label="Decrease quantity">
+                  <button class="minus-button" aria-label="Decrease quantity">
                     -
                   </button>
-                  <label id="quantity-label" class="sr-only">Quantity </label>
-                  <input
-                    type="number"
-                    id="quantity-input"
-                    value="1"
-                    min="1"
-                    readonly
-                    aria-labelledby="quantity-label"
-                  />
-                  <button id="plus-button" aria-label="Increment quantity">
+                  <label class="sr-only"
+                    >Quantity
+                    <input
+                      type="number"
+                      class="quantity-input"
+                      value="1"
+                      min="1"
+                      readonly
+                    />
+                  </label>
+                  <button class="plus-button" aria-label="Increment quantity">
                     +
                   </button>
                 </div>
