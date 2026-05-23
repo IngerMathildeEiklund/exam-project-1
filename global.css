@@ -186,7 +186,10 @@ main {
   flex-direction: column;
   transition: transform 0.3s ease;
 }
-
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 .card-carousel:hover {
   transform: scale(1.05);
 }
@@ -686,6 +689,10 @@ flex-direction: column
     grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;
   }
+  .product-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
 ul.breadcrumbs li {
   font-size: 1.2rem;
 }

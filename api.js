@@ -134,7 +134,7 @@ function renderCarouselCards(products) {
       const imageWrapper = document.createElement("div");
       const cardImage = document.createElement("img");
       const productInfoWrapper = document.createElement("div");
-      const productName = document.createElement("h3");
+      const productName = document.createElement("p");
       const priceWrapper = document.createElement("div");
       const rating = document.createElement("div");
 
@@ -145,6 +145,7 @@ function renderCarouselCards(products) {
       card.classList.add("card-carousel");
 
       imageWrapper.classList.add("card-img-wrapper");
+      productName.classList.add("product-name");
       productInfoWrapper.classList.add("card-info-wrapper");
       priceWrapper.classList.add("price-wrapper");
 
@@ -205,13 +206,14 @@ function renderProducts(products) {
       const imageWrapper = document.createElement("div");
       const cardImage = document.createElement("img");
       const productInfoWrapper = document.createElement("div");
-      const productName = document.createElement("h3");
+      const productName = document.createElement("p");
       const productDesc = document.createElement("p");
       const productPrice = document.createElement("p");
       const priceWrapper = document.createElement("div");
 
       card.classList.add("card");
       productPrice.classList.add("price");
+      productName.classList.add("product-name");
       imageWrapper.classList.add("card-img-wrapper");
       productInfoWrapper.classList.add("card-info-wrapper");
       priceWrapper.classList.add("price-wrapper");
