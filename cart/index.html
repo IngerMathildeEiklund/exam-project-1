@@ -269,18 +269,14 @@
                   <button id="minus-button" aria-label="Decrease quantity">
                     -
                   </button>
-                  <label
-                    for="quantity-input"
-                    aria-labelledby="quantity-input"
-                    class="sr-only"
-                    >Quantity
-                  </label>
+                  <label id="quantity-label" class="sr-only">Quantity </label>
                   <input
                     type="number"
                     id="quantity-input"
                     value="1"
                     min="1"
                     readonly
+                    aria-labelledby="quantity-label"
                   />
                   <button id="plus-button" aria-label="Increment quantity">
                     +
