@@ -195,11 +195,13 @@ function displayReviews() {
     for (const review of oneProduct.reviews) {
       const userImageWrapper = document.createElement("div");
       const userImage = document.createElement("img");
-      const reviewUsername = document.createElement("h4");
+      const reviewUsername = document.createElement("p");
       const reviewDescription = document.createElement("p");
       const reviewRating = document.createElement("p");
       const hr = document.createElement("hr");
+
       hr.classList.add("line");
+
       reviewUsername.textContent = review.username;
       reviewDescription.textContent = review.description;
       reviewRating.textContent = `Rating: ${review.rating} / 5`;
@@ -207,6 +209,7 @@ function displayReviews() {
       userImage.setAttribute("aria-hidden", "true");
 
       userImage.classList.add("avatar");
+      reviewUsername.classList.add("username");
       reviewUsername.classList.add("padding");
       reviewDescription.classList.add("padding");
       reviewRating.classList.add("padding");

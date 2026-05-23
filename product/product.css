@@ -51,6 +51,10 @@
   width: 40px;
   height: 40px;
 }
+.username {
+  font-size: 1rem;
+  font-weight: 600;
+}
 #login-popup-wrapper {
   position: relative;
   padding: 1rem;
@@ -102,6 +106,10 @@ main.popup-active {
 #reviews-wrapper {
   padding-inline: 3rem;
 
+}
+.username {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 #login-popup {
   padding: 2rem;
