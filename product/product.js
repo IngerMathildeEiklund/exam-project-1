@@ -95,7 +95,6 @@ shareBtn.addEventListener("click", () => {
 
 addToCartBtn.addEventListener("click", () => {
   if (localStorage.getItem("access_token") === null) {
-    console.log("You are not logged in!");
     popupToggle();
   } else {
     const selectedItem = {

@@ -13,7 +13,6 @@ async function registerUser(url, data) {
   };
   const response = await fetch(url, postOptions);
   const status = response.status;
-  // console.log(status);
 
   if (status === 400) {
     toastNotification("Entered information already in use", "warning", 2);
